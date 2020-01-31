@@ -10,7 +10,6 @@
 		2546DDB47B033C963759A7FF /* Pods_TaskProjector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B724FC8131AC8DDBCA68F607 /* Pods_TaskProjector.framework */; };
 		992A4DEA23E4EB1B00DEA71F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4DE923E4EB1B00DEA71F /* AppDelegate.swift */; };
 		992A4DEC23E4EB1B00DEA71F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4DEB23E4EB1B00DEA71F /* SceneDelegate.swift */; };
-		992A4DEE23E4EB1B00DEA71F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4DED23E4EB1B00DEA71F /* ViewController.swift */; };
 		992A4DF123E4EB1B00DEA71F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 992A4DEF23E4EB1B00DEA71F /* Main.storyboard */; };
 		992A4DF323E4EB1E00DEA71F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 992A4DF223E4EB1E00DEA71F /* Assets.xcassets */; };
 		992A4DF623E4EB1E00DEA71F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 992A4DF423E4EB1E00DEA71F /* LaunchScreen.storyboard */; };
@@ -44,7 +43,6 @@
 		992A4DE623E4EB1B00DEA71F /* TaskProjector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskProjector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		992A4DE923E4EB1B00DEA71F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		992A4DEB23E4EB1B00DEA71F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		992A4DED23E4EB1B00DEA71F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		992A4DF023E4EB1B00DEA71F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		992A4DF223E4EB1E00DEA71F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		992A4DF523E4EB1E00DEA71F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 				66A1B30D15AD1E3B28A88204 /* Pods-TaskProjectorTests.debug.xcconfig */,
 				1584A00DD3607D161BC5B17F /* Pods-TaskProjectorTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -140,13 +137,12 @@
 		992A4DE823E4EB1B00DEA71F /* TaskProjector */ = {
 			isa = PBXGroup;
 			children = (
-				992A4DE923E4EB1B00DEA71F /* AppDelegate.swift */,
-				992A4DEB23E4EB1B00DEA71F /* SceneDelegate.swift */,
-				992A4DED23E4EB1B00DEA71F /* ViewController.swift */,
-				992A4DEF23E4EB1B00DEA71F /* Main.storyboard */,
-				992A4DF223E4EB1E00DEA71F /* Assets.xcassets */,
-				992A4DF423E4EB1E00DEA71F /* LaunchScreen.storyboard */,
-				992A4DF723E4EB1E00DEA71F /* Info.plist */,
+				992A4E1B23E4ED5F00DEA71F /* Coordinators */,
+				992A4E1A23E4ED5800DEA71F /* View Controllers */,
+				992A4E1923E4ED3500DEA71F /* Views */,
+				992A4E1C23E4ED6800DEA71F /* Model Controllers */,
+				992A4E1D23E4ED6D00DEA71F /* Models */,
+				992A4E1E23E4ED7200DEA71F /* Application */,
 			);
 			path = TaskProjector;
 			sourceTree = "<group>";
@@ -167,6 +163,54 @@
 				992A4E0D23E4EB1E00DEA71F /* Info.plist */,
 			);
 			path = TaskProjectorUITests;
+			sourceTree = "<group>";
+		};
+		992A4E1923E4ED3500DEA71F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		992A4E1A23E4ED5800DEA71F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		992A4E1B23E4ED5F00DEA71F /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		992A4E1C23E4ED6800DEA71F /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		992A4E1D23E4ED6D00DEA71F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		992A4E1E23E4ED7200DEA71F /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				992A4DEF23E4EB1B00DEA71F /* Main.storyboard */,
+				992A4DF423E4EB1E00DEA71F /* LaunchScreen.storyboard */,
+				992A4DE923E4EB1B00DEA71F /* AppDelegate.swift */,
+				992A4DEB23E4EB1B00DEA71F /* SceneDelegate.swift */,
+				992A4DF223E4EB1E00DEA71F /* Assets.xcassets */,
+				992A4DF723E4EB1E00DEA71F /* Info.plist */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,7 +416,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				992A4DEE23E4EB1B00DEA71F /* ViewController.swift in Sources */,
 				992A4DEA23E4EB1B00DEA71F /* AppDelegate.swift in Sources */,
 				992A4DEC23E4EB1B00DEA71F /* SceneDelegate.swift in Sources */,
 			);
@@ -550,15 +593,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 22X3GA956P;
-				INFOPLIST_FILE = TaskProjector/Info.plist;
+				INFOPLIST_FILE = TaskProjector/Application/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jonbash.TaskProjector;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonbash.taskprojector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -569,15 +614,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 22X3GA956P;
-				INFOPLIST_FILE = TaskProjector/Info.plist;
+				INFOPLIST_FILE = TaskProjector/Application/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jonbash.TaskProjector;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonbash.taskprojector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
