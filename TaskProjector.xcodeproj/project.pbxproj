@@ -285,6 +285,7 @@
 				992A4DE323E4EB1B00DEA71F /* Frameworks */,
 				992A4DE423E4EB1B00DEA71F /* Resources */,
 				8938E860B6317B12FB7F52C7 /* [CP] Embed Pods Frameworks */,
+				992A4E4223E62FCF00DEA71F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -487,6 +488,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TaskProjector/Pods-TaskProjector-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		992A4E4223E62FCF00DEA71F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		DA1E03B4CFD6C113DD74E3B9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
