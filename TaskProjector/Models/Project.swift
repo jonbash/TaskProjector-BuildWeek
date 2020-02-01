@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 @objcMembers
-class Project: Object, Completable, Category {
+class Project: Object {
     var name: String = ""
     var identifier: String = UUID().uuidString
     var parent: Category?
@@ -18,9 +18,7 @@ class Project: Object, Completable, Category {
     var timeEstimate: TimeInterval?
     var completionDate: Date?
 
-    var children: [Completable] = []
-
-    func activate() {
+    func makeActive() {
 
     }
 
@@ -35,4 +33,16 @@ class Project: Object, Completable, Category {
     func placeOnHold() {
 
     }
+}
+
+extension Project: Completable {
+    var children: [Completable] {
+        get {}
+        set {}
+    }
+
+}
+
+extension Project: Category {
+
 }

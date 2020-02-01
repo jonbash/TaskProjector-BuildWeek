@@ -257,8 +257,8 @@
 		992A4E2A23E4FE3F00DEA71F /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				992A4E2B23E4FF2200DEA71F /* Category.swift */,
 				992A4E2D23E4FF7300DEA71F /* Completable.swift */,
+				992A4E2B23E4FF2200DEA71F /* Category.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";

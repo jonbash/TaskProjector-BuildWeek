@@ -8,9 +8,9 @@
 
 import Foundation
 
-enum CompletableState {
-    case active
-    case onHold
-    case done
-    case dropped
+enum CompletableState: String {
+    case active = "Active"
+    case onHold = "On Hold"
+    case done = "Done"
+    case dropped = "Dropped"
 }
