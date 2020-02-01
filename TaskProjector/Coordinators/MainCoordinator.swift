@@ -9,15 +9,21 @@
 import UIKit
 
 class MainCoordinator: Coordinator {
-    var childCoordinators = [Coordinator]()
+    let window: UIWindow
     var navigationController: UINavigationController
+    var childCoordinators = [Coordinator]()
 
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(window: UIWindow) {
+        self.window = window
+        self.navigationController = UINavigationController()
+        navigationController.navigationBar.prefersLargeTitles = true
+
+        let nextTasksVC = NextTasksViewController()
+        navigationController.pushViewController(nextTasksVC, animated: false)
     }
 
     func start() {
-        // let vc = ViewController.instantiate()
-        // navigationController.pushViewController(vc, animated: false)
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
     }
 }
