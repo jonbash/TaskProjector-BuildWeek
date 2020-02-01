@@ -6,10 +6,10 @@
 //  Copyright © 2020 Jon Bash. All rights reserved.
 //
 
-import Foundation
+import RealmSwift
 
 protocol Category {
     var name: String { get set }
     var identifier: String { get }
-    var children: [Completable] { get set }
+    var children: [Completable] { get }
 }

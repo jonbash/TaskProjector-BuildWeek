@@ -9,8 +9,19 @@
 import Foundation
 import RealmSwift
 
-class Area: Object, Category {
-    var name: String = ""
-    var identifier: String = UUID().uuidString
-    var children: [Completable] = []
+@objcMembers
+class Area: Object {
+    dynamic var name: String = ""
+    dynamic var identifier: String = UUID().uuidString
+    dynamic var tasks = List<Task>()
+    dynamic var projects = List<Project>()
+}
+
+extension Area: Category {
+    var children: [Completable] {
+        var output = [Completable]()
+        for task in tasks { output.append(task) }
+        for project in projects { output.append(project) }
+        return output
+    }
 }

@@ -19,10 +19,12 @@ class Task: Object {
     private(set) dynamic var identifier: String
     dynamic var dueDate: Date?
     dynamic var completionDate: Date?
+    dynamic var children = List<Task>()
 
     // MARK: - Backing/Persisted
 
     private dynamic var _state: String = CompletableState.active.rawValue
+    private dynamic var _taskGroupType: String?
     private dynamic var parentProject: Project?
     private dynamic var parentArea: Area?
     private dynamic var _timeEstimate = RealmOptional<Double>()
@@ -55,13 +57,27 @@ extension Task: Completable {
 
     // MARK: - Completable Computed
 
+    var taskGroupType: TaskGroupType? {
+        get {
+            if children.isEmpty { return nil }
+            else {
+                guard
+                    let groupTypeString = _taskGroupType,
+                    let groupType = TaskGroupType(rawValue: groupTypeString)
+                    else { return .parallel }
+                return groupType
+            }
+        }
+        set { _taskGroupType = (children.isEmpty) ? nil : newValue?.rawValue }
+    }
+
     private(set) var state: CompletableState {
         get { CompletableState(rawValue: _state) ?? .active }
         set { _state = newValue.rawValue }
     }
 
     var parent: Category? {
-        get { parentProject ?? parentArea }
+        get { parentProject as? Category ?? parentArea }
         set {
             if let newProject = newValue as? Project {
                 parentProject = newProject

@@ -6,7 +6,7 @@
 //  Copyright © 2020 Jon Bash. All rights reserved.
 //
 
-import Foundation
+import RealmSwift
 
 protocol Completable {
     var name: String { get set }

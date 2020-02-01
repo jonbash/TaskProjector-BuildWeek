@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TaskGroupType {
+enum TaskGroupType: String {
     case sequential
     case parallel
 }

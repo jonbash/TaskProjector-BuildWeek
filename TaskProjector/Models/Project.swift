@@ -11,12 +11,70 @@ import RealmSwift
 
 @objcMembers
 class Project: Object {
-    var name: String = ""
-    var identifier: String = UUID().uuidString
-    var parent: Category?
-    var dueDate: Date?
-    var timeEstimate: TimeInterval?
-    var completionDate: Date?
+    // MARK: - Public/Persisted
+
+    dynamic var name: String
+    private(set) dynamic var identifier: String
+    dynamic var dueDate: Date?
+    dynamic var completionDate: Date?
+
+    // MARK: - Backing/Persisted
+
+    private dynamic var _state: String = CompletableState.active.rawValue
+    private dynamic var parentProject: Project?
+    private dynamic var parentArea: Area?
+    var children = List<Task>()
+    private dynamic var _timeEstimate = RealmOptional<Double>()
+
+    // MARK: - Init
+
+    convenience init(name: String, identifier: String = UUID().uuidString) {
+        self.init()
+        self.name = name
+        self.identifier = identifier
+    }
+
+    required init() {
+        self.name = ""
+        self.identifier = UUID().uuidString
+        super.init()
+    }
+
+    // MARK: - Overrides
+
+    override var description: String {
+        "Project \(identifier) - \"\(name)\" - \(state)"
+    }
+
+    override static func primaryKey() -> String? { "identifier" }
+}
+
+extension Project: Completable {
+
+    // MARK: - Completable Computed
+
+    private(set) var state: CompletableState {
+        get { CompletableState(rawValue: _state) ?? .active }
+        set { _state = newValue.rawValue }
+    }
+
+    var parent: Category? {
+        get { (parentProject as? Category) ?? parentArea }
+        set {
+            if let newProject = newValue as? Project {
+                parentProject = newProject
+            } else if let newArea = newValue as? Area {
+                parentArea = newArea
+            }
+        }
+    }
+
+    var timeEstimate: TimeInterval? {
+        get { _timeEstimate.value }
+        set { _timeEstimate.value = newValue }
+    }
+
+    // MARK: - Completable Methods
 
     func makeActive() {
 
@@ -33,16 +91,4 @@ class Project: Object {
     func placeOnHold() {
 
     }
-}
-
-extension Project: Completable {
-    var children: [Completable] {
-        get {}
-        set {}
-    }
-
-}
-
-extension Project: Category {
-
 }
