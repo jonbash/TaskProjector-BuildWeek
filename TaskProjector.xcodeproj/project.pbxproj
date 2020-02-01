@@ -193,7 +193,6 @@
 		992A4E1B23E4ED5F00DEA71F /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				992A4E1F23E4EF6800DEA71F /* Coordinator.swift */,
 				992A4E2123E4F07E00DEA71F /* MainCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -209,6 +208,7 @@
 		992A4E1D23E4ED6D00DEA71F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				992A4E2A23E4FE3F00DEA71F /* Protocols */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -231,6 +231,14 @@
 				992A4E2823E4F7CC00DEA71F /* UIViewController+Convenience.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		992A4E2A23E4FE3F00DEA71F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				992A4E1F23E4EF6800DEA71F /* Coordinator.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
