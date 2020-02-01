@@ -6,9 +6,10 @@
 //  Copyright © 2020 Jon Bash. All rights reserved.
 //
 
-import Foundation
+import RealmSwift
 
-enum TaskGroupType: String {
+@objc
+enum TaskGroupType: Int, RealmEnum {
     case sequential
     case parallel
 }
