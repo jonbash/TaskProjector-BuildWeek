@@ -24,10 +24,25 @@ class Task: Object {
     // MARK: - Backing/Persisted
 
     private dynamic var _state: String = CompletableState.active.rawValue
-    private dynamic var _taskGroupType: String?
-    private dynamic var parentProject: Project?
+    private dynamic var parentProject: Task?
     private dynamic var parentArea: Area?
-    private dynamic var _timeEstimate = RealmOptional<Double>()
+    private var _timeEstimate = RealmOptional<Double>()
+    private var _taskGroupType = RealmOptional<TaskGroupType>()
+
+    // MARK: - Public/Computed
+
+    var taskGroupType: TaskGroupType? {
+        get { _taskGroupType.value }
+        set { _taskGroupType.value = newValue }
+    }
+    private(set) var state: CompletableState {
+        get { CompletableState(rawValue: _state) ?? .active }
+        set { _state = newValue.rawValue }
+    }
+    var timeEstimate: TimeInterval? {
+        get { _timeEstimate.value }
+        set { _timeEstimate.value = newValue }
+    }
 
     // MARK: - Init
 
@@ -50,47 +65,6 @@ class Task: Object {
     }
 
     override static func primaryKey() -> String? { "identifier" }
-}
-
-
-extension Task: Completable {
-
-    // MARK: - Completable Computed
-
-    var taskGroupType: TaskGroupType? {
-        get {
-            if children.isEmpty { return nil }
-            else {
-                guard
-                    let groupTypeString = _taskGroupType,
-                    let groupType = TaskGroupType(rawValue: groupTypeString)
-                    else { return .parallel }
-                return groupType
-            }
-        }
-        set { _taskGroupType = (children.isEmpty) ? nil : newValue?.rawValue }
-    }
-
-    private(set) var state: CompletableState {
-        get { CompletableState(rawValue: _state) ?? .active }
-        set { _state = newValue.rawValue }
-    }
-
-    var parent: Category? {
-        get { parentProject as? Category ?? parentArea }
-        set {
-            if let newProject = newValue as? Project {
-                parentProject = newProject
-            } else if let newArea = newValue as? Area {
-                parentArea = newArea
-            }
-        }
-    }
-
-    var timeEstimate: TimeInterval? {
-        get { _timeEstimate.value }
-        set { _timeEstimate.value = newValue }
-    }
 
     // MARK: - Completable Methods
 

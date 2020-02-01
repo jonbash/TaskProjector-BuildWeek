@@ -13,15 +13,6 @@ import RealmSwift
 class Area: Object {
     dynamic var name: String = ""
     dynamic var identifier: String = UUID().uuidString
-    dynamic var tasks = List<Task>()
-    dynamic var projects = List<Project>()
+    dynamic var children = List<Task>()
 }
 
-extension Area: Category {
-    var children: [Completable] {
-        var output = [Completable]()
-        for task in tasks { output.append(task) }
-        for project in projects { output.append(project) }
-        return output
-    }
-}

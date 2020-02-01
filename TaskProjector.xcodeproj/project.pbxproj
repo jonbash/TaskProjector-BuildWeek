@@ -19,12 +19,10 @@
 		992A4E2523E4F36600DEA71F /* NextTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4E2323E4F36600DEA71F /* NextTasksViewController.swift */; };
 		992A4E2623E4F36600DEA71F /* NextTasksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992A4E2423E4F36600DEA71F /* NextTasksViewController.xib */; };
 		992A4E2C23E4FF2200DEA71F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4E2B23E4FF2200DEA71F /* Category.swift */; };
-		992A4E2E23E4FF7300DEA71F /* Completable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4E2D23E4FF7300DEA71F /* Completable.swift */; };
 		992A4E3123E5005400DEA71F /* TaskGroupType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4E3023E5005400DEA71F /* TaskGroupType.swift */; };
 		992A4E3323E5005A00DEA71F /* CompletableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4E3223E5005A00DEA71F /* CompletableState.swift */; };
 		992A4E3523E5006400DEA71F /* NonCompletableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4E3423E5006400DEA71F /* NonCompletableState.swift */; };
 		992A4E3723E500E500DEA71F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4E3623E500E500DEA71F /* Task.swift */; };
-		992A4E3923E500EA00DEA71F /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4E3823E500EA00DEA71F /* Project.swift */; };
 		992A4E3B23E500F000DEA71F /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4E3A23E500F000DEA71F /* Area.swift */; };
 		992A4E3D23E500FC00DEA71F /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4E3C23E500FC00DEA71F /* Tag.swift */; };
 		A380E098E5A3D78DED09B773 /* Pods_TaskProjectorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9AA95380ECC2CCD7B9F08C /* Pods_TaskProjectorTests.framework */; };
@@ -69,12 +67,10 @@
 		992A4E2323E4F36600DEA71F /* NextTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextTasksViewController.swift; sourceTree = "<group>"; };
 		992A4E2423E4F36600DEA71F /* NextTasksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NextTasksViewController.xib; sourceTree = "<group>"; };
 		992A4E2B23E4FF2200DEA71F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		992A4E2D23E4FF7300DEA71F /* Completable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Completable.swift; sourceTree = "<group>"; };
 		992A4E3023E5005400DEA71F /* TaskGroupType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGroupType.swift; sourceTree = "<group>"; };
 		992A4E3223E5005A00DEA71F /* CompletableState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletableState.swift; sourceTree = "<group>"; };
 		992A4E3423E5006400DEA71F /* NonCompletableState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonCompletableState.swift; sourceTree = "<group>"; };
 		992A4E3623E500E500DEA71F /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		992A4E3823E500EA00DEA71F /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		992A4E3A23E500F000DEA71F /* Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		992A4E3C23E500FC00DEA71F /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		B724FC8131AC8DDBCA68F607 /* Pods_TaskProjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,7 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				992A4E3623E500E500DEA71F /* Task.swift */,
-				992A4E3823E500EA00DEA71F /* Project.swift */,
 				992A4E3A23E500F000DEA71F /* Area.swift */,
 				992A4E3C23E500FC00DEA71F /* Tag.swift */,
 				992A4E2F23E5003A00DEA71F /* Enums */,
@@ -257,7 +252,6 @@
 		992A4E2A23E4FE3F00DEA71F /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				992A4E2D23E4FF7300DEA71F /* Completable.swift */,
 				992A4E2B23E4FF2200DEA71F /* Category.swift */,
 			);
 			path = Protocols;
@@ -535,10 +529,8 @@
 				992A4E2223E4F07E00DEA71F /* MainCoordinator.swift in Sources */,
 				992A4E3523E5006400DEA71F /* NonCompletableState.swift in Sources */,
 				992A4E3723E500E500DEA71F /* Task.swift in Sources */,
-				992A4E3923E500EA00DEA71F /* Project.swift in Sources */,
 				992A4E2523E4F36600DEA71F /* NextTasksViewController.swift in Sources */,
 				992A4E3B23E500F000DEA71F /* Area.swift in Sources */,
-				992A4E2E23E4FF7300DEA71F /* Completable.swift in Sources */,
 				992A4E3323E5005A00DEA71F /* CompletableState.swift in Sources */,
 				992A4DEC23E4EB1B00DEA71F /* SceneDelegate.swift in Sources */,
 				992A4E3D23E500FC00DEA71F /* Tag.swift in Sources */,
