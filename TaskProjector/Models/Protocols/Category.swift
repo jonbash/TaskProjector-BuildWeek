@@ -10,6 +10,6 @@ import Foundation
 
 protocol Category {
     var name: String { get set }
-    var identifier: UUID { get }
+    var identifier: String { get }
     var children: [Completable] { get set }
 }

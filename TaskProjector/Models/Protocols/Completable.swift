@@ -10,10 +10,10 @@ import Foundation
 
 protocol Completable {
     var name: String { get set }
-    var identifier: UUID { get }
+    var identifier: String { get }
     var parent: Category? { get set }
     var dueDate: Date? { get set }
-    var timeEstimate: TimeInterval { get set }
+    var timeEstimate: TimeInterval? { get set }
     var completionDate: Date? { get }
 
     func activate()
