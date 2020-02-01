@@ -10,7 +10,7 @@ import UIKit
 
 class NextTasksViewController: UIViewController {
 
-    @IBOutlet weak var successLabel: UILabel!
+    @IBOutlet private weak var successLabel: UILabel!
 
 //    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
 //        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
