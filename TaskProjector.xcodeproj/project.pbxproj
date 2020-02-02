@@ -30,6 +30,7 @@
 		99335E9823E6759800F98187 /* TaskViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335E9723E6759800F98187 /* TaskViewDelegate.swift */; };
 		99335E9A23E67A4C00F98187 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335E9923E67A4C00F98187 /* TaskView.swift */; };
 		99335E9C23E67BF700F98187 /* UIAlert+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335E9B23E67BF700F98187 /* UIAlert+Convenience.swift */; };
+		99335E9E23E746A700F98187 /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335E9D23E746A700F98187 /* TaskController.swift */; };
 		A380E098E5A3D78DED09B773 /* Pods_TaskProjectorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9AA95380ECC2CCD7B9F08C /* Pods_TaskProjectorTests.framework */; };
 		D9BA2C23278BEEFF5CF4976B /* Pods_TaskProjector_TaskProjectorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		99335E9723E6759800F98187 /* TaskViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewDelegate.swift; sourceTree = "<group>"; };
 		99335E9923E67A4C00F98187 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		99335E9B23E67BF700F98187 /* UIAlert+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert+Convenience.swift"; sourceTree = "<group>"; };
+		99335E9D23E746A700F98187 /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
 		B724FC8131AC8DDBCA68F607 /* Pods_TaskProjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector_TaskProjectorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6F83FC6EEBE92D041878DA /* Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaskProjector-TaskProjectorUITests/Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		992A4E1C23E4ED6800DEA71F /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				99335E9D23E746A700F98187 /* TaskController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99335E9E23E746A700F98187 /* TaskController.swift in Sources */,
 				992A4E3123E5005400DEA71F /* TaskGroupType.swift in Sources */,
 				992A4E4723E64EEE00DEA71F /* TaskTableViewCell.swift in Sources */,
 				99335E9C23E67BF700F98187 /* UIAlert+Convenience.swift in Sources */,
