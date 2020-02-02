@@ -10,24 +10,25 @@ import Foundation
 import RealmSwift
 
 class TaskController {
-    lazy var realm: Realm! = {
-        do {
-            return try Realm()
-        } catch {
-            NSLog("Error initializing Realm: \(error)")
-            return nil
-        }
-    }()
+    private var realmController = RealmController()
 
     lazy var topLevelTasks: Results<Task> = {
-        realm.objects(Task.self).filter(
-            NSPredicate(format: "parentArea = nil AND parentProject = nil"))
+        realmController.fetch(
+            Task.self,
+            withPredicate: "parentArea = nil AND parentProject = nil")
     }()
     lazy var topLevelAreas: Results<Area> = {
-        realm.objects(Area.self).filter(
-            NSPredicate(format: "parent = nil"))
+        realmController.fetch(Area.self, withPredicate: "parent = nil")
     }()
     lazy var topLevelTags: Results<Tag> = {
-        realm.objects(Tag.self).filter(NSPredicate(format: "parent = nil"))
+        realmController.fetch(Tag.self, withPredicate: "parent = nil")
     }()
+
+    func addTask(_ task: Task) throws {
+        try realmController.add(task)
+    }
+
+    func performUpdates(_ updates: @escaping () -> Void) throws {
+        try realmController.performUpdates(updates)
+    }
 }
