@@ -1,21 +1,65 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="TaskTableViewCell" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="59" id="KGk-i7-Jjw" customClass="TaskTableViewCell" customModule="TaskProjector" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="443" height="59"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="443" height="59"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmk-rp-1tB">
+                        <rect key="frame" x="8" y="10.5" width="40" height="37.5"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="nCp-9l-dUo"/>
+                            <constraint firstAttribute="width" secondItem="Jmk-rp-1tB" secondAttribute="height" multiplier="1:1" id="zZt-zF-pFE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                        <state key="normal" backgroundImage="square" catalog="system"/>
+                        <connections>
+                            <action selector="completeButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fg4-jR-EVM"/>
+                            <outletCollection property="gestureRecognizers" destination="cX7-bm-5lK" appends="YES" id="ZA8-UT-8kf"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swL-ww-J9e">
+                        <rect key="frame" x="56" y="8" width="379" height="43"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="swL-ww-J9e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Pea-Jy-m5z"/>
+                    <constraint firstAttribute="bottom" secondItem="swL-ww-J9e" secondAttribute="bottom" constant="8" id="SfU-jd-xTP"/>
+                    <constraint firstItem="Jmk-rp-1tB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="XtO-eS-yyA"/>
+                    <constraint firstAttribute="trailing" secondItem="swL-ww-J9e" secondAttribute="trailing" constant="8" id="baz-1Z-Ye6"/>
+                    <constraint firstItem="swL-ww-J9e" firstAttribute="leading" secondItem="Jmk-rp-1tB" secondAttribute="trailing" constant="8" id="c5W-QV-k0b"/>
+                    <constraint firstItem="Jmk-rp-1tB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="x9k-QY-hGS"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="checkmarkButton" destination="Jmk-rp-1tB" id="iZu-vw-bzk"/>
+                <outlet property="taskNameLabel" destination="swL-ww-J9e" id="KXt-Yb-F8T"/>
+            </connections>
+            <point key="canvasLocation" x="221.01449275362322" y="157.70089285714286"/>
         </tableViewCell>
+        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="cX7-bm-5lK">
+            <connections>
+                <action selector="completeButtonLongPressed:" destination="KGk-i7-Jjw" id="spH-u6-5eL"/>
+            </connections>
+        </pongPressGestureRecognizer>
     </objects>
+    <resources>
+        <image name="square" catalog="system" width="64" height="56"/>
+    </resources>
 </document>
