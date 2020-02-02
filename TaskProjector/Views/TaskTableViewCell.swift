@@ -10,7 +10,17 @@ import UIKit
 
 class TaskTableViewCell: UITableViewCell {
 
-    @IBOutlet private weak var checkmarkButton: UIButton!
+    static let reuseID: String = "TaskCell"
+
+    let longTouchGestureRecognizer = UILongPressGestureRecognizer(
+        target: self,
+        action: #selector(completeButtonLongPressed(_:)))
+
+    @IBOutlet private weak var checkmarkButton: UIButton! {
+        didSet {
+            checkmarkButton.addGestureRecognizer(longTouchGestureRecognizer)
+        }
+    }
     @IBOutlet private weak var taskNameLabel: UILabel!
 
     var task: Task!
@@ -25,7 +35,11 @@ class TaskTableViewCell: UITableViewCell {
     }
 
     func updateViews() {
-        checkmarkButton.setBackgroundImage(task.state.image, for: .normal)
+        guard task != nil else { return }
+
+        let image: UIImage = (task.state.image ?? UIImage.checkmark)
+        checkmarkButton.setBackgroundImage(image, for: .normal)
+        checkmarkButton.tintColor = task.state.color
         taskNameLabel.text = task.name
     }
 
@@ -34,7 +48,7 @@ class TaskTableViewCell: UITableViewCell {
         updateViews()
     }
 
-    @IBAction func completeButtonLongPressed(
+    @objc func completeButtonLongPressed(
         _ sender: UILongPressGestureRecognizer
     ) {
         print("long press")

@@ -15,7 +15,7 @@ enum CompletableState: String {
     case dropped = "Dropped"
 
     // TODO: Unit test assert not-nil for each
-    var image: UIImage {
+    var image: UIImage? {
         let imageName: String = {
             switch self {
             case .active: return "square"
@@ -24,20 +24,17 @@ enum CompletableState: String {
             case .dropped: return "xmark.square"
             }
         }()
-        return UIImage(systemName: imageName)!
+        return UIImage(systemName: imageName)
+
     }
 
     // TODO: Unit test assert not-nil for each
     var color: UIColor {
-        // TODO:
-        let colorName: String = {
-            switch self {
-            case .active: return "TaskActive"
-            case .onHold: return "TaskInactive"
-            case .done: return "TaskInactive"
-            case .dropped: return "TaskInactive"
-            }
-        }()
-        return UIColor(named: colorName)!
+        switch self {
+        case .active: return #colorLiteral(red: 0.4690000117, green: 0.6169999838, blue: 0.5070000291, alpha: 1)
+        case .onHold: return #colorLiteral(red: 0.7059999704, green: 0.7450000048, blue: 0.8320000172, alpha: 1)
+        case .done: return #colorLiteral(red: 0.7059999704, green: 0.7450000048, blue: 0.8320000172, alpha: 1)
+        case .dropped: return #colorLiteral(red: 0.7059999704, green: 0.7450000048, blue: 0.8320000172, alpha: 1)
+        }
     }
 }

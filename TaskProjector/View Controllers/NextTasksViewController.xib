@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NextTasksViewController" customModule="TaskProjector" customModuleProvider="target">
             <connections>
-                <outlet property="successLabel" destination="2di-IK-J2K" id="RDv-06-ISa"/>
+                <outlet property="tableView" destination="Xbt-Kt-dXi" id="YDj-Kq-PtA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="tJ4-9g-j3Y"/>
             </connections>
         </placeholder>
@@ -18,20 +18,20 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success?!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2di-IK-J2K">
-                    <rect key="frame" x="144.5" y="431" width="125" height="34"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xbt-Kt-dXi">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="2di-IK-J2K" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="A53-Yn-ciQ"/>
-                <constraint firstItem="2di-IK-J2K" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="XOk-R8-rb8"/>
+                <constraint firstItem="Xbt-Kt-dXi" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="0PB-6Q-CXn"/>
+                <constraint firstItem="Xbt-Kt-dXi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="M6e-l3-dV7"/>
+                <constraint firstItem="Xbt-Kt-dXi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="M6x-S6-ZZE"/>
+                <constraint firstItem="Xbt-Kt-dXi" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="MkZ-AT-VBU"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="132" y="153"/>
+            <point key="canvasLocation" x="131.8840579710145" y="152.67857142857142"/>
         </view>
     </objects>
 </document>
