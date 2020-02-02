@@ -90,4 +90,10 @@ class Task: Object, Category {
     }
 
     override static func primaryKey() -> String? { "identifier" }
+
+    // MARK: - Methods
+
+    func toggleComplete() {
+        state = (state == .active || state == .onHold) ? .done : .active
+    }
 }
