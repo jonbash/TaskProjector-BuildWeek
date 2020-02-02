@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum CompletableState: String {
+enum CompletableState: String, CaseIterable {
     case active = "Active"
     case onHold = "On Hold"
     case done = "Done"

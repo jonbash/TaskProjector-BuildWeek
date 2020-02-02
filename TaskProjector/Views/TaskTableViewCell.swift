@@ -8,11 +8,11 @@
 
 import UIKit
 
-class TaskTableViewCell: UITableViewCell {
+class TaskTableViewCell: UITableViewCell, TaskView {
 
     static let reuseID: String = "TaskCell"
 
-    let longTouchGestureRecognizer = UILongPressGestureRecognizer(
+    lazy var longTouchGestureRecognizer = UILongPressGestureRecognizer(
         target: self,
         action: #selector(completeButtonLongPressed(_:)))
 
@@ -24,6 +24,7 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet private weak var taskNameLabel: UILabel!
 
     var task: Task!
+    weak var delegate: TaskViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +33,12 @@ class TaskTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+
+    func setUp(_ delegate: TaskViewDelegate, forTask task: Task) {
+        self.task = task
+        self.delegate = delegate
+        updateViews()
     }
 
     func updateViews() {
@@ -44,13 +51,19 @@ class TaskTableViewCell: UITableViewCell {
     }
 
     @IBAction func completeButtonTapped(_ sender: UIButton) {
-        task.toggleComplete()
-        updateViews()
+        toggleTaskComplete()
     }
 
     @objc func completeButtonLongPressed(
         _ sender: UILongPressGestureRecognizer
     ) {
-        print("long press")
+        if sender.state == .began {
+            delegate?.taskView(self, didRequestStateSelectorForTask: task)
+        }
+    }
+
+    func toggleTaskComplete() {
+        task.toggleComplete()
+        updateViews()
     }
 }

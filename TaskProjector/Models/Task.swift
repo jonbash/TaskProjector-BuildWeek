@@ -18,8 +18,12 @@ class Task: Object, Category {
     @objc dynamic var name: String
     @objc private(set) dynamic var identifier: String
     @objc dynamic var notes: String = ""
+    var tags = List<Tag>()
 
     @objc dynamic var dueDate: Date?
+    @objc dynamic var deferDate: Date?
+    @objc dynamic var scheduledDate: Date?
+    @objc dynamic var modifiedDate: Date?
     @objc dynamic var completionDate: Date?
 
     @objc dynamic var isProject: Bool
@@ -58,7 +62,7 @@ class Task: Object, Category {
             _taskGroupType = (children.isEmpty) ? nil : newValue?.rawValue
         }
     }
-    private(set) var state: CompletableState {
+    var state: CompletableState {
         get { CompletableState(rawValue: _state) ?? .active }
         set { _state = newValue.rawValue }
     }
