@@ -25,6 +25,8 @@
 		992A4E3723E500E500DEA71F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4E3623E500E500DEA71F /* Task.swift */; };
 		992A4E3B23E500F000DEA71F /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4E3A23E500F000DEA71F /* Area.swift */; };
 		992A4E3D23E500FC00DEA71F /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4E3C23E500FC00DEA71F /* Tag.swift */; };
+		992A4E4723E64EEE00DEA71F /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992A4E4523E64EEE00DEA71F /* TaskTableViewCell.swift */; };
+		992A4E4823E64EEE00DEA71F /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992A4E4623E64EEE00DEA71F /* TaskTableViewCell.xib */; };
 		A380E098E5A3D78DED09B773 /* Pods_TaskProjectorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9AA95380ECC2CCD7B9F08C /* Pods_TaskProjectorTests.framework */; };
 		D9BA2C23278BEEFF5CF4976B /* Pods_TaskProjector_TaskProjectorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */; };
 /* End PBXBuildFile section */
@@ -73,6 +75,8 @@
 		992A4E3623E500E500DEA71F /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		992A4E3A23E500F000DEA71F /* Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		992A4E3C23E500FC00DEA71F /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		992A4E4523E64EEE00DEA71F /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		992A4E4623E64EEE00DEA71F /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		B724FC8131AC8DDBCA68F607 /* Pods_TaskProjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector_TaskProjectorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6F83FC6EEBE92D041878DA /* Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaskProjector-TaskProjectorUITests/Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 		992A4E1923E4ED3500DEA71F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				992A4E4523E64EEE00DEA71F /* TaskTableViewCell.swift */,
+				992A4E4623E64EEE00DEA71F /* TaskTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -377,6 +383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				992A4E4823E64EEE00DEA71F /* TaskTableViewCell.xib in Resources */,
 				992A4E2623E4F36600DEA71F /* NextTasksViewController.xib in Resources */,
 				992A4DF623E4EB1E00DEA71F /* LaunchScreen.storyboard in Resources */,
 				992A4DF323E4EB1E00DEA71F /* Assets.xcassets in Resources */,
@@ -525,6 +532,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				992A4E3123E5005400DEA71F /* TaskGroupType.swift in Sources */,
+				992A4E4723E64EEE00DEA71F /* TaskTableViewCell.swift in Sources */,
 				992A4DEA23E4EB1B00DEA71F /* AppDelegate.swift in Sources */,
 				992A4E2223E4F07E00DEA71F /* MainCoordinator.swift in Sources */,
 				992A4E3523E5006400DEA71F /* NonCompletableState.swift in Sources */,
