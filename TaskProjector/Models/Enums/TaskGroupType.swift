@@ -8,8 +8,7 @@
 
 import RealmSwift
 
-@objc
-enum TaskGroupType: Int, RealmEnum {
+enum TaskGroupType: String {
     case sequential
     case parallel
 }

@@ -11,5 +11,5 @@ import RealmSwift
 protocol Category {
     var name: String { get set }
     var identifier: String { get }
-    var children: [Completable] { get }
+    var children: List<Task> { get }
 }

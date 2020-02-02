@@ -10,30 +10,53 @@ import Foundation
 import RealmSwift
 
 
-@objcMembers
-class Task: Object {
+class Task: Object, Category {
 
-    // MARK: - Public/Persisted
+    // MARK: - Persisted
+    // MARK: Public
 
-    dynamic var name: String
-    private(set) dynamic var identifier: String
-    dynamic var dueDate: Date?
-    dynamic var completionDate: Date?
-    dynamic var children = List<Task>()
+    @objc dynamic var name: String
+    @objc private(set) dynamic var identifier: String
+    @objc dynamic var notes: String = ""
 
-    // MARK: - Backing/Persisted
+    @objc dynamic var dueDate: Date?
+    @objc dynamic var completionDate: Date?
 
-    private dynamic var _state: String = CompletableState.active.rawValue
-    private dynamic var parentProject: Task?
-    private dynamic var parentArea: Area?
+    @objc dynamic var isProject: Bool
+    dynamic var children = List<Task>() {
+        didSet {
+            if children.isEmpty {
+                _taskGroupType = nil
+            } else if !children.isEmpty && _taskGroupType == nil {
+                _taskGroupType = TaskGroupType.parallel.rawValue
+            }
+        }
+    }
+
+    // MARK: Private
+
+    @objc private dynamic var _state: String = CompletableState.active.rawValue
+    @objc private dynamic var parentProject: Task?
+    @objc private dynamic var parentArea: Area?
     private var _timeEstimate = RealmOptional<Double>()
-    private var _taskGroupType = RealmOptional<TaskGroupType>()
+    @objc private dynamic var _taskGroupType: String?
 
-    // MARK: - Public/Computed
+    // MARK: - Public Computed
 
     var taskGroupType: TaskGroupType? {
-        get { _taskGroupType.value }
-        set { _taskGroupType.value = newValue }
+        get {
+            if children.isEmpty {
+                return nil
+            } else {
+                guard let groupTypeString = _taskGroupType,
+                    let groupType = TaskGroupType(rawValue: groupTypeString)
+                    else { return .parallel }
+                return groupType
+            }
+        }
+        set {
+            _taskGroupType = (children.isEmpty) ? nil : newValue?.rawValue
+        }
     }
     private(set) var state: CompletableState {
         get { CompletableState(rawValue: _state) ?? .active }
@@ -46,41 +69,25 @@ class Task: Object {
 
     // MARK: - Init
 
-    convenience init(name: String, identifier: String = UUID().uuidString) {
+    convenience init(name: String, identifier: String = UUID().uuidString, isProject: Bool = false) {
         self.init()
         self.name = name
         self.identifier = identifier
+        self.isProject = isProject
     }
 
     required init() {
         self.name = ""
         self.identifier = UUID().uuidString
+        self.isProject = false
         super.init()
     }
 
     // MARK: - Overrides
 
     override var description: String {
-        "Task \(identifier) - \"\(name)\" - \(state)"
+        "\"\(name)\" - \(state) task (\(identifier))"
     }
 
     override static func primaryKey() -> String? { "identifier" }
-
-    // MARK: - Completable Methods
-
-    func makeActive() {
-
-    }
-
-    func complete() {
-
-    }
-
-    func drop() {
-
-    }
-
-    func placeOnHold() {
-
-    }
 }

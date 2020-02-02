@@ -10,9 +10,18 @@ import Foundation
 import RealmSwift
 
 @objcMembers
-class Area: Object {
+class Area: Object, Category {
     dynamic var name: String = ""
-    dynamic var identifier: String = UUID().uuidString
+    private(set) dynamic var identifier: String = UUID().uuidString
     dynamic var children = List<Task>()
-}
 
+    convenience init(name: String = "", identifier: String = UUID().uuidString) {
+        self.init()
+        self.name = name
+        self.identifier = identifier
+    }
+
+    func addChild(_ task: Task) {
+        children.append(task)
+    }
+}
