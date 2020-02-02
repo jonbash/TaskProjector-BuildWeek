@@ -9,19 +9,20 @@
 import Foundation
 import RealmSwift
 
-@objcMembers
 class Area: Object, Category {
-    dynamic var name: String = ""
-    private(set) dynamic var identifier: String = UUID().uuidString
-    dynamic var children = List<Task>()
+    @objc dynamic var name: String = ""
+    @objc private(set) dynamic var identifier: String = UUID().uuidString
+
+    let childTasks = LinkingObjects(fromType: Task.self,
+                                    property: "parentArea")
+
+    @objc dynamic var parent: Area?
+    let childAreas = LinkingObjects(fromType: Area.self,
+                                    property: "parent")
 
     convenience init(name: String = "", identifier: String = UUID().uuidString) {
         self.init()
         self.name = name
         self.identifier = identifier
-    }
-
-    func addChild(_ task: Task) {
-        children.append(task)
     }
 }

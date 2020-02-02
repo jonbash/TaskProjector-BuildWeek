@@ -10,28 +10,29 @@ import Foundation
 import RealmSwift
 
 
+@objcMembers
 class Task: Object, Category {
 
-    // MARK: - Persisted
-    // MARK: Public
+    // MARK: - Persisted : Public
 
-    @objc dynamic var name: String
-    @objc private(set) dynamic var identifier: String
-    @objc dynamic var notes: String = ""
+    dynamic var name: String
+    private(set) dynamic var identifier: String
+    dynamic var notes: String = ""
     var tags = List<Tag>()
 
-    @objc dynamic var dueDate: Date?
-    @objc dynamic var deferDate: Date?
-    @objc dynamic var scheduledDate: Date?
-    @objc dynamic var modifiedDate: Date?
-    @objc dynamic var completionDate: Date?
+    dynamic var dueDate: Date?
+    dynamic var deferDate: Date?
+    dynamic var scheduledDate: Date?
+    dynamic var modifiedDate: Date?
+    dynamic var completionDate: Date?
 
-    @objc dynamic var isProject: Bool
-    dynamic var children = List<Task>() {
+    dynamic var isProject: Bool
+    dynamic var childTasks = LinkingObjects(fromType: Task.self,
+                                            property: "parentProject") {
         didSet {
-            if children.isEmpty {
+            if childTasks.isEmpty {
                 _taskGroupType = nil
-            } else if !children.isEmpty && _taskGroupType == nil {
+            } else if !childTasks.isEmpty && _taskGroupType == nil {
                 _taskGroupType = TaskGroupType.parallel.rawValue
             }
         }
@@ -39,17 +40,17 @@ class Task: Object, Category {
 
     // MARK: Private
 
-    @objc private dynamic var _state: String = CompletableState.active.rawValue
-    @objc private dynamic var parentProject: Task?
-    @objc private dynamic var parentArea: Area?
+    private dynamic var _state: String = CompletableState.active.rawValue
+    private(set) dynamic var parentProject: Task?
+    private(set) dynamic var parentArea: Area?
     private var _timeEstimate = RealmOptional<Double>()
-    @objc private dynamic var _taskGroupType: String?
+    private dynamic var _taskGroupType: String?
 
     // MARK: - Public Computed
 
     var taskGroupType: TaskGroupType? {
         get {
-            if children.isEmpty {
+            if childTasks.isEmpty {
                 return nil
             } else {
                 guard let groupTypeString = _taskGroupType,
@@ -59,7 +60,7 @@ class Task: Object, Category {
             }
         }
         set {
-            _taskGroupType = (children.isEmpty) ? nil : newValue?.rawValue
+            _taskGroupType = (childTasks.isEmpty) ? nil : newValue?.rawValue
         }
     }
     var state: CompletableState {
@@ -69,6 +70,13 @@ class Task: Object, Category {
     var timeEstimate: TimeInterval? {
         get { _timeEstimate.value }
         set { _timeEstimate.value = newValue }
+    }
+    var parent: Category? {
+        get { parentProject ?? parentArea }
+        set {
+            parentProject = newValue as? Task
+            parentArea = newValue as? Area
+        }
     }
 
     // MARK: - Init

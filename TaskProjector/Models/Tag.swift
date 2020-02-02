@@ -10,10 +10,15 @@ import Foundation
 import RealmSwift
 import CoreLocation
 
+@objcMembers
 class Tag: Object {
-    @objc dynamic var name: String = ""
-    @objc private(set) dynamic var identifier: String = UUID().uuidString
-    var tasks = List<Task>()
+    dynamic var name: String = ""
+    private(set) dynamic var identifier: String = UUID().uuidString
+    var tasks = LinkingObjects(fromType: Task.self, property: "tags")
+
+    dynamic var parent: Tag?
+    var childTags = LinkingObjects(fromType: Tag.self, property: "parent")
+    
     private var latitude = RealmOptional<Double>()
     private var longitude = RealmOptional<Double>()
 
