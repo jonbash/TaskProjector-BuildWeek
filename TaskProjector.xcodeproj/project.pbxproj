@@ -36,6 +36,9 @@
 		99335EAA23E783FA00F98187 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EA923E783FA00F98187 /* PersistenceController.swift */; };
 		99335EAE23E7AC3500F98187 /* RealmControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EAD23E7AC3400F98187 /* RealmControllerTests.swift */; };
 		99335EB223E7B86400F98187 /* TaskCreationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EB123E7B86400F98187 /* TaskCreationClient.swift */; };
+		99335EB523E879C700F98187 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EB323E879C700F98187 /* AddTaskViewController.swift */; };
+		99335EB623E879C700F98187 /* AddTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99335EB423E879C700F98187 /* AddTaskViewController.xib */; };
+		99335EB823E87A2D00F98187 /* ShiftableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EB723E87A2D00F98187 /* ShiftableViewController.swift */; };
 		A380E098E5A3D78DED09B773 /* Pods_TaskProjectorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9AA95380ECC2CCD7B9F08C /* Pods_TaskProjectorTests.framework */; };
 		D9BA2C23278BEEFF5CF4976B /* Pods_TaskProjector_TaskProjectorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */; };
 /* End PBXBuildFile section */
@@ -95,6 +98,9 @@
 		99335EA923E783FA00F98187 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		99335EAD23E7AC3400F98187 /* RealmControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmControllerTests.swift; sourceTree = "<group>"; };
 		99335EB123E7B86400F98187 /* TaskCreationClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCreationClient.swift; sourceTree = "<group>"; };
+		99335EB323E879C700F98187 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		99335EB423E879C700F98187 /* AddTaskViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTaskViewController.xib; sourceTree = "<group>"; };
+		99335EB723E87A2D00F98187 /* ShiftableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftableViewController.swift; sourceTree = "<group>"; };
 		B724FC8131AC8DDBCA68F607 /* Pods_TaskProjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector_TaskProjectorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6F83FC6EEBE92D041878DA /* Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaskProjector-TaskProjectorUITests/Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -226,6 +232,9 @@
 			children = (
 				992A4E2323E4F36600DEA71F /* NextTasksViewController.swift */,
 				992A4E2423E4F36600DEA71F /* NextTasksViewController.xib */,
+				99335EB323E879C700F98187 /* AddTaskViewController.swift */,
+				99335EB423E879C700F98187 /* AddTaskViewController.xib */,
+				99335EB723E87A2D00F98187 /* ShiftableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -421,6 +430,7 @@
 				992A4E4823E64EEE00DEA71F /* TaskTableViewCell.xib in Resources */,
 				992A4E2623E4F36600DEA71F /* NextTasksViewController.xib in Resources */,
 				992A4DF623E4EB1E00DEA71F /* LaunchScreen.storyboard in Resources */,
+				99335EB623E879C700F98187 /* AddTaskViewController.xib in Resources */,
 				992A4DF323E4EB1E00DEA71F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,8 +593,10 @@
 				99335EA823E7774600F98187 /* TagSubview.swift in Sources */,
 				992A4DEC23E4EB1B00DEA71F /* SceneDelegate.swift in Sources */,
 				992A4E3D23E500FC00DEA71F /* Tag.swift in Sources */,
+				99335EB523E879C700F98187 /* AddTaskViewController.swift in Sources */,
 				99335EA023E75B2800F98187 /* RealmController.swift in Sources */,
 				992A4E2023E4EF6800DEA71F /* Coordinator.swift in Sources */,
+				99335EB823E87A2D00F98187 /* ShiftableViewController.swift in Sources */,
 				992A4E2C23E4FF2200DEA71F /* Category.swift in Sources */,
 				99335EAA23E783FA00F98187 /* PersistenceController.swift in Sources */,
 			);
