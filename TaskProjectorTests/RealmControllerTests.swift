@@ -27,12 +27,13 @@ class RealmControllerTests: XCTestCase {
         XCTAssertNoThrow(try createNewTask())
     }
 
-    func testWriteToTask() {
+    func testModifyTask() {
         let dueDate = Date()
         let name = "Task name"
 
         do {
             let task = try createNewTask()
+            try realmController.save(task, inContext: testRealm)
 
             try realmController.performUpdates(inContext: testRealm) {
                 task.name = name

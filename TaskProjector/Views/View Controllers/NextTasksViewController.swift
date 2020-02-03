@@ -23,7 +23,11 @@ class NextTasksViewController: UIViewController {
     private var tempTasks: [Task] = {
         let task1 = Task(name: "Do one thing")
         let task2 = Task(name: "Do a different thing")
-        let task3 = Task(name: "Do a thing with a really, really long name like this that keeps going on and doesn't stop because I just want to know what happens if I do something like this")
+        let task3 = Task(name: """
+            Do a thing with a really, really long name like this that keeps
+            going on and doesn't stop because I just want to know what happens
+            if I do something like this
+        """)
 
         let homeTag = Tag(name: "Home")
         let workTag = Tag(name: "Work")

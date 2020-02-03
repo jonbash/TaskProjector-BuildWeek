@@ -18,7 +18,7 @@ class TaskTableViewCell: UITableViewCell, TaskView {
             checkmarkButton.addGestureRecognizer(longTouchGestureRecognizer)
         }
     }
-    @IBOutlet weak var tagsStackView: UIStackView!
+    @IBOutlet private weak var tagsStackView: UIStackView!
 
     var task: Task!
     weak var delegate: TaskViewDelegate?
