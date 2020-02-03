@@ -10,25 +10,54 @@ import Foundation
 import RealmSwift
 
 class TaskController {
-    private var realmController = RealmController()
+    private var localStore: PersistenceController
 
-    lazy var topLevelTasks: Results<Task> = {
-        realmController.fetch(
-            Task.self,
-            withPredicate: "parentArea = nil AND parentProject = nil")
+    lazy var topLevelTasks: Results<Task>? = {
+        do {
+            return try localStore.fetch(
+                Task.self,
+                expectingCollectionType: Results<Task>.self,
+                predicate: NSPredicate(format: "parentArea = nil AND parentProject = nil"),
+                sorting: nil)
+        } catch {
+            NSLog("Error fetching tasks: \(error)")
+            return nil
+        }
     }()
-    lazy var topLevelAreas: Results<Area> = {
-        realmController.fetch(Area.self, withPredicate: "parent = nil")
+    lazy var topLevelAreas: Results<Area>? = {
+        do {
+            return try localStore.fetch(
+                Area.self,
+                expectingCollectionType: Results<Area>.self,
+                predicate: NSPredicate(format: "parent = nil"),
+                sorting: nil)
+        } catch {
+            NSLog("Error fetching tasks: \(error)")
+            return nil
+        }
     }()
-    lazy var topLevelTags: Results<Tag> = {
-        realmController.fetch(Tag.self, withPredicate: "parent = nil")
+    lazy var topLevelTags: Results<Tag>? = {
+        do {
+            return try localStore.fetch(
+                Tag.self,
+                expectingCollectionType: Results<Tag>.self,
+                predicate: NSPredicate(format: "parent = nil"),
+                sorting: nil)
+        } catch {
+            NSLog("Error fetching tasks: \(error)")
+            return nil
+        }
     }()
 
-    func addTask(_ task: Task) throws {
-        try realmController.add(task)
+    init(_ localStore: PersistenceController = RealmController()) {
+        self.localStore = localStore
     }
 
+//    func newTask() -> Task {
+//
+//    }
+
     func performUpdates(_ updates: @escaping () -> Void) throws {
-        try realmController.performUpdates(updates)
+
     }
 }
