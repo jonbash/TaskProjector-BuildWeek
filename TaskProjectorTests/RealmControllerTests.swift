@@ -27,24 +27,20 @@ class RealmControllerTests: XCTestCase {
         XCTAssertNoThrow(try createNewTask())
     }
 
-    func testModifyTask() {
+    func testModifyTask() throws {
         let dueDate = Date()
         let name = "Task name"
 
-        do {
-            let task = try createNewTask()
-            try realmController.save(task, inContext: testRealm)
+        let task = try createNewTask()
+        try realmController.save(task, inContext: testRealm)
 
-            try realmController.performUpdates(inContext: testRealm) {
-                task.name = name
-                task.dueDate = dueDate
-            }
-
-            XCTAssertEqual(task.name, name)
-            XCTAssertEqual(task.dueDate, dueDate)
-        } catch {
-            XCTFail("Error thrown: \(error)")
+        try realmController.performUpdates(inContext: testRealm) {
+            task.name = name
+            task.dueDate = dueDate
         }
+
+        XCTAssertEqual(task.name, name)
+        XCTAssertEqual(task.dueDate, dueDate)
     }
 
     // MARK: - Helper Methods
