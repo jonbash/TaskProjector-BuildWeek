@@ -39,6 +39,7 @@
 		99335EB523E879C700F98187 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EB323E879C700F98187 /* AddTaskViewController.swift */; };
 		99335EB623E879C700F98187 /* AddTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99335EB423E879C700F98187 /* AddTaskViewController.xib */; };
 		99335EB823E87A2D00F98187 /* ShiftableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EB723E87A2D00F98187 /* ShiftableViewController.swift */; };
+		99335EBA23E8C03100F98187 /* AddTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EB923E8C03100F98187 /* AddTaskCoordinator.swift */; };
 		A380E098E5A3D78DED09B773 /* Pods_TaskProjectorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9AA95380ECC2CCD7B9F08C /* Pods_TaskProjectorTests.framework */; };
 		D9BA2C23278BEEFF5CF4976B /* Pods_TaskProjector_TaskProjectorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */; };
 /* End PBXBuildFile section */
@@ -101,6 +102,7 @@
 		99335EB323E879C700F98187 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		99335EB423E879C700F98187 /* AddTaskViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTaskViewController.xib; sourceTree = "<group>"; };
 		99335EB723E87A2D00F98187 /* ShiftableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftableViewController.swift; sourceTree = "<group>"; };
+		99335EB923E8C03100F98187 /* AddTaskCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskCoordinator.swift; sourceTree = "<group>"; };
 		B724FC8131AC8DDBCA68F607 /* Pods_TaskProjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector_TaskProjectorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6F83FC6EEBE92D041878DA /* Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaskProjector-TaskProjectorUITests/Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				992A4E2123E4F07E00DEA71F /* MainCoordinator.swift */,
+				99335EB923E8C03100F98187 /* AddTaskCoordinator.swift */,
 				992A4E1F23E4EF6800DEA71F /* Coordinator.swift */,
 			);
 			path = Coordinators;
@@ -579,6 +582,7 @@
 				99335E9E23E746A700F98187 /* TaskController.swift in Sources */,
 				992A4E3123E5005400DEA71F /* TaskGroupType.swift in Sources */,
 				992A4E4723E64EEE00DEA71F /* TaskTableViewCell.swift in Sources */,
+				99335EBA23E8C03100F98187 /* AddTaskCoordinator.swift in Sources */,
 				99335E9C23E67BF700F98187 /* UIAlert+Convenience.swift in Sources */,
 				992A4DEA23E4EB1B00DEA71F /* AppDelegate.swift in Sources */,
 				99335E9A23E67A4C00F98187 /* TaskView.swift in Sources */,
