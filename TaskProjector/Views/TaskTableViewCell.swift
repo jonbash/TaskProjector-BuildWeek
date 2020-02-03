@@ -12,19 +12,20 @@ class TaskTableViewCell: UITableViewCell, TaskView {
 
     static let reuseID: String = "TaskCell"
 
-    lazy var longTouchGestureRecognizer = UILongPressGestureRecognizer(
-        target: self,
-        action: #selector(completeButtonLongPressed(_:)))
-
+    @IBOutlet private weak var taskNameLabel: UILabel!
     @IBOutlet private weak var checkmarkButton: UIButton! {
         didSet {
             checkmarkButton.addGestureRecognizer(longTouchGestureRecognizer)
         }
     }
-    @IBOutlet private weak var taskNameLabel: UILabel!
+    @IBOutlet weak var tagsStackView: UIStackView!
 
     var task: Task!
     weak var delegate: TaskViewDelegate?
+
+    lazy var longTouchGestureRecognizer = UILongPressGestureRecognizer(
+        target: self,
+        action: #selector(completeButtonLongPressed(_:)))
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,6 +40,19 @@ class TaskTableViewCell: UITableViewCell, TaskView {
         self.task = task
         self.delegate = delegate
         updateViews()
+
+        tagsStackView.isHidden = task.tags.isEmpty
+        tagsStackView.arrangedSubviews.forEach { view in
+            view.removeFromSuperview()
+        }
+
+        for tag in task.tags {
+            let tagView = TagSubview(tag: tag)
+            tagsStackView.addArrangedSubview(tagView)
+        }
+        let spacer = UIView()
+        spacer.setContentHuggingPriority(.defaultLow - 1, for: .horizontal)
+        tagsStackView.addArrangedSubview(spacer)
     }
 
     func updateViews() {
@@ -48,6 +62,8 @@ class TaskTableViewCell: UITableViewCell, TaskView {
         checkmarkButton.setBackgroundImage(image, for: .normal)
         checkmarkButton.tintColor = task.state.color
         taskNameLabel.text = task.name
+
+
     }
 
     @IBAction func completeButtonTapped(_ sender: UIButton) {

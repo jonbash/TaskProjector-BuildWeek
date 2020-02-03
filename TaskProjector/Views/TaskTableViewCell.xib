@@ -29,19 +29,27 @@
                             <action selector="completeButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fg4-jR-EVM"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swL-ww-J9e">
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZAo-7r-cwS">
                         <rect key="frame" x="56" y="8" width="379" height="40"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swL-ww-J9e">
+                                <rect key="frame" x="0.0" y="0.0" width="379" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Sjf-qm-4Is">
+                                <rect key="frame" x="0.0" y="20.5" width="379" height="19.5"/>
+                            </stackView>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="swL-ww-J9e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Pea-Jy-m5z"/>
-                    <constraint firstAttribute="bottom" secondItem="swL-ww-J9e" secondAttribute="bottom" constant="8" id="SfU-jd-xTP"/>
                     <constraint firstItem="Jmk-rp-1tB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="XtO-eS-yyA"/>
-                    <constraint firstAttribute="trailing" secondItem="swL-ww-J9e" secondAttribute="trailing" constant="8" id="baz-1Z-Ye6"/>
-                    <constraint firstItem="swL-ww-J9e" firstAttribute="leading" secondItem="Jmk-rp-1tB" secondAttribute="trailing" constant="8" id="c5W-QV-k0b"/>
+                    <constraint firstAttribute="bottom" secondItem="ZAo-7r-cwS" secondAttribute="bottom" constant="8" id="aZx-YX-DbL"/>
+                    <constraint firstItem="ZAo-7r-cwS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="pqn-GE-mwC"/>
+                    <constraint firstAttribute="trailing" secondItem="ZAo-7r-cwS" secondAttribute="trailing" constant="8" id="uCt-9V-ByA"/>
+                    <constraint firstItem="ZAo-7r-cwS" firstAttribute="leading" secondItem="Jmk-rp-1tB" secondAttribute="trailing" constant="8" id="vxe-iZ-k9h"/>
                     <constraint firstItem="Jmk-rp-1tB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="x9k-QY-hGS"/>
                 </constraints>
             </tableViewCellContentView>
@@ -49,6 +57,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="checkmarkButton" destination="Jmk-rp-1tB" id="iZu-vw-bzk"/>
+                <outlet property="tagsStackView" destination="Sjf-qm-4Is" id="18p-MG-jsN"/>
                 <outlet property="taskNameLabel" destination="swL-ww-J9e" id="KXt-Yb-F8T"/>
             </connections>
             <point key="canvasLocation" x="221.01449275362322" y="156.02678571428569"/>
