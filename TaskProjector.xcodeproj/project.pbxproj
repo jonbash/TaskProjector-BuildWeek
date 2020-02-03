@@ -40,6 +40,9 @@
 		99335EB623E879C700F98187 /* AddTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99335EB423E879C700F98187 /* AddTaskViewController.xib */; };
 		99335EB823E87A2D00F98187 /* ShiftableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EB723E87A2D00F98187 /* ShiftableViewController.swift */; };
 		99335EBA23E8C03100F98187 /* AddTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EB923E8C03100F98187 /* AddTaskCoordinator.swift */; };
+		99335EBC23E8C4E100F98187 /* TaskCreationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EBB23E8C4E100F98187 /* TaskCreationState.swift */; };
+		99335EBE23E8C7A000F98187 /* NextTasksDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EBD23E8C7A000F98187 /* NextTasksDelegate.swift */; };
+		99335EC023E8CB5A00F98187 /* CategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EBF23E8CB5A00F98187 /* CategoryType.swift */; };
 		A380E098E5A3D78DED09B773 /* Pods_TaskProjectorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9AA95380ECC2CCD7B9F08C /* Pods_TaskProjectorTests.framework */; };
 		D9BA2C23278BEEFF5CF4976B /* Pods_TaskProjector_TaskProjectorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */; };
 /* End PBXBuildFile section */
@@ -103,6 +106,9 @@
 		99335EB423E879C700F98187 /* AddTaskViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTaskViewController.xib; sourceTree = "<group>"; };
 		99335EB723E87A2D00F98187 /* ShiftableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftableViewController.swift; sourceTree = "<group>"; };
 		99335EB923E8C03100F98187 /* AddTaskCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskCoordinator.swift; sourceTree = "<group>"; };
+		99335EBB23E8C4E100F98187 /* TaskCreationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationState.swift; sourceTree = "<group>"; };
+		99335EBD23E8C7A000F98187 /* NextTasksDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextTasksDelegate.swift; sourceTree = "<group>"; };
+		99335EBF23E8CB5A00F98187 /* CategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryType.swift; sourceTree = "<group>"; };
 		B724FC8131AC8DDBCA68F607 /* Pods_TaskProjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector_TaskProjectorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6F83FC6EEBE92D041878DA /* Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaskProjector-TaskProjectorUITests/Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -224,7 +230,7 @@
 				99335E9923E67A4C00F98187 /* TaskView.swift */,
 				99335EA723E7774600F98187 /* TagSubview.swift */,
 				992A4E1A23E4ED5800DEA71F /* View Controllers */,
-				99335E9623E6757600F98187 /* Delegates */,
+				99335E9623E6757600F98187 /* UI Helper Types */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -307,17 +313,20 @@
 				992A4E3223E5005A00DEA71F /* CompletableState.swift */,
 				992A4E3423E5006400DEA71F /* NonCompletableState.swift */,
 				992A4E3023E5005400DEA71F /* TaskGroupType.swift */,
+				99335EBF23E8CB5A00F98187 /* CategoryType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		99335E9623E6757600F98187 /* Delegates */ = {
+		99335E9623E6757600F98187 /* UI Helper Types */ = {
 			isa = PBXGroup;
 			children = (
 				99335E9723E6759800F98187 /* TaskViewDelegate.swift */,
+				99335EBD23E8C7A000F98187 /* NextTasksDelegate.swift */,
 				99335EB123E7B86400F98187 /* TaskCreationClient.swift */,
+				99335EBB23E8C4E100F98187 /* TaskCreationState.swift */,
 			);
-			path = Delegates;
+			path = "UI Helper Types";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -587,6 +596,7 @@
 				992A4DEA23E4EB1B00DEA71F /* AppDelegate.swift in Sources */,
 				99335E9A23E67A4C00F98187 /* TaskView.swift in Sources */,
 				992A4E2223E4F07E00DEA71F /* MainCoordinator.swift in Sources */,
+				99335EC023E8CB5A00F98187 /* CategoryType.swift in Sources */,
 				992A4E3523E5006400DEA71F /* NonCompletableState.swift in Sources */,
 				992A4E3723E500E500DEA71F /* Task.swift in Sources */,
 				99335E9823E6759800F98187 /* TaskViewDelegate.swift in Sources */,
@@ -597,9 +607,11 @@
 				99335EA823E7774600F98187 /* TagSubview.swift in Sources */,
 				992A4DEC23E4EB1B00DEA71F /* SceneDelegate.swift in Sources */,
 				992A4E3D23E500FC00DEA71F /* Tag.swift in Sources */,
+				99335EBC23E8C4E100F98187 /* TaskCreationState.swift in Sources */,
 				99335EB523E879C700F98187 /* AddTaskViewController.swift in Sources */,
 				99335EA023E75B2800F98187 /* RealmController.swift in Sources */,
 				992A4E2023E4EF6800DEA71F /* Coordinator.swift in Sources */,
+				99335EBE23E8C7A000F98187 /* NextTasksDelegate.swift in Sources */,
 				99335EB823E87A2D00F98187 /* ShiftableViewController.swift in Sources */,
 				992A4E2C23E4FF2200DEA71F /* Category.swift in Sources */,
 				99335EAA23E783FA00F98187 /* PersistenceController.swift in Sources */,

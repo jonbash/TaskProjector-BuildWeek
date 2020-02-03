@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 protocol TaskViewDelegate: AnyObject {
     func taskView(_ taskView: TaskView, didRequestStateSelectorForTask task: Task)
 }

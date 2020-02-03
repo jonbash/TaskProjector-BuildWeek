@@ -20,7 +20,7 @@ class NextTasksViewController: UIViewController {
         }
     }
 
-    weak var creationClient: TaskCreationClient?
+    weak var delegate: NextTasksDelegate?
 
     // TODO: Remove in lieu of model controller
     private var tempTasks: [Task] = {
@@ -50,9 +50,29 @@ class NextTasksViewController: UIViewController {
         title = "Next Tasks"
         let addButton = UIBarButtonItem(
             barButtonSystemItem: .add,
-            target: creationClient,
-            action: #selector(creationClient?.didRequestTaskCreation))
+            target: delegate,
+            action: #selector(delegate?.didRequestTaskCreation(_:)))
         setToolbarItems([addButton], animated: false)
+    }
+
+    func presentTaskStateSelector(
+        for task: Task,
+        withView taskView: TaskView
+    ) {
+        let alert = UIAlertController(title: "Change task state",
+                                      message: nil,
+                                      preferredStyle: .actionSheet)
+        for state in CompletableState.allCases {
+            alert.addAction(UIAlertAction(
+                title: state.rawValue,
+                style: .default,
+                handler: { _ in
+                    task.state = state
+                    DispatchQueue.main.async { taskView.updateViews() }
+            }))
+        }
+        alert.addAction(.cancel)
+        present(alert, animated: true)
     }
 }
 
@@ -84,17 +104,10 @@ extension NextTasksViewController: UITableViewDataSource {
 }
 
 extension NextTasksViewController: TaskViewDelegate {
-    func taskView(_ taskView: TaskView, didRequestStateSelectorForTask task: Task) {
-        let alert = UIAlertController(title: "Change task state",
-                                      message: nil,
-                                      preferredStyle: .actionSheet)
-        for state in CompletableState.allCases {
-            alert.addAction(UIAlertAction(title: state.rawValue, style: .default, handler: { _ in
-                task.state = state
-                DispatchQueue.main.async { taskView.updateViews() }
-            }))
-        }
-        alert.addAction(.cancel)
-        present(alert, animated: true)
+    func taskView(
+        _ taskView: TaskView,
+        didRequestStateSelectorForTask task: Task
+    ) {
+        presentTaskStateSelector(for: task, withView: taskView)
     }
 }

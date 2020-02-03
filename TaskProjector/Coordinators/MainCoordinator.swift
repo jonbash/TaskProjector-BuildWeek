@@ -11,7 +11,8 @@ import UIKit
 class MainCoordinator: Coordinator {
     let window: UIWindow
     var navigationController: UINavigationController
-    var childCoordinators = [Coordinator]()
+
+    var addTaskCoordinator: AddTaskCoordinator
 
     init(window: UIWindow) {
         self.window = window
@@ -19,9 +20,11 @@ class MainCoordinator: Coordinator {
         navigationController.navigationBar.prefersLargeTitles = true
 
         let nextTasksVC = NextTasksViewController()
-        nextTasksVC.creationClient = self
         navigationController.pushViewController(nextTasksVC, animated: false)
         navigationController.setToolbarHidden(false, animated: false)
+
+        self.addTaskCoordinator = AddTaskCoordinator(navigationController: navigationController)
+        nextTasksVC.delegate = self
     }
 
     func start() {
@@ -30,9 +33,8 @@ class MainCoordinator: Coordinator {
     }
 }
 
-extension MainCoordinator: TaskCreationClient {
-    @objc func didRequestTaskCreation() {
-        let addTaskVC = AddTaskViewController()
-        navigationController.pushViewController(addTaskVC, animated: true)
+extension MainCoordinator: NextTasksDelegate {
+    func didRequestTaskCreation(_ sender: Any?) {
+        addTaskCoordinator.start()
     }
 }

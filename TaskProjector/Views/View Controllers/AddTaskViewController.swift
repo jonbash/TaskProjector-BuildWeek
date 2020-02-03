@@ -8,16 +8,11 @@
 
 import UIKit
 
-class AddTaskViewController: ShiftableViewController {
-    enum ViewState: Int {
-        case title
-        case category
-        case timeEstimate
-        case dueDate
-        case all
-    }
 
-    var currentViewState: ViewState = .title
+class AddTaskViewController: ShiftableViewController {
+    private(set) var currentViewState: TaskCreationState!
+
+    weak var taskCreationClient: TaskCreationClient!
 
     // MARK: - SubViews
 
@@ -41,7 +36,13 @@ class AddTaskViewController: ShiftableViewController {
     private var nextButton: UIBarButtonItem!
     private var saveButton: UIBarButtonItem!
 
-    // MARK: - View Lifecycle
+    // MARK: - Init / View Lifecycle
+
+    convenience init(state: TaskCreationState, client: TaskCreationClient) {
+        self.init()
+        self.currentViewState = state
+        self.taskCreationClient = client
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,19 +52,20 @@ class AddTaskViewController: ShiftableViewController {
     // MARK: - Actions
 
     @IBAction private func addCategoryButtonTapped(_ sender: UIButton) {
-
+//        if let type =
+//        taskCreationClient.taskCreator(self, didRequestNewCategory: <#T##CategoryType#>)
     }
 
     @objc private func prevButtonTapped(_ sender: Any) {
-        changeViewState(forward: false)
+        taskCreationClient.taskCreator(self, didRequestNextState: false)
     }
 
     @objc private func nextButtonTapped(_ sender: Any) {
-        changeViewState(forward: true)
+        taskCreationClient.taskCreator(self, didRequestNextState: true)
     }
 
     @objc private func saveButtonTapped(_ sender: Any) {
-
+        taskCreationClient.taskCreatorDidRequestTaskSave(self)
     }
 
     // MARK: - View Setup/Update
@@ -95,13 +97,6 @@ class AddTaskViewController: ShiftableViewController {
         timeEstimateStackView.isHidden = true
         dueDateStackView.isHidden = true
         scrollView.contentSize.width = view.bounds.width
-    }
-
-    private func changeViewState(forward: Bool) {
-        currentViewState = ViewState(rawValue:
-            currentViewState.rawValue + (forward ? 1 : -1))
-            ?? currentViewState
-        updateViewsForState()
     }
 
     private func updateViewsForState() {

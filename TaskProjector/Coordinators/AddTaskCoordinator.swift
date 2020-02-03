@@ -9,15 +9,33 @@
 import UIKit
 
 class AddTaskCoordinator: Coordinator {
-    var childCoordinators: [Coordinator] = []
-
     var navigationController: UINavigationController
+    var addTaskVCs = [TaskCreationState: AddTaskViewController]()
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
 
     func start() {
-        navigationController.pushViewController(AddTaskViewController(), animated: true)
+        addViewController(forState: .title)
+        navigationController.pushViewController(addTaskVCs[.title]!, animated: true)
+    }
+
+    private func addViewController(forState state: TaskCreationState) {
+        addTaskVCs[state] = AddTaskViewController(state: state, client: self)
+    }
+}
+
+extension AddTaskCoordinator: TaskCreationClient {
+    func taskCreatorDidRequestTaskSave(_ sender: Any) {
+
+    }
+
+    func taskCreator(_ sender: Any, didRequestNewCategory: CategoryType) {
+        
+    }
+
+    func taskCreator(_ sender: Any, didRequestNextState: Bool) {
+
     }
 }
