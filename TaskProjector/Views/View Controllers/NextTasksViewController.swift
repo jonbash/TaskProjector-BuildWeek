@@ -20,6 +20,9 @@ class NextTasksViewController: UIViewController {
         }
     }
 
+    weak var creationClient: TaskCreationClient?
+
+    // TODO: Remove in lieu of model controller
     private var tempTasks: [Task] = {
         let task1 = Task(name: "Do one thing")
         let task2 = Task(name: "Do a different thing")
@@ -44,7 +47,12 @@ class NextTasksViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = "Next Tasks"
+        let addButton = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: creationClient,
+            action: #selector(creationClient?.didRequestTaskCreation))
+        setToolbarItems([addButton], animated: false)
     }
 }
 

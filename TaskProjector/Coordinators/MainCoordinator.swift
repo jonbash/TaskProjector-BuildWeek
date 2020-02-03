@@ -19,11 +19,19 @@ class MainCoordinator: Coordinator {
         navigationController.navigationBar.prefersLargeTitles = true
 
         let nextTasksVC = NextTasksViewController()
+        nextTasksVC.creationClient = self
         navigationController.pushViewController(nextTasksVC, animated: false)
+        navigationController.setToolbarHidden(false, animated: false)
     }
 
     func start() {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+    }
+}
+
+extension MainCoordinator: TaskCreationClient {
+    @objc func didRequestTaskCreation() {
+        print("Woohoo!")
     }
 }
