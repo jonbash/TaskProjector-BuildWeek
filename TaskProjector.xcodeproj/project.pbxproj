@@ -191,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				992A4E0023E4EB1E00DEA71F /* TaskProjectorTests.swift */,
+				99335EAD23E7AC3400F98187 /* RealmControllerTests.swift */,
 				992A4E0223E4EB1E00DEA71F /* Info.plist */,
 			);
 			path = TaskProjectorTests;
@@ -590,6 +591,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				992A4E0123E4EB1E00DEA71F /* TaskProjectorTests.swift in Sources */,
+				99335EAE23E7AC3500F98187 /* RealmControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
