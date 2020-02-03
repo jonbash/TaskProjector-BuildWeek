@@ -50,9 +50,6 @@ class TaskTableViewCell: UITableViewCell, TaskView {
             let tagView = TagSubview(tag: tag)
             tagsStackView.addArrangedSubview(tagView)
         }
-        let spacer = UIView()
-        spacer.setContentHuggingPriority(.defaultLow - 1, for: .horizontal)
-        tagsStackView.addArrangedSubview(spacer)
     }
 
     func updateViews() {

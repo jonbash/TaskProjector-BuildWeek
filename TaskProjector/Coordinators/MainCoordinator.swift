@@ -32,6 +32,7 @@ class MainCoordinator: Coordinator {
 
 extension MainCoordinator: TaskCreationClient {
     @objc func didRequestTaskCreation() {
-        print("Woohoo!")
+        let addTaskVC = AddTaskViewController()
+        navigationController.pushViewController(addTaskVC, animated: true)
     }
 }

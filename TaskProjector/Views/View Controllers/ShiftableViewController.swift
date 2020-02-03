@@ -2,6 +2,7 @@
 //  Created by Spencer Curtis.
 //  Copyright © 2017-2018 Spencer Curtis. All rights reserved.
 //
+// swiftlint:disable opening_brace
 
 /*
  All you need to do is set your subclass of ShiftableViewController as the delegate for all
@@ -10,8 +11,7 @@
 
 import UIKit
 
-class ShiftableViewController:
-    UIViewController,
+class ShiftableViewController: UIViewController,
     UITextFieldDelegate,
     UITextViewDelegate,
     UIGestureRecognizerDelegate
