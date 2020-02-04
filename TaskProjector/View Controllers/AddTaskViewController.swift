@@ -59,19 +59,19 @@ class AddTaskViewController: ShiftableViewController {
         }
     }
 
-    @IBAction func timeEstimateSwitchFlipped(_ sender: UISwitch) {
+    @IBAction private func timeEstimateSwitchFlipped(_ sender: UISwitch) {
         timeEstimatePicker.isHidden = !sender.isOn
     }
 
-    @IBAction func dueDateSwitchFlipped(_ sender: UISwitch) {
+    @IBAction private func dueDateSwitchFlipped(_ sender: UISwitch) {
         dueDatePicker.isHidden = !sender.isOn
     }
 
-    @IBAction func tagSwitchFlipped(_ sender: UISwitch) {
+    @IBAction private func tagSwitchFlipped(_ sender: UISwitch) {
         tagPicker.isHidden = !sender.isOn
     }
 
-    @IBAction func categoryChanged(_ sender: UISegmentedControl) {
+    @IBAction private func categoryChanged(_ sender: UISegmentedControl) {
         categoryPicker.categoryType =
             CategoryType(rawValue: sender.selectedSegmentIndex) ?? .none
     }
@@ -111,13 +111,21 @@ class AddTaskViewController: ShiftableViewController {
     private func finalizeAndProceed() {
         var value: Any?
         switch taskAttribute {
-        case .title: value = titleField.text
+        case .title:
+            guard let title = titleField.text, !title.isEmpty else { return }
+            value = title
         case .category:
-            // TODO: set categorypicker value to actual category
-            value = categoryPicker.selectedRow(inComponent: 0)
-        case .timeEstimate: value = timeEstimatePicker.countDownDuration
-        case .dueDate: value = dueDatePicker.date
-        case .tag: value = tagPicker.selectedTag
+            if categorySegmentedControl.selectedSegmentIndex == 0 { break }
+            value = categoryPicker.selectedCategory
+        case .timeEstimate:
+            if !timeEstimateSwitch.isOn { break }
+            value = timeEstimatePicker.countDownDuration
+        case .dueDate:
+            if !dueDateSwitch.isOn { break }
+            value = dueDatePicker.date
+        case .tag:
+            if !tagSwitch.isOn { break }
+            value = tagPicker.selectedTag
         default: break
         }
         taskCreationClient?.taskCreator(self,

@@ -36,6 +36,8 @@ class MainCoordinator: Coordinator {
     }
 }
 
+// MARK: - Next Tasks Delegate
+
 extension MainCoordinator: NextTasksDelegate {
     var nextTasks: [Task] {
         guard let nextTasks = taskController.nextTasks else { return [] }
