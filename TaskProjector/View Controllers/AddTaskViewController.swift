@@ -48,13 +48,7 @@ class AddTaskViewController: ShiftableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = taskAttribute.viewTitleForNewTaskState()
-        setUpBarButtons()
-        showHideStackViews()
-
-        titleField.delegate = self
-
-        scrollView.contentSize.width = view.bounds.width
+        setUp()
     }
 
     // MARK: - Actions
@@ -118,6 +112,24 @@ class AddTaskViewController: ShiftableViewController {
                                         didSetValue: value,
                                         forAttribute: taskAttribute)
         taskCreationClient?.taskCreatorDidRequestNextState(self)
+    }
+
+    // MARK: Setup
+
+    private func setUp() {
+        title = taskAttribute.viewTitleForNewTaskState()
+        setUpBarButtons()
+        showHideStackViews()
+        setUpPickers()
+
+        titleField.delegate = self
+
+        scrollView.contentSize.width = view.bounds.width
+    }
+
+    private func setUpPickers() {
+        categoryPicker.dataSource = taskCreationClient?.categoryPickerDataSource
+        tagPicker.dataSource = taskCreationClient?.tagPickerDataSource
     }
 
     private func setUpBarButtons() {

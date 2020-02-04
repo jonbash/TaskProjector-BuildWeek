@@ -8,13 +8,9 @@
 
 import UIKit
 
-protocol TagPickerViewDataSource: AnyObject {
-    func tagPickerView(_ tagPickerView: TagPickerView, tagForSelectedRow row: Int) -> Tag?
-}
-
 class TagPickerView: UIPickerView {
 
-    weak var tagDataSource: TagPickerViewDataSource?
+    weak var tagDataSource: TagPickerDataSource?
 
     var selectedTag: Tag? {
         tagDataSource?.tagPickerView(self, tagForSelectedRow: selectedRow(inComponent: 0))

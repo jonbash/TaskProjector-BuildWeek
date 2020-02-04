@@ -15,6 +15,13 @@ class AddTaskCoordinator: NSObject, Coordinator {
     var taskController: TaskController
     var task = Task()
 
+    private(set) lazy var categoryPickerDataSource: CategoryPickerDataSource = {
+        CategoryPickerDataSource(taskController: taskController)
+    }()
+    private(set) lazy var tagPickerDataSource: TagPickerDataSource = {
+        TagPickerDataSource(taskController: taskController)
+    }()
+
     // MARK: - Init / Start
 
     init(navigationController: UINavigationController,
@@ -102,104 +109,5 @@ extension AddTaskCoordinator: TaskCreationClient {
             NSLog("Error saving task \(task): \(error)")
         }
         navigationController.popToRootViewController(animated: true)
-    }
-}
-
-extension AddTaskCoordinator: UIPickerViewDelegate {
-
-}
-
-// MARK: - PickerView DataSource
-
-extension AddTaskCoordinator: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
-
-    func pickerView(
-        _ pickerView: UIPickerView,
-        numberOfRowsInComponent component: Int
-    ) -> Int {
-        if let pickerView = pickerView as? CategoryPickerView {
-            return categoryPickerView(pickerView,
-                                      numberOfRowsInComponent: component)
-        } else if let pickerView = pickerView as? TagPickerView {
-            return tagPickerView(pickerView,
-                                 numberOfRowsInComponent: component)
-        }
-        return 0
-    }
-
-    func pickerView(
-        _ pickerView: UIPickerView,
-        titleForRow row: Int,
-        forComponent component: Int
-    ) -> String? {
-        if let pickerView = pickerView as? CategoryPickerView {
-            return categoryPickerView(pickerView,
-                                      titleForRow: row,
-                                      forComponent: component)
-        } else if let pickerView = pickerView as? TagPickerView {
-            return tagPickerView(pickerView,
-                                 titleForRow: row,
-                                 forComponent: component)
-        }
-        return nil
-    }
-
-    // MARK: Category Picker
-
-    private func categoryPickerView(
-        _ pickerView: CategoryPickerView,
-        numberOfRowsInComponent component: Int
-    ) -> Int {
-        switch pickerView.categoryType {
-        case .area: return (taskController.allAreas?.count ?? 0) + 1
-        case .project: return (taskController.allProjects?.count ?? 0) + 1
-        default: return 0
-        }
-    }
-
-    private func categoryPickerView(
-        _ pickerView: CategoryPickerView,
-        titleForRow row: Int,
-        forComponent component: Int
-    ) -> String? {
-        if row == 0 {
-            return .kNone
-        } else {
-            switch pickerView.categoryType {
-            case .area:
-                return taskController.allAreas?[row - 1].name ?? "?"
-            case .project:
-                return taskController.allProjects?[row - 1].name ?? "?"
-            default: return "?"
-            }
-        }
-    }
-}
-
-// MARK: Tag Picker
-
-extension AddTaskCoordinator: TagPickerViewDataSource {
-    func tagPickerView(_ tagPickerView: TagPickerView, tagForSelectedRow row: Int) -> Tag? {
-        taskController.allTags?[row - 1]
-    }
-
-    private func tagPickerView(
-        _ pickerView: TagPickerView,
-        numberOfRowsInComponent component: Int
-    ) -> Int {
-        taskController.allTags?.count ?? 0
-    }
-
-    private func tagPickerView(
-        _ pickerView: TagPickerView,
-        titleForRow row: Int,
-        forComponent component: Int
-    ) -> String? {
-        if row == 0 {
-            return .kNone
-        } else {
-            return taskController.allTags?[row - 1].name ?? "?"
-        }
     }
 }

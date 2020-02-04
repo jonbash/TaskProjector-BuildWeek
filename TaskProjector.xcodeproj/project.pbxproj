@@ -45,6 +45,8 @@
 		99335EC223EA0B5E00F98187 /* CategoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EC123EA0B5E00F98187 /* CategoryPickerView.swift */; };
 		99335EC423EA11BC00F98187 /* TagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EC323EA11BC00F98187 /* TagPickerView.swift */; };
 		99335EC623EA144F00F98187 /* String+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EC523EA144F00F98187 /* String+Constants.swift */; };
+		99335EC823EA224B00F98187 /* CategoryPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EC723EA224B00F98187 /* CategoryPickerDataSource.swift */; };
+		99335ECA23EA246F00F98187 /* TagPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EC923EA246F00F98187 /* TagPickerDataSource.swift */; };
 		A380E098E5A3D78DED09B773 /* Pods_TaskProjectorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9AA95380ECC2CCD7B9F08C /* Pods_TaskProjectorTests.framework */; };
 		D9BA2C23278BEEFF5CF4976B /* Pods_TaskProjector_TaskProjectorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */; };
 /* End PBXBuildFile section */
@@ -113,6 +115,8 @@
 		99335EC123EA0B5E00F98187 /* CategoryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerView.swift; sourceTree = "<group>"; };
 		99335EC323EA11BC00F98187 /* TagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerView.swift; sourceTree = "<group>"; };
 		99335EC523EA144F00F98187 /* String+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Constants.swift"; sourceTree = "<group>"; };
+		99335EC723EA224B00F98187 /* CategoryPickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerDataSource.swift; sourceTree = "<group>"; };
+		99335EC923EA246F00F98187 /* TagPickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerDataSource.swift; sourceTree = "<group>"; };
 		B724FC8131AC8DDBCA68F607 /* Pods_TaskProjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector_TaskProjectorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6F83FC6EEBE92D041878DA /* Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaskProjector-TaskProjectorUITests/Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -265,6 +269,8 @@
 			children = (
 				99335E9D23E746A700F98187 /* TaskController.swift */,
 				99335E9F23E75B2800F98187 /* RealmController.swift */,
+				99335EC723EA224B00F98187 /* CategoryPickerDataSource.swift */,
+				99335EC923EA246F00F98187 /* TagPickerDataSource.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -604,6 +610,8 @@
 				992A4E3B23E500F000DEA71F /* Area.swift in Sources */,
 				99335EB223E7B86400F98187 /* TaskCreationClient.swift in Sources */,
 				992A4E3323E5005A00DEA71F /* CompletableState.swift in Sources */,
+				99335EC823EA224B00F98187 /* CategoryPickerDataSource.swift in Sources */,
+				99335ECA23EA246F00F98187 /* TagPickerDataSource.swift in Sources */,
 				99335EA823E7774600F98187 /* TagSubview.swift in Sources */,
 				992A4DEC23E4EB1B00DEA71F /* SceneDelegate.swift in Sources */,
 				992A4E3D23E500FC00DEA71F /* Tag.swift in Sources */,

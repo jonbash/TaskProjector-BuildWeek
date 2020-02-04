@@ -11,6 +11,9 @@ import Foundation
 
 @objc
 protocol TaskCreationClient: AnyObject {
+    var categoryPickerDataSource: CategoryPickerDataSource { get }
+    var tagPickerDataSource: TagPickerDataSource { get }
+
     func taskCreatorDidRequestNextState(_ sender: Any)
     func taskCreatorDidRequestPrevState(_ sender: Any)
     func taskCreatorDidRequestTaskSave(_ sender: Any)
