@@ -5,6 +5,7 @@
 //  Created by Jon Bash on 2020-02-03.
 //  Copyright © 2020 Jon Bash. All rights reserved.
 //
+// swiftlint:disable cyclomatic_complexity
 
 import UIKit
 
@@ -109,29 +110,41 @@ class AddTaskViewController: ShiftableViewController {
     // MARK: - Helper Methods
 
     private func finalizeAndProceed() {
-        var value: Any?
-        switch taskAttribute {
-        case .title:
-            guard let title = titleField.text, !title.isEmpty else { return }
-            value = title
-        case .category:
-            if categorySegmentedControl.selectedSegmentIndex == 0 { break }
-            value = categoryPicker.selectedCategory
-        case .timeEstimate:
-            if !timeEstimateSwitch.isOn { break }
-            value = timeEstimatePicker.countDownDuration
-        case .dueDate:
-            if !dueDateSwitch.isOn { break }
-            value = dueDatePicker.date
-        case .tag:
-            if !tagSwitch.isOn { break }
-            value = tagPicker.selectedTag
-        default: break
-        }
+        let value = valueFromSubViews()
+
         taskCreationClient?.taskCreator(self,
                                         didSetValue: value,
                                         forAttribute: taskAttribute)
         taskCreationClient?.taskCreatorDidRequestNextState(self)
+    }
+
+    private func valueFromSubViews() -> Any? {
+        switch taskAttribute {
+        case .title:
+            guard let title = titleField.text, !title.isEmpty else { return nil }
+            return title
+        case .category:
+            if categorySegmentedControl.selectedSegmentIndex == 0 {
+                return nil
+            }
+            return categoryPicker.selectedCategory
+        case .timeEstimate:
+            if !timeEstimateSwitch.isOn {
+                return nil
+            }
+            return timeEstimatePicker.countDownDuration
+        case .dueDate:
+            if !dueDateSwitch.isOn {
+                return nil
+            }
+            return dueDatePicker.date
+        case .tag:
+            if !tagSwitch.isOn {
+                return nil
+            }
+            return tagPicker.selectedTag
+        default: return nil
+        }
     }
 
     // MARK: Setup
