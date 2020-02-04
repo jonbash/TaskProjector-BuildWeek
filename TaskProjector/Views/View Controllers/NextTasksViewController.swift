@@ -22,29 +22,6 @@ class NextTasksViewController: UIViewController {
 
     weak var delegate: NextTasksDelegate?
 
-    // TODO: Remove in lieu of model controller
-    private var tempTasks: [Task] = {
-        let task1 = Task(name: "Do one thing")
-        let task2 = Task(name: "Do a different thing")
-        let task3 = Task(name: """
-            Do a thing with a really, really long name like this that keeps
-            going on and doesn't stop because I just want to know what happens
-            if I do something like this
-        """)
-
-        let homeTag = Tag(name: "Home")
-        let workTag = Tag(name: "Work")
-        let specialTag = Tag(name: "Special!")
-
-        task1.tags.append(homeTag)
-        task2.tags.append(homeTag)
-        task2.tags.append(specialTag)
-        task3.tags.append(workTag)
-        task3.tags.append(specialTag)
-
-        return [task1, task2, task3]
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Next Tasks"
@@ -53,6 +30,11 @@ class NextTasksViewController: UIViewController {
             target: delegate,
             action: #selector(delegate?.didRequestTaskCreation(_:)))
         setToolbarItems([addButton], animated: false)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
     func presentTaskStateSelector(
@@ -83,7 +65,7 @@ extension NextTasksViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        tempTasks.count
+        return delegate?.nextTasks.count ?? 0
     }
 
     func tableView(
@@ -92,13 +74,14 @@ extension NextTasksViewController: UITableViewDataSource {
     ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: TaskTableViewCell.reuseID,
-            for: indexPath)
-            as? TaskTableViewCell ?? TaskTableViewCell(
+            for: indexPath
+            ) as? TaskTableViewCell
+            ?? TaskTableViewCell(
                 style: .default,
                 reuseIdentifier: TaskTableViewCell.reuseID)
 
-        cell.setUp(self, forTask: tempTasks[indexPath.row])
-
+        guard let delegate = delegate else { return cell }
+        cell.setUp(self, forTask: delegate.nextTasks[indexPath.row])
         return cell
     }
 }

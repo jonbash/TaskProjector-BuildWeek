@@ -10,5 +10,7 @@ import Foundation
 
 @objc
 protocol NextTasksDelegate {
+    var nextTasks: [Task] { get }
+
     func didRequestTaskCreation(_ sender: Any?)
 }

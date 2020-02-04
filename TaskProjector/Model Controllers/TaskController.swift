@@ -12,6 +12,23 @@ import RealmSwift
 class TaskController {
     private var localStore: PersistenceController
 
+    // MARK: - Top Level Models
+
+    lazy var allTasks: Results<Task>? = {
+        do {
+            return try localStore.fetch(
+                Task.self,
+                expectingCollectionType: Results<Task>.self,
+                predicate: nil,
+                sorting: nil)
+        } catch {
+            NSLog("Error fetching tasks: \(error)")
+            return nil
+        }
+    }()
+    // TODO: make algorithm for next tasks
+    var nextTasks: Results<Task>? { allTasks }
+
     lazy var topLevelTasks: Results<Task>? = {
         do {
             return try localStore.fetch(
@@ -49,9 +66,22 @@ class TaskController {
         }
     }()
 
+    // MARK: - Init
+
     init(_ localStore: PersistenceController = RealmController()) {
         self.localStore = localStore
+        if let noTags = topLevelTags?.isEmpty, noTags {
+
+        }
     }
+
+    // MARK: - General Public Methods
+
+    func performUpdates(_ updates: @escaping () -> Void) throws {
+        try localStore.performUpdates(updates)
+    }
+
+    // MARK: - Task Methods
 
     func newTask() throws -> Task {
         try localStore.create(Task.self)
@@ -61,7 +91,13 @@ class TaskController {
         try localStore.save(task)
     }
 
-    func performUpdates(_ updates: @escaping () -> Void) throws {
-        try localStore.performUpdates(updates)
+    // MARK: - Tag Methods
+
+    func newTag() throws -> Tag {
+        try localStore.create(Tag.self)
+    }
+
+    func saveTag(_ tag: Tag) throws {
+        try localStore.save(tag)
     }
 }
