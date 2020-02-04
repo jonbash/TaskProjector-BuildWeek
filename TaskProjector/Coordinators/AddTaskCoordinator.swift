@@ -36,6 +36,13 @@ extension AddTaskCoordinator: TaskCreationClient {
     }
 
     func taskCreator(_ sender: Any, didRequestNextState: Bool) {
-
+        if didRequestNextState,
+            let addVC = sender as? AddTaskViewController,
+            let newState = TaskCreationState(rawValue: addVC.currentViewState.rawValue + 1) {
+            addViewController(forState: newState)
+            navigationController.pushViewController(addTaskVCs[newState]!, animated: true)
+        } else if !didRequestNextState {
+            navigationController.popViewController(animated: true)
+        }
     }
 }

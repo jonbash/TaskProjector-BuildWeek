@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum CategoryType {
+enum CategoryType: Int {
     case area
     case project
 }

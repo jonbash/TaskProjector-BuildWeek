@@ -10,9 +10,9 @@ import UIKit
 
 
 class AddTaskViewController: ShiftableViewController {
-    private(set) var currentViewState: TaskCreationState!
+    private(set) var currentViewState: TaskCreationState = .title
 
-    weak var taskCreationClient: TaskCreationClient!
+    weak var taskCreationClient: TaskCreationClient?
 
     // MARK: - SubViews
 
@@ -52,20 +52,21 @@ class AddTaskViewController: ShiftableViewController {
     // MARK: - Actions
 
     @IBAction private func addCategoryButtonTapped(_ sender: UIButton) {
-//        if let type =
-//        taskCreationClient.taskCreator(self, didRequestNewCategory: <#T##CategoryType#>)
+        if let type = CategoryType(rawValue: categorySegmentedControl.selectedSegmentIndex + 1) {
+            taskCreationClient?.taskCreator(self, didRequestNewCategory: type)
+        }
     }
 
     @objc private func prevButtonTapped(_ sender: Any) {
-        taskCreationClient.taskCreator(self, didRequestNextState: false)
+        taskCreationClient?.taskCreator(self, didRequestNextState: false)
     }
 
     @objc private func nextButtonTapped(_ sender: Any) {
-        taskCreationClient.taskCreator(self, didRequestNextState: true)
+        taskCreationClient?.taskCreator(self, didRequestNextState: true)
     }
 
     @objc private func saveButtonTapped(_ sender: Any) {
-        taskCreationClient.taskCreatorDidRequestTaskSave(self)
+        taskCreationClient?.taskCreatorDidRequestTaskSave(self)
     }
 
     // MARK: - View Setup/Update
