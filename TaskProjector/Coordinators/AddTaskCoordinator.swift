@@ -12,8 +12,13 @@ class AddTaskCoordinator: Coordinator {
     var navigationController: UINavigationController
     var addTaskVCs = [TaskCreationState: AddTaskViewController]()
 
-    init(navigationController: UINavigationController) {
+    var taskController: TaskController
+
+    init(navigationController: UINavigationController,
+         taskController: TaskController
+    ) {
         self.navigationController = navigationController
+        self.taskController = taskController
     }
 
     func start() {

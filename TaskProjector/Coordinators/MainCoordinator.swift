@@ -12,7 +12,11 @@ class MainCoordinator: Coordinator {
     let window: UIWindow
     var navigationController: UINavigationController
 
-    var addTaskCoordinator: AddTaskCoordinator
+    lazy var addTaskCoordinator = AddTaskCoordinator(
+        navigationController: navigationController,
+        taskController: taskController)
+
+    lazy var taskController = TaskController()
 
     init(window: UIWindow) {
         self.window = window
@@ -23,7 +27,6 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(nextTasksVC, animated: false)
         navigationController.setToolbarHidden(false, animated: false)
 
-        self.addTaskCoordinator = AddTaskCoordinator(navigationController: navigationController)
         nextTasksVC.delegate = self
     }
 
