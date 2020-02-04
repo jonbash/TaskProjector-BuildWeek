@@ -78,6 +78,18 @@ class Task: Object, Category {
             parentArea = newValue as? Area
         }
     }
+    var tagsAsArray: [Tag] {
+        get {
+            var array = [Tag]()
+            tags.forEach { array.append($0) }
+            return array
+        }
+        set {
+            let newTags = List<Tag>()
+            newValue.forEach { newTags.append($0) }
+            tags = newTags
+        }
+    }
 
     // MARK: - Init
 

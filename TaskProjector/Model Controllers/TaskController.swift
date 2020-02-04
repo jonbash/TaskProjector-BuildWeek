@@ -12,54 +12,34 @@ import RealmSwift
 class TaskController {
     private var realmController: RealmController
 
-    // MARK: - Top Level Models
+    // MARK: - Fetch Results -
 
-    lazy var allTasks: Results<Task>? = {
-        do {
-            return try realmController.fetch(
-                Task.self,
-                predicate: nil,
-                sorting: nil)
-        } catch {
-            NSLog("Error fetching tasks: \(error)")
-            return nil
-        }
+    // ---
+
+    // MARK: Tasks
+
+    lazy var allTasks: Results<Task>? = { fetch(Task.self) }()
+    var nextTasks: Results<Task>? { allTasks } // TODO: make algorithm for next tasks
+    lazy var allProjects: Results<Task>? = {
+        fetch(Task.self, predicate: NSPredicate(format: "isProject == YES"))
     }()
-    // TODO: make algorithm for next tasks
-    var nextTasks: Results<Task>? { allTasks }
-
     lazy var topLevelTasks: Results<Task>? = {
-        do {
-            return try realmController.fetch(
-                Task.self,
-                predicate: NSPredicate(format: "parentArea = nil AND parentProject = nil"),
-                sorting: nil)
-        } catch {
-            NSLog("Error fetching tasks: \(error)")
-            return nil
-        }
+        fetch(Task.self,
+              predicate: NSPredicate(format: "parentArea == nil AND parentProject == nil"))
     }()
+
+    // MARK: Areas
+
+    lazy var allAreas: Results<Area>? = { fetch(Area.self) }()
     lazy var topLevelAreas: Results<Area>? = {
-        do {
-            return try realmController.fetch(
-                Area.self,
-                predicate: NSPredicate(format: "parent = nil"),
-                sorting: nil)
-        } catch {
-            NSLog("Error fetching tasks: \(error)")
-            return nil
-        }
+        fetch(Area.self, predicate: NSPredicate(format: "parent == nil"))
     }()
+
+    // MARK: Tags
+
+    lazy var allTags: Results<Tag>? = { fetch(Tag.self) }()
     lazy var topLevelTags: Results<Tag>? = {
-        do {
-            return try realmController.fetch(
-                Tag.self,
-                predicate: NSPredicate(format: "parent = nil"),
-                sorting: nil)
-        } catch {
-            NSLog("Error fetching tags: \(error)")
-            return nil
-        }
+        fetch(Tag.self, predicate: NSPredicate(format: "parent == nil"))
     }()
 
     // MARK: - Init
@@ -87,6 +67,20 @@ class TaskController {
 
     func saveObjects(_ objects: [Object]) throws {
         try realmController.saveObjects(objects)
+    }
+
+    func fetch<T: Object>(_ object: T.Type,
+                          predicate: NSPredicate? = nil,
+                          sorting: Sorting? = nil
+    ) -> Results<T>? {
+        do {
+            return try realmController.fetch(T.self,
+                                             predicate: predicate,
+                                             sorting: sorting)
+        } catch {
+            NSLog("Error fetching \(T.self) results: \(error)")
+            return nil
+        }
     }
 
     // MARK: - Task Methods

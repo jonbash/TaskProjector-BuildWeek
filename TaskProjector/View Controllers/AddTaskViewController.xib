@@ -16,6 +16,9 @@
                 <outlet property="dueDateStackView" destination="4DL-no-1M5" id="7Yo-94-eGR"/>
                 <outlet property="dueDateSwitch" destination="7wy-kS-rif" id="Pql-cr-A6q"/>
                 <outlet property="scrollView" destination="Z2b-9U-Vck" id="UVc-w9-FU2"/>
+                <outlet property="tagPicker" destination="5nc-H3-K2s" id="YXu-vD-Lhk"/>
+                <outlet property="tagStackView" destination="zS9-Hp-MXy" id="skR-SS-Z0j"/>
+                <outlet property="tagSwitch" destination="mf2-uo-897" id="MF9-nB-1ek"/>
                 <outlet property="timeEstimatePicker" destination="Be8-s9-ZJU" id="26x-ZA-9MF"/>
                 <outlet property="timeEstimateStackView" destination="PMO-Uz-lZo" id="KVM-sx-YmF"/>
                 <outlet property="timeEstimateSwitch" destination="Mdu-v0-hb9" id="UOS-YT-aCq"/>
@@ -26,17 +29,17 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="1600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="247" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" ambiguous="YES" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2b-9U-Vck">
-                    <rect key="frame" x="0.0" y="44" width="414" height="1156"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="1396"/>
                     <subviews>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="247" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="752" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CBL-Og-UxL" userLabel="ContentView">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="1156"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="1396"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="248" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="752" ambiguous="YES" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="QPO-Do-a53">
-                                    <rect key="frame" x="20" y="138" width="374" height="880"/>
+                                    <rect key="frame" x="20" y="138" width="374" height="1168"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="752" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0ov-pN-VFp">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
@@ -90,7 +93,7 @@
                                                         </button>
                                                     </subviews>
                                                 </stackView>
-                                                <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="754" translatesAutoresizingMaskIntoConstraints="NO" id="jc0-Dn-pgK">
+                                                <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="754" translatesAutoresizingMaskIntoConstraints="NO" id="jc0-Dn-pgK" customClass="CategoryPickerView" customModule="TaskProjector" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="66" width="374" height="216"/>
                                                 </pickerView>
                                             </subviews>
@@ -146,6 +149,31 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="255" id="poj-Uu-nhP"/>
+                                            </constraints>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="753" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="zS9-Hp-MXy">
+                                            <rect key="frame" x="0.0" y="886" width="374" height="282"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WEG-UF-RqQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLB-1y-ZjI">
+                                                            <rect key="frame" x="0.0" y="0.0" width="317" height="31"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mf2-uo-897">
+                                                            <rect key="frame" x="325" y="0.0" width="51" height="31"/>
+                                                        </switch>
+                                                    </subviews>
+                                                </stackView>
+                                                <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="754" translatesAutoresizingMaskIntoConstraints="NO" id="5nc-H3-K2s" customClass="TagPickerView" customModule="TaskProjector" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="35" width="374" height="247"/>
+                                                </pickerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="282" id="nra-pV-bis"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>

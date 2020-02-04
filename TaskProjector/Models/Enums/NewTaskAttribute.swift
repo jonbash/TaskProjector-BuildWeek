@@ -14,6 +14,7 @@ enum NewTaskAttribute: Int {
     case category
     case timeEstimate
     case dueDate
+    case tag
     case all
 
     func viewTitleForNewTaskState() -> String {
@@ -23,6 +24,7 @@ enum NewTaskAttribute: Int {
         case .category: suffix = "Category"
         case .timeEstimate: suffix = "Time estimate"
         case .dueDate: suffix = "Due date"
+        case .tag: suffix = "Tag"
         case .all: suffix = "Save?"
         }
         return "New task - \(suffix)"

@@ -20,15 +20,18 @@ class AddTaskViewController: ShiftableViewController {
     @IBOutlet private weak var categoryStackView: UIStackView!
     @IBOutlet private weak var timeEstimateStackView: UIStackView!
     @IBOutlet private weak var dueDateStackView: UIStackView!
+    @IBOutlet private weak var tagStackView: UIStackView!
 
     @IBOutlet private weak var titleField: UITextField!
-    @IBOutlet private weak var categoryPicker: UIPickerView!
+    @IBOutlet private weak var categoryPicker: CategoryPickerView!
     @IBOutlet private weak var timeEstimatePicker: UIDatePicker!
     @IBOutlet private weak var dueDatePicker: UIDatePicker!
+    @IBOutlet private weak var tagPicker: TagPickerView!
 
     @IBOutlet private weak var categorySegmentedControl: UISegmentedControl!
     @IBOutlet private weak var timeEstimateSwitch: UISwitch!
     @IBOutlet private weak var dueDateSwitch: UISwitch!
+    @IBOutlet private weak var tagSwitch: UISwitch!
 
     @IBOutlet private weak var scrollView: UIScrollView!
 
@@ -103,6 +106,7 @@ class AddTaskViewController: ShiftableViewController {
             value = categoryPicker.selectedRow(inComponent: 0)
         case .timeEstimate: value = timeEstimatePicker.countDownDuration
         case .dueDate: value = dueDatePicker.date
+        case .tag: value = tagPicker.selectedTag
         default: break
         }
         taskCreationClient?.taskCreator(self,
