@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 enum TaskCreationState: Int {
     case title
     case category
