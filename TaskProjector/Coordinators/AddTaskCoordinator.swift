@@ -13,8 +13,7 @@ class AddTaskCoordinator: Coordinator {
     var addTaskVCs = [NewTaskAttribute: AddTaskViewController]()
 
     var taskController: TaskController
-
-    var task: Task?
+    var task = Task()
 
     // MARK: - Init / Start
 
@@ -26,12 +25,7 @@ class AddTaskCoordinator: Coordinator {
     }
 
     func start() {
-        do {
-            task = try taskController.newTask()
-        } catch {
-            NSLog("Error creating new task: \(error)\nWill make task in memory only.")
-            task = Task()
-        }
+        task = Task()
         addViewController(forState: .title)
     }
 
@@ -85,23 +79,19 @@ extension AddTaskCoordinator: TaskCreationClient {
         updateTask { [weak self] in
             switch attribute {
             case .title:
-                self?.task?.name = value as? String ?? ""
+                self?.task.name = value as? String ?? ""
             case .category:
-                self?.task?.parent = value as? Category
+                self?.task.parent = value as? Category
             case .timeEstimate:
-                self?.task?.timeEstimate = value as? TimeInterval
+                self?.task.timeEstimate = value as? TimeInterval
             case .dueDate:
-                self?.task?.dueDate = value as? Date
+                self?.task.dueDate = value as? Date
             case .all: break
             }
         }
     }
 
     func taskCreatorDidRequestTaskSave(_ sender: Any) {
-        guard let task = task else {
-            NSLog("Error saving task: Task unexpectedly nil")
-            return
-        }
         do {
             try taskController.saveTask(task)
         } catch {

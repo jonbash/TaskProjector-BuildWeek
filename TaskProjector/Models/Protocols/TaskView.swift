@@ -8,7 +8,6 @@
 
 import Foundation
 
-@objc
 protocol TaskView {
     func setUp(_ delegate: TaskViewDelegate, forTask task: Task)
     func updateViews()

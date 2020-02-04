@@ -33,7 +33,6 @@
 		99335E9E23E746A700F98187 /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335E9D23E746A700F98187 /* TaskController.swift */; };
 		99335EA023E75B2800F98187 /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335E9F23E75B2800F98187 /* RealmController.swift */; };
 		99335EA823E7774600F98187 /* TagSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EA723E7774600F98187 /* TagSubview.swift */; };
-		99335EAA23E783FA00F98187 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EA923E783FA00F98187 /* PersistenceController.swift */; };
 		99335EAE23E7AC3500F98187 /* RealmControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EAD23E7AC3400F98187 /* RealmControllerTests.swift */; };
 		99335EB223E7B86400F98187 /* TaskCreationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EB123E7B86400F98187 /* TaskCreationClient.swift */; };
 		99335EB523E879C700F98187 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EB323E879C700F98187 /* AddTaskViewController.swift */; };
@@ -99,7 +98,6 @@
 		99335E9D23E746A700F98187 /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
 		99335E9F23E75B2800F98187 /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
 		99335EA723E7774600F98187 /* TagSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSubview.swift; sourceTree = "<group>"; };
-		99335EA923E783FA00F98187 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		99335EAD23E7AC3400F98187 /* RealmControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmControllerTests.swift; sourceTree = "<group>"; };
 		99335EB123E7B86400F98187 /* TaskCreationClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCreationClient.swift; sourceTree = "<group>"; };
 		99335EB323E879C700F98187 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
@@ -227,7 +225,6 @@
 			children = (
 				992A4E4523E64EEE00DEA71F /* TaskTableViewCell.swift */,
 				992A4E4623E64EEE00DEA71F /* TaskTableViewCell.xib */,
-				99335E9923E67A4C00F98187 /* TaskView.swift */,
 				99335EA723E7774600F98187 /* TagSubview.swift */,
 				992A4E1A23E4ED5800DEA71F /* View Controllers */,
 			);
@@ -300,8 +297,8 @@
 			isa = PBXGroup;
 			children = (
 				992A4E2B23E4FF2200DEA71F /* Category.swift */,
-				99335EA923E783FA00F98187 /* PersistenceController.swift */,
 				992A4E1F23E4EF6800DEA71F /* Coordinator.swift */,
+				99335E9923E67A4C00F98187 /* TaskView.swift */,
 				99335E9723E6759800F98187 /* TaskViewDelegate.swift */,
 				99335EBD23E8C7A000F98187 /* NextTasksDelegate.swift */,
 				99335EB123E7B86400F98187 /* TaskCreationClient.swift */,
@@ -606,7 +603,6 @@
 				99335EBE23E8C7A000F98187 /* NextTasksDelegate.swift in Sources */,
 				99335EB823E87A2D00F98187 /* ShiftableViewController.swift in Sources */,
 				992A4E2C23E4FF2200DEA71F /* Category.swift in Sources */,
-				99335EAA23E783FA00F98187 /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
