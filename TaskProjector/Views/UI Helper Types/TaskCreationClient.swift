@@ -16,4 +16,11 @@ protocol TaskCreationClient: AnyObject {
     func taskCreatorDidRequestTaskSave(_ sender: Any)
     func taskCreator(_ sender: Any, didRequestNewCategory: CategoryType)
     func taskCreatorDidCancel(_ sender: Any)
+
+    func taskCreator(_ sender: Any, didChooseTitle title: String)
+    func taskCreator(_ sender: Any, didChooseProject project: Task?)
+    func taskCreator(_ sender: Any, didChooseArea area: Area?)
+    func taskCreator(_ sender: Any, didChooseTimeEstimate timeEstimate: TimeInterval)
+    func taskCreatorDidSelectNoTimeEstimate(_ sender: Any)
+    func taskCreator(_ sender: Any, didChooseDueDate dueDate: Date?)
 }

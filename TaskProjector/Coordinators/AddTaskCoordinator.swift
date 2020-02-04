@@ -14,11 +14,18 @@ class AddTaskCoordinator: Coordinator {
 
     var taskController: TaskController
 
+    var task: Task!
+
     init(navigationController: UINavigationController,
          taskController: TaskController
     ) {
         self.navigationController = navigationController
         self.taskController = taskController
+        do {
+            task = try taskController.newTask()
+        } catch {
+            NSLog("Error creating new task: \(error)")
+        }
     }
 
     func start() {
@@ -34,10 +41,6 @@ class AddTaskCoordinator: Coordinator {
 }
 
 extension AddTaskCoordinator: TaskCreationClient {
-    func taskCreatorDidRequestTaskSave(_ sender: Any) {
-
-    }
-
     func taskCreator(_ sender: Any, didRequestNewCategory: CategoryType) {
         
     }
@@ -55,5 +58,35 @@ extension AddTaskCoordinator: TaskCreationClient {
 
     func taskCreatorDidCancel(_ sender: Any) {
         navigationController.popToRootViewController(animated: true)
+    }
+
+    // MARK: - Task Building
+
+    func taskCreator(_ sender: Any, didChooseTitle title: String) {
+        task.name = title
+    }
+
+    func taskCreator(_ sender: Any, didChooseProject project: Task?) {
+        task.parent = project
+    }
+
+    func taskCreator(_ sender: Any, didChooseArea area: Area?) {
+        task.parent = area
+    }
+
+    func taskCreator(_ sender: Any, didChooseTimeEstimate timeEstimate: TimeInterval) {
+        task.timeEstimate = timeEstimate
+    }
+
+    func taskCreatorDidSelectNoTimeEstimate(_ sender: Any) {
+        task.timeEstimate = nil
+    }
+
+    func taskCreator(_ sender: Any, didChooseDueDate dueDate: Date?) {
+        task.dueDate = dueDate
+    }
+
+    func taskCreatorDidRequestTaskSave(_ sender: Any) {
+
     }
 }

@@ -53,9 +53,9 @@ class TaskController {
         self.localStore = localStore
     }
 
-//    func newTask() -> Task {
-//
-//    }
+    func newTask() throws -> Task {
+        try localStore.create(Task.self)
+    }
 
     func performUpdates(_ updates: @escaping () -> Void) throws {
 
