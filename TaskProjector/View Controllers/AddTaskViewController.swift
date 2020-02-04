@@ -65,6 +65,11 @@ class AddTaskViewController: ShiftableViewController {
         }
     }
 
+    @IBAction func categoryChanged(_ sender: UISegmentedControl) {
+        categoryPicker.categoryType =
+            CategoryType(rawValue: sender.selectedSegmentIndex) ?? .none
+    }
+
     @objc private func nextButtonTapped(_ sender: Any) {
         finalizeAndProceed()
     }

@@ -10,6 +10,7 @@ import Foundation
 
 @objc
 enum CategoryType: Int {
+    case none
     case area
     case project
 }

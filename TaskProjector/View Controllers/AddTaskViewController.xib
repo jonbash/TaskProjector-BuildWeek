@@ -79,6 +79,9 @@
                                                                 <segment title="Area"/>
                                                                 <segment title="Project"/>
                                                             </segments>
+                                                            <connections>
+                                                                <action selector="categoryChanged:" destination="-1" eventType="valueChanged" id="zBq-xB-xXL"/>
+                                                            </connections>
                                                         </segmentedControl>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qv1-uv-un5">
                                                             <rect key="frame" x="344" y="0.0" width="30" height="31"/>

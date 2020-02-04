@@ -154,6 +154,7 @@ extension AddTaskCoordinator: UIPickerViewDataSource {
         switch pickerView.categoryType {
         case .area: return (taskController.allAreas?.count ?? 0) + 1
         case .project: return (taskController.allProjects?.count ?? 0) + 1
+        default: return 0
         }
     }
 
@@ -170,6 +171,7 @@ extension AddTaskCoordinator: UIPickerViewDataSource {
                 return taskController.allAreas?[row - 1].name ?? "?"
             case .project:
                 return taskController.allProjects?[row - 1].name ?? "?"
+            default: return "?"
             }
         }
     }
