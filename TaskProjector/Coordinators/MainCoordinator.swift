@@ -47,4 +47,12 @@ extension MainCoordinator: NextTasksDelegate {
     func didRequestTaskCreation(_ sender: Any?) {
         addTaskCoordinator.start()
     }
+
+    func performUpdates(forTask task: Task, updates: @escaping () throws -> Void) {
+        do {
+            try taskController.performUpdates(updates)
+        } catch {
+            NSLog("Error performing object updates: \(error)")
+        }
+    }
 }

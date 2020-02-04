@@ -63,9 +63,41 @@ class AddTaskViewController: ShiftableViewController {
     }
 
     @objc private func nextButtonTapped(_ sender: Any) {
+        finalizeAndProceed()
+    }
+
+    @objc private func saveButtonTapped(_ sender: Any) {
+        taskCreationClient?.taskCreatorDidRequestTaskSave(self)
+    }
+
+    @objc private func cancelButtonTapped(_ sender: Any) {
+        taskCreationClient?.taskCreatorDidCancel(self)
+    }
+
+    // MARK: - TextField Delegate
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == titleField { textField.resignFirstResponder() }
+        return true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == titleField {
+            if let title = textField.text, !title.isEmpty {
+                finalizeAndProceed()
+            } else {
+                saveButton.isEnabled = false
+                nextButton?.isEnabled = false
+            }
+        }
+    }
+
+    // MARK: - Helper Methods
+
+    private func finalizeAndProceed() {
         var value: Any?
         switch taskAttribute {
-        case .title: value = titleField.text as Any
+        case .title: value = titleField.text
         case .category:
             // TODO: set categorypicker value to actual category
             value = categoryPicker.selectedRow(inComponent: 0)
@@ -79,30 +111,6 @@ class AddTaskViewController: ShiftableViewController {
         taskCreationClient?.taskCreatorDidRequestNextState(self)
     }
 
-    @objc private func saveButtonTapped(_ sender: Any) {
-        taskCreationClient?.taskCreatorDidRequestTaskSave(self)
-    }
-
-    // MARK: - TextField Delegate
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == titleField { textField.resignFirstResponder() }
-        return true
-    }
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == titleField {
-            if let title = textField.text, !title.isEmpty {
-                taskCreationClient?.taskCreatorDidRequestNextState(self)
-            } else {
-                saveButton.isEnabled = false
-                nextButton?.isEnabled = false
-            }
-        }
-    }
-
-    // MARK: - Helper Methods
-
     private func setUpBarButtons() {
         let spacer = UIBarButtonItem(
             barButtonSystemItem: .flexibleSpace,
@@ -110,8 +118,8 @@ class AddTaskViewController: ShiftableViewController {
             action: nil)
         let cancelButton = UIBarButtonItem(
             barButtonSystemItem: .cancel,
-            target: taskCreationClient,
-            action: #selector(taskCreationClient?.taskCreatorDidCancel(_:)))
+            target: self,
+            action: #selector(cancelButtonTapped(_:)))
         toolbarItems?.append(cancelButton)
         saveButton = UIBarButtonItem(
             barButtonSystemItem: .save,

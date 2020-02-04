@@ -8,7 +8,9 @@
 
 import Foundation
 
-@objc
 protocol TaskViewDelegate: AnyObject {
     func taskView(_ taskView: TaskView, didRequestStateSelectorForTask task: Task)
+    func taskView(_ taskView: TaskView,
+                  willPerformUpdatesforTask task: Task,
+                  updates: @escaping () throws -> Void)
 }

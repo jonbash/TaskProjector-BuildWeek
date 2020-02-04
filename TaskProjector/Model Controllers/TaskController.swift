@@ -81,7 +81,7 @@ class TaskController {
 
     // MARK: - General Public Methods
 
-    func performUpdates(_ updates: @escaping () -> Void) throws {
+    func performUpdates(_ updates: @escaping () throws -> Void) throws {
         try realmController.performUpdates(updates)
     }
 

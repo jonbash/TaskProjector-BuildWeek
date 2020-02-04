@@ -51,7 +51,7 @@ class AddTaskCoordinator: Coordinator {
 
 extension AddTaskCoordinator: TaskCreationClient {
     func taskCreator(_ sender: Any, didRequestNewCategory: CategoryType) {
-        
+        // TODO: implement this method
     }
 
     func taskCreatorDidRequestNextState(_ sender: Any) {

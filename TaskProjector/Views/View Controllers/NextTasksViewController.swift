@@ -22,19 +22,28 @@ class NextTasksViewController: UIViewController {
 
     weak var delegate: NextTasksDelegate?
 
+    // MARK: - View Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Next Tasks"
         let addButton = UIBarButtonItem(
             barButtonSystemItem: .add,
-            target: delegate,
-            action: #selector(delegate?.didRequestTaskCreation(_:)))
+            target: self,
+            action: #selector(createTask(_:)))
         setToolbarItems([addButton], animated: false)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+
+    // MARK: - Methods
+
+    @objc
+    func createTask(_ sender: Any) {
+        delegate?.didRequestTaskCreation(self)
     }
 
     func presentTaskStateSelector(
@@ -58,6 +67,8 @@ class NextTasksViewController: UIViewController {
     }
 }
 
+// MARK: - TableView
+
 extension NextTasksViewController: UITableViewDelegate {}
 
 extension NextTasksViewController: UITableViewDataSource {
@@ -65,7 +76,7 @@ extension NextTasksViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return delegate?.nextTasks.count ?? 0
+        delegate?.nextTasks.count ?? 0
     }
 
     func tableView(
@@ -86,11 +97,21 @@ extension NextTasksViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - TaskViewDelegate
+
 extension NextTasksViewController: TaskViewDelegate {
     func taskView(
         _ taskView: TaskView,
         didRequestStateSelectorForTask task: Task
     ) {
         presentTaskStateSelector(for: task, withView: taskView)
+    }
+
+    func taskView(
+        _ taskView: TaskView,
+        willPerformUpdatesforTask task: Task,
+        updates: @escaping () throws -> Void
+    ) {
+        delegate?.performUpdates(forTask: task, updates: updates)
     }
 }
