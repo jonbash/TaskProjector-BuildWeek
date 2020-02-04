@@ -32,8 +32,7 @@ class AddTaskViewController: ShiftableViewController {
 
     @IBOutlet private weak var scrollView: UIScrollView!
 
-    private var prevButton: UIBarButtonItem!
-    private var nextButton: UIBarButtonItem!
+    private var nextButton: UIBarButtonItem?
     private var saveButton: UIBarButtonItem!
 
     // MARK: - Init / View Lifecycle
@@ -46,7 +45,13 @@ class AddTaskViewController: ShiftableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUp()
+        title = titleForState()
+        setUpRightBarButtons()
+        showHideStackViews()
+
+        titleField.delegate = self
+
+        scrollView.contentSize.width = view.bounds.width
     }
 
     // MARK: - Actions
@@ -57,65 +62,12 @@ class AddTaskViewController: ShiftableViewController {
         }
     }
 
-    @objc private func prevButtonTapped(_ sender: Any) {
-        taskCreationClient?.taskCreator(self, didRequestNextState: false)
-    }
-
     @objc private func nextButtonTapped(_ sender: Any) {
-        taskCreationClient?.taskCreator(self, didRequestNextState: true)
+        taskCreationClient?.taskCreatorDidRequestNextState(self)
     }
 
     @objc private func saveButtonTapped(_ sender: Any) {
         taskCreationClient?.taskCreatorDidRequestTaskSave(self)
-    }
-
-    // MARK: - View Setup/Update
-
-    func setUp() {
-        title = "New task"
-        prevButton = UIBarButtonItem(title: "< Prev",
-                                     style: .plain,
-                                     target: self,
-                                     action: #selector(prevButtonTapped(_:)))
-        prevButton.isEnabled = false
-        nextButton = UIBarButtonItem(title: "Next >",
-                                     style: .plain,
-                                     target: self,
-                                     action: #selector(nextButtonTapped(_:)))
-        nextButton.isEnabled = false
-        saveButton = UIBarButtonItem(barButtonSystemItem: .save,
-                                     target: self,
-                                     action: #selector(saveButtonTapped(_:)))
-        saveButton.isEnabled = false
-        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
-                                     target: nil,
-                                     action: nil)
-        toolbarItems = [prevButton, spacer, saveButton, spacer, nextButton]
-
-        titleField.delegate = self
-
-        categoryStackView.isHidden = true
-        timeEstimateStackView.isHidden = true
-        dueDateStackView.isHidden = true
-        scrollView.contentSize.width = view.bounds.width
-    }
-
-    private func updateViewsForState() {
-        prevButton.isEnabled = (currentViewState != .title)
-        saveButton.isEnabled = (currentViewState != .title ||
-            (titleField.text != nil && !titleField.text!.isEmpty))
-        if currentViewState == .all {
-            titleStackView.isHidden = false
-            categoryStackView.isHidden = false
-            timeEstimateStackView.isHidden = false
-            dueDateStackView.isHidden = false
-            nextButton.isEnabled = false
-        } else {
-            titleStackView.isHidden = (currentViewState != .title)
-            categoryStackView.isHidden = (currentViewState != .category)
-            timeEstimateStackView.isHidden = (currentViewState != .timeEstimate)
-            dueDateStackView.isHidden = (currentViewState != .dueDate)
-        }
     }
 
     // MARK: - TextField Delegate
@@ -128,12 +80,72 @@ class AddTaskViewController: ShiftableViewController {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == titleField {
             if let title = textField.text, !title.isEmpty {
-                saveButton.isEnabled = true
-                nextButton.isEnabled = true
+                taskCreationClient?.taskCreatorDidRequestNextState(self)
             } else {
                 saveButton.isEnabled = false
-                nextButton.isEnabled = false
+                nextButton?.isEnabled = false
             }
+        }
+    }
+
+    // MARK: - Helper Methods
+
+    private func titleForState() -> String {
+        let suffix: String
+        switch currentViewState {
+        case .title:
+            suffix = "Title"
+        case .category:
+            suffix = "Category"
+        case .timeEstimate:
+            suffix = "Time estimate"
+        case .dueDate:
+            suffix = "Due date"
+        case .all:
+            suffix = "Save?"
+        }
+        return "New task - \(suffix)"
+    }
+
+    private func setUpRightBarButtons() {
+        let spacer = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil)
+        let cancelButton = UIBarButtonItem(
+            barButtonSystemItem: .cancel,
+            target: taskCreationClient,
+            action: #selector(taskCreationClient?.taskCreatorDidCancel(_:)))
+        toolbarItems?.append(cancelButton)
+        saveButton = UIBarButtonItem(
+            barButtonSystemItem: .save,
+            target: self,
+            action: #selector(saveButtonTapped(_:)))
+        saveButton.isEnabled = currentViewState != .title
+        toolbarItems = [cancelButton, spacer, saveButton, spacer]
+        if currentViewState != .all {
+            nextButton = UIBarButtonItem(
+                title: "Next >",
+                style: .plain,
+                target: self,
+                action: #selector(nextButtonTapped(_:)))
+            nextButton!.isEnabled = (currentViewState != .title)
+            toolbarItems?.append(nextButton!)
+        }
+    }
+
+    private func showHideStackViews() {
+        if currentViewState == .all {
+            titleStackView.isHidden = false
+            categoryStackView.isHidden = false
+            timeEstimateStackView.isHidden = false
+            dueDateStackView.isHidden = false
+            nextButton?.isEnabled = false
+        } else {
+            titleStackView.isHidden = (currentViewState != .title)
+            categoryStackView.isHidden = (currentViewState != .category)
+            timeEstimateStackView.isHidden = (currentViewState != .timeEstimate)
+            dueDateStackView.isHidden = (currentViewState != .dueDate)
         }
     }
 }

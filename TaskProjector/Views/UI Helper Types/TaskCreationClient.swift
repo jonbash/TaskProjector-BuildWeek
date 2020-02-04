@@ -9,8 +9,11 @@
 import Foundation
 
 
+@objc
 protocol TaskCreationClient: AnyObject {
-    func taskCreator(_ sender: Any, didRequestNextState: Bool)
+    func taskCreatorDidRequestNextState(_ sender: Any)
+    func taskCreatorDidRequestPrevState(_ sender: Any)
     func taskCreatorDidRequestTaskSave(_ sender: Any)
     func taskCreator(_ sender: Any, didRequestNewCategory: CategoryType)
+    func taskCreatorDidCancel(_ sender: Any)
 }

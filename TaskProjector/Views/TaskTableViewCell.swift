@@ -15,7 +15,7 @@ class TaskTableViewCell: UITableViewCell, TaskView {
     @IBOutlet private weak var taskNameLabel: UILabel!
     @IBOutlet private weak var checkmarkButton: UIButton! {
         didSet {
-            checkmarkButton.addGestureRecognizer(longTouchGestureRecognizer)
+            checkmarkButton.addGestureRecognizer(checkboxLongPress)
         }
     }
     @IBOutlet private weak var tagsStackView: UIStackView!
@@ -23,7 +23,7 @@ class TaskTableViewCell: UITableViewCell, TaskView {
     var task: Task!
     weak var delegate: TaskViewDelegate?
 
-    lazy var longTouchGestureRecognizer = UILongPressGestureRecognizer(
+    lazy var checkboxLongPress = UILongPressGestureRecognizer(
         target: self,
         action: #selector(completeButtonLongPressed(_:)))
 

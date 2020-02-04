@@ -18,11 +18,13 @@ class AddTaskCoordinator: Coordinator {
 
     func start() {
         addViewController(forState: .title)
-        navigationController.pushViewController(addTaskVCs[.title]!, animated: true)
     }
 
     private func addViewController(forState state: TaskCreationState) {
-        addTaskVCs[state] = AddTaskViewController(state: state, client: self)
+        let newVC = AddTaskViewController(state: state, client: self)
+        addTaskVCs[state] = newVC
+
+        navigationController.pushViewController(newVC, animated: true)
     }
 }
 
@@ -35,14 +37,18 @@ extension AddTaskCoordinator: TaskCreationClient {
         
     }
 
-    func taskCreator(_ sender: Any, didRequestNextState: Bool) {
-        if didRequestNextState,
-            let addVC = sender as? AddTaskViewController,
-            let newState = TaskCreationState(rawValue: addVC.currentViewState.rawValue + 1) {
-            addViewController(forState: newState)
-            navigationController.pushViewController(addTaskVCs[newState]!, animated: true)
-        } else if !didRequestNextState {
-            navigationController.popViewController(animated: true)
-        }
+    func taskCreatorDidRequestNextState(_ sender: Any) {
+        guard let addVC = sender as? AddTaskViewController,
+            let newState = TaskCreationState(rawValue: addVC.currentViewState.rawValue + 1)
+            else { return }
+        addViewController(forState: newState)
+    }
+
+    @objc func taskCreatorDidRequestPrevState(_ sender: Any) {
+        navigationController.popViewController(animated: true)
+    }
+
+    func taskCreatorDidCancel(_ sender: Any) {
+        navigationController.popToRootViewController(animated: true)
     }
 }
