@@ -10,7 +10,7 @@ import UIKit
 
 class AddTaskCoordinator: Coordinator {
     var navigationController: UINavigationController
-    var addTaskVCs = [TaskCreationState: AddTaskViewController]()
+    var addTaskVCs = [NewTaskAttribute: AddTaskViewController]()
 
     var taskController: TaskController
 
@@ -37,7 +37,7 @@ class AddTaskCoordinator: Coordinator {
 
     // MARK: - Helper Methods
 
-    private func addViewController(forState state: TaskCreationState) {
+    private func addViewController(forState state: NewTaskAttribute) {
         let newVC = AddTaskViewController(state: state, client: self)
         addTaskVCs[state] = newVC
 
@@ -62,7 +62,7 @@ extension AddTaskCoordinator: TaskCreationClient {
 
     func taskCreatorDidRequestNextState(_ sender: Any) {
         guard let addVC = sender as? AddTaskViewController,
-            let newState = TaskCreationState(rawValue: addVC.currentViewState.rawValue + 1)
+            let newState = NewTaskAttribute(rawValue: addVC.taskAttribute.rawValue + 1)
             else { return }
         addViewController(forState: newState)
     }
@@ -79,8 +79,8 @@ extension AddTaskCoordinator: TaskCreationClient {
 
     func taskCreator(
         _ sender: Any,
-        didChangeValue value: Any,
-        forAttribute attribute: TaskCreationState
+        didSetValue value: Any?,
+        forAttribute attribute: NewTaskAttribute
     ) {
         updateTask { [weak self] in
             switch attribute {
@@ -92,8 +92,7 @@ extension AddTaskCoordinator: TaskCreationClient {
                 self?.task?.timeEstimate = value as? TimeInterval
             case .dueDate:
                 self?.task?.dueDate = value as? Date
-            case .all:
-                break
+            case .all: break
             }
         }
     }

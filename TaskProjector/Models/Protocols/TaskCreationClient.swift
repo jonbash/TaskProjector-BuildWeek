@@ -16,8 +16,7 @@ protocol TaskCreationClient: AnyObject {
     func taskCreatorDidRequestTaskSave(_ sender: Any)
     func taskCreator(_ sender: Any, didRequestNewCategory: CategoryType)
     func taskCreatorDidCancel(_ sender: Any)
-
     func taskCreator(_ sender: Any,
-                     didChangeValue value: Any,
-                     forAttribute attribute: TaskCreationState)
+                     didSetValue value: Any?,
+                     forAttribute attribute: NewTaskAttribute)
 }

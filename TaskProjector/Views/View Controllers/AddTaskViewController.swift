@@ -10,7 +10,7 @@ import UIKit
 
 
 class AddTaskViewController: ShiftableViewController {
-    private(set) var currentViewState: TaskCreationState = .title
+    private(set) var taskAttribute: NewTaskAttribute = .title
 
     weak var taskCreationClient: TaskCreationClient?
 
@@ -37,15 +37,15 @@ class AddTaskViewController: ShiftableViewController {
 
     // MARK: - Init / View Lifecycle
 
-    convenience init(state: TaskCreationState, client: TaskCreationClient) {
+    convenience init(state: NewTaskAttribute, client: TaskCreationClient) {
         self.init()
-        self.currentViewState = state
+        self.taskAttribute = state
         self.taskCreationClient = client
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = titleForState()
+        title = taskAttribute.viewTitleForNewTaskState()
         setUpRightBarButtons()
         showHideStackViews()
 
@@ -63,6 +63,19 @@ class AddTaskViewController: ShiftableViewController {
     }
 
     @objc private func nextButtonTapped(_ sender: Any) {
+        var value: Any?
+        switch taskAttribute {
+        case .title: value = titleField.text as Any
+        case .category:
+            // TODO: set categorypicker value to actual category
+            value = categoryPicker.selectedRow(inComponent: 0)
+        case .timeEstimate: value = timeEstimatePicker.countDownDuration
+        case .dueDate: value = dueDatePicker.date
+        default: break
+        }
+        taskCreationClient?.taskCreator(self,
+                                        didSetValue: value,
+                                        forAttribute: taskAttribute)
         taskCreationClient?.taskCreatorDidRequestNextState(self)
     }
 
@@ -90,23 +103,6 @@ class AddTaskViewController: ShiftableViewController {
 
     // MARK: - Helper Methods
 
-    private func titleForState() -> String {
-        let suffix: String
-        switch currentViewState {
-        case .title:
-            suffix = "Title"
-        case .category:
-            suffix = "Category"
-        case .timeEstimate:
-            suffix = "Time estimate"
-        case .dueDate:
-            suffix = "Due date"
-        case .all:
-            suffix = "Save?"
-        }
-        return "New task - \(suffix)"
-    }
-
     private func setUpRightBarButtons() {
         let spacer = UIBarButtonItem(
             barButtonSystemItem: .flexibleSpace,
@@ -121,31 +117,31 @@ class AddTaskViewController: ShiftableViewController {
             barButtonSystemItem: .save,
             target: self,
             action: #selector(saveButtonTapped(_:)))
-        saveButton.isEnabled = currentViewState != .title
+        saveButton.isEnabled = taskAttribute != .title
         toolbarItems = [cancelButton, spacer, saveButton, spacer]
-        if currentViewState != .all {
+        if taskAttribute != .all {
             nextButton = UIBarButtonItem(
                 title: "Next >",
                 style: .plain,
                 target: self,
                 action: #selector(nextButtonTapped(_:)))
-            nextButton!.isEnabled = (currentViewState != .title)
+            nextButton!.isEnabled = (taskAttribute != .title)
             toolbarItems?.append(nextButton!)
         }
     }
 
     private func showHideStackViews() {
-        if currentViewState == .all {
+        if taskAttribute == .all {
             titleStackView.isHidden = false
             categoryStackView.isHidden = false
             timeEstimateStackView.isHidden = false
             dueDateStackView.isHidden = false
             nextButton?.isEnabled = false
         } else {
-            titleStackView.isHidden = (currentViewState != .title)
-            categoryStackView.isHidden = (currentViewState != .category)
-            timeEstimateStackView.isHidden = (currentViewState != .timeEstimate)
-            dueDateStackView.isHidden = (currentViewState != .dueDate)
+            titleStackView.isHidden = (taskAttribute != .title)
+            categoryStackView.isHidden = (taskAttribute != .category)
+            timeEstimateStackView.isHidden = (taskAttribute != .timeEstimate)
+            dueDateStackView.isHidden = (taskAttribute != .dueDate)
         }
     }
 }
