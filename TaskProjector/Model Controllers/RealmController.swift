@@ -28,7 +28,13 @@ class RealmController: PersistenceController {
         }
     }()
 
-    init() {}
+    init() {
+        guard let realmURL = RealmController.mainRealm.configuration.fileURL else {
+            NSLog("Realm file URL not found")
+            return
+        }
+        NSLog("Realm file: \(realmURL)")
+    }
 
     // MARK: - Public Methods
 

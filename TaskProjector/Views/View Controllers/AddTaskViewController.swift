@@ -46,7 +46,7 @@ class AddTaskViewController: ShiftableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = taskAttribute.viewTitleForNewTaskState()
-        setUpRightBarButtons()
+        setUpBarButtons()
         showHideStackViews()
 
         titleField.delegate = self
@@ -103,7 +103,7 @@ class AddTaskViewController: ShiftableViewController {
 
     // MARK: - Helper Methods
 
-    private func setUpRightBarButtons() {
+    private func setUpBarButtons() {
         let spacer = UIBarButtonItem(
             barButtonSystemItem: .flexibleSpace,
             target: nil,

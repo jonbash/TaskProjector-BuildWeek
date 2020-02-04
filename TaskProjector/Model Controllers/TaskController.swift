@@ -61,7 +61,7 @@ class TaskController {
                 predicate: NSPredicate(format: "parent = nil"),
                 sorting: nil)
         } catch {
-            NSLog("Error fetching tasks: \(error)")
+            NSLog("Error fetching tags: \(error)")
             return nil
         }
     }()
@@ -71,7 +71,19 @@ class TaskController {
     init(_ localStore: PersistenceController = RealmController()) {
         self.localStore = localStore
         if let noTags = topLevelTags?.isEmpty, noTags {
+            NSLog("Initializing default tags")
+            do {
+                let homeTag = try newTag()
+                let workTag = try newTag()
+                try performUpdates {
+                    homeTag.name = "Home"
+                    workTag.name = "Work"
+                }
+                try saveTag(homeTag)
+                try saveTag(workTag)
+            } catch {
 
+            }
         }
     }
 

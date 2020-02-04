@@ -107,5 +107,6 @@ extension AddTaskCoordinator: TaskCreationClient {
         } catch {
             NSLog("Error saving task \(task): \(error)")
         }
+        navigationController.popToRootViewController(animated: true)
     }
 }
