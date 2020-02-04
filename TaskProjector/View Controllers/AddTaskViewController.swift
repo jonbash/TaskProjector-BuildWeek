@@ -129,7 +129,9 @@ class AddTaskViewController: ShiftableViewController {
 
     private func setUpPickers() {
         categoryPicker.dataSource = taskCreationClient?.categoryPickerDataSource
+        categoryPicker.delegate = taskCreationClient?.categoryPickerDataSource
         tagPicker.dataSource = taskCreationClient?.tagPickerDataSource
+        tagPicker.delegate = taskCreationClient?.tagPickerDataSource
     }
 
     private func setUpBarButtons() {
@@ -165,12 +167,14 @@ class AddTaskViewController: ShiftableViewController {
             categoryStackView.isHidden = false
             timeEstimateStackView.isHidden = false
             dueDateStackView.isHidden = false
+            tagStackView.isHidden = false
             nextButton?.isEnabled = false
         } else {
             titleStackView.isHidden = (taskAttribute != .title)
             categoryStackView.isHidden = (taskAttribute != .category)
             timeEstimateStackView.isHidden = (taskAttribute != .timeEstimate)
             dueDateStackView.isHidden = (taskAttribute != .dueDate)
+            tagStackView.isHidden = (taskAttribute != .tag)
         }
     }
 }

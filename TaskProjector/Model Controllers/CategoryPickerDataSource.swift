@@ -8,13 +8,15 @@
 
 import UIKit
 
-class CategoryPickerDataSource: NSObject, UIPickerViewDataSource {
+class CategoryPickerDataSource: NSObject {
     weak var taskController: TaskController?
 
     init(taskController: TaskController) {
         self.taskController = taskController
     }
+}
 
+extension CategoryPickerDataSource: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
 
     func pickerView(
@@ -50,5 +52,4 @@ class CategoryPickerDataSource: NSObject, UIPickerViewDataSource {
             }
         }
     }
-
 }

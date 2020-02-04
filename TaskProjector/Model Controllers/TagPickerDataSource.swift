@@ -8,14 +8,20 @@
 
 import UIKit
 
-class TagPickerDataSource: NSObject, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
-
+class TagPickerDataSource: NSObject {
     weak var taskController: TaskController?
 
     init(taskController: TaskController) {
         self.taskController = taskController
     }
+
+    func tagPickerView(_ tagPickerView: TagPickerView, tagForSelectedRow row: Int) -> Tag? {
+        taskController?.allTags?[row - 1]
+    }
+}
+
+extension TagPickerDataSource: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
 
     func pickerView(
         _ pickerView: UIPickerView,
@@ -34,9 +40,5 @@ class TagPickerDataSource: NSObject, UIPickerViewDataSource {
         } else {
             return taskController?.allTags?[row - 1].name ?? "?"
         }
-    }
-
-    func tagPickerView(_ tagPickerView: TagPickerView, tagForSelectedRow row: Int) -> Tag? {
-        taskController?.allTags?[row - 1]
     }
 }

@@ -39,38 +39,35 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="1396"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="248" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="752" ambiguous="YES" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="QPO-Do-a53">
-                                    <rect key="frame" x="20" y="138" width="374" height="1168"/>
+                                    <rect key="frame" x="20" y="138" width="374" height="1136"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="752" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0ov-pN-VFp">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="69.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="753" text="Task title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4id-ND-3LB">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="27"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="26.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="753" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lTF-Qm-OEc">
-                                                    <rect key="frame" x="0.0" y="35" width="374" height="35"/>
+                                                    <rect key="frame" x="0.0" y="34.5" width="374" height="35"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="70" id="HGI-Nm-OiB"/>
-                                            </constraints>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="753" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="vXJ-74-84g">
-                                            <rect key="frame" x="0.0" y="76" width="374" height="282"/>
+                                            <rect key="frame" x="0.0" y="75.5" width="374" height="281.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="754" text="Category:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5g-AJ-Fzx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="27"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="26.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="754" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Q8n-o2-wVI">
-                                                    <rect key="frame" x="0.0" y="31" width="374" height="31"/>
+                                                    <rect key="frame" x="0.0" y="30.5" width="374" height="31"/>
                                                     <subviews>
                                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Sqv-St-I0u">
                                                             <rect key="frame" x="0.0" y="0.0" width="340" height="32"/>
@@ -97,15 +94,12 @@
                                                     </subviews>
                                                 </stackView>
                                                 <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="754" translatesAutoresizingMaskIntoConstraints="NO" id="jc0-Dn-pgK" customClass="CategoryPickerView" customModule="TaskProjector" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="66" width="374" height="216"/>
+                                                    <rect key="frame" x="0.0" y="65.5" width="374" height="216"/>
                                                 </pickerView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="282" id="99d-LX-Yqe"/>
-                                            </constraints>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="752" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PMO-Uz-lZo">
-                                            <rect key="frame" x="0.0" y="364" width="374" height="255"/>
+                                            <rect key="frame" x="0.0" y="363" width="374" height="255"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xhw-hO-aoH">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
@@ -125,12 +119,9 @@
                                                     <rect key="frame" x="0.0" y="39" width="374" height="216"/>
                                                 </datePicker>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="255" id="4Rk-R2-H7Z"/>
-                                            </constraints>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="752" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4DL-no-1M5">
-                                            <rect key="frame" x="0.0" y="625" width="374" height="255"/>
+                                            <rect key="frame" x="0.0" y="624" width="374" height="255"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="753" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cTz-Fx-4t3">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
@@ -150,12 +141,9 @@
                                                     <rect key="frame" x="0.0" y="39" width="374" height="216"/>
                                                 </datePicker>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="255" id="poj-Uu-nhP"/>
-                                            </constraints>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="753" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="zS9-Hp-MXy">
-                                            <rect key="frame" x="0.0" y="886" width="374" height="282"/>
+                                            <rect key="frame" x="0.0" y="885" width="374" height="251"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WEG-UF-RqQ">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
@@ -172,12 +160,9 @@
                                                     </subviews>
                                                 </stackView>
                                                 <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="754" translatesAutoresizingMaskIntoConstraints="NO" id="5nc-H3-K2s" customClass="TagPickerView" customModule="TaskProjector" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="35" width="374" height="247"/>
+                                                    <rect key="frame" x="0.0" y="35" width="374" height="216"/>
                                                 </pickerView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="282" id="nra-pV-bis"/>
-                                            </constraints>
                                         </stackView>
                                     </subviews>
                                 </stackView>

@@ -76,7 +76,7 @@ extension AddTaskCoordinator: TaskCreationClient {
         navigationController.popToRootViewController(animated: true)
     }
 
-    // MARK: - Task Building
+    // MARK: Task Building
 
     func taskCreator(
         _ sender: Any,

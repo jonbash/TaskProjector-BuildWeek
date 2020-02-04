@@ -11,7 +11,7 @@ import UIKit
 
 class CategoryPickerView: UIPickerView {
 
-    var categoryType: CategoryType = .area {
+    var categoryType: CategoryType = .none {
         didSet {
             DispatchQueue.main.async {
                 self.setUp()
@@ -32,7 +32,11 @@ class CategoryPickerView: UIPickerView {
     }
 
     private func setUp() {
-        isHidden = (categoryType == .none)
-        reloadAllComponents()
+        if categoryType == .none {
+            isHidden = true
+        } else {
+            isHidden = false
+            reloadAllComponents()
+        }
     }
 }
