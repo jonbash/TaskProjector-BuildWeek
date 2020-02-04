@@ -19,6 +19,20 @@ class CategoryPickerView: UIPickerView {
         }
     }
 
+    weak var categoryDataSource: CategoryPickerDataSource?
+
+    override var dataSource: UIPickerViewDataSource? {
+        get { categoryDataSource }
+        set { categoryDataSource = newValue as? CategoryPickerDataSource }
+    }
+
+    var selectedCategory: Category? {
+        categoryDataSource?.pickerView(
+            self,
+            categoryOfType: categoryType,
+            forSelectedRow: selectedRow(inComponent: 0))
+    }
+
     // MARK: - Init / Setup
 
     override init(frame: CGRect) {

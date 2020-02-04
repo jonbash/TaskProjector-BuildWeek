@@ -12,6 +12,11 @@ class TagPickerView: UIPickerView {
 
     weak var tagDataSource: TagPickerDataSource?
 
+    override var dataSource: UIPickerViewDataSource? {
+        get { tagDataSource }
+        set { tagDataSource = newValue as? TagPickerDataSource }
+    }
+
     var selectedTag: Tag? {
         tagDataSource?.tagPickerView(self, tagForSelectedRow: selectedRow(inComponent: 0))
     }

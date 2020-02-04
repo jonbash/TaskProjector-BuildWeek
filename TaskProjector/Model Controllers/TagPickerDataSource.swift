@@ -35,10 +35,6 @@ extension TagPickerDataSource: UIPickerViewDataSource, UIPickerViewDelegate {
         titleForRow row: Int,
         forComponent component: Int
     ) -> String? {
-        if row == 0 {
-            return .kNone
-        } else {
-            return taskController?.allTags?[row - 1].name ?? "?"
-        }
+        taskController?.allTags?[row].name ?? "?"
     }
 }

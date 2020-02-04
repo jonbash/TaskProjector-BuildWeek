@@ -14,6 +14,21 @@ class CategoryPickerDataSource: NSObject {
     init(taskController: TaskController) {
         self.taskController = taskController
     }
+
+    func pickerView(
+        _ pickerView: CategoryPickerView,
+        categoryOfType type: CategoryType,
+        forSelectedRow row: Int
+    ) -> Category? {
+        switch type {
+        case .area:
+            return taskController?.allAreas?[row]
+        case .project:
+            return taskController?.allProjects?[row]
+        default:
+            return nil
+        }
+    }
 }
 
 extension CategoryPickerDataSource: UIPickerViewDataSource, UIPickerViewDelegate {
@@ -26,8 +41,8 @@ extension CategoryPickerDataSource: UIPickerViewDataSource, UIPickerViewDelegate
         guard let pickerView = pickerView as? CategoryPickerView else { return 0 }
 
         switch pickerView.categoryType {
-        case .area: return (taskController?.allAreas?.count ?? 0) + 1
-        case .project: return (taskController?.allProjects?.count ?? 0) + 1
+        case .area: return (taskController?.allAreas?.count ?? 0)
+        case .project: return (taskController?.allProjects?.count ?? 0)
         default: return 0
         }
     }
@@ -40,16 +55,12 @@ extension CategoryPickerDataSource: UIPickerViewDataSource, UIPickerViewDelegate
         guard let pickerView = pickerView as? CategoryPickerView else {
             return nil
         }
-        if row == 0 {
-            return .kNone
-        } else {
-            switch pickerView.categoryType {
-            case .area:
-                return taskController?.allAreas?[row - 1].name ?? "?"
-            case .project:
-                return taskController?.allProjects?[row - 1].name ?? "?"
-            default: return "?"
-            }
+        switch pickerView.categoryType {
+        case .area:
+            return taskController?.allAreas?[row].name ?? "?"
+        case .project:
+            return taskController?.allProjects?[row].name ?? "?"
+        default: return "?"
         }
     }
 }

@@ -59,6 +59,18 @@ class AddTaskViewController: ShiftableViewController {
         }
     }
 
+    @IBAction func timeEstimateSwitchFlipped(_ sender: UISwitch) {
+        timeEstimatePicker.isHidden = !sender.isOn
+    }
+
+    @IBAction func dueDateSwitchFlipped(_ sender: UISwitch) {
+        dueDatePicker.isHidden = !sender.isOn
+    }
+
+    @IBAction func tagSwitchFlipped(_ sender: UISwitch) {
+        tagPicker.isHidden = !sender.isOn
+    }
+
     @IBAction func categoryChanged(_ sender: UISegmentedControl) {
         categoryPicker.categoryType =
             CategoryType(rawValue: sender.selectedSegmentIndex) ?? .none
