@@ -54,6 +54,7 @@
 		99335ED923EA495400F98187 /* TaskTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335ED823EA495400F98187 /* TaskTagViewController.swift */; };
 		99335EDA23EA5C8E00F98187 /* TaskEditAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335ED023EA3EE000F98187 /* TaskEditAllViewController.swift */; };
 		99335EDC23EB36DD00F98187 /* TimeInterval+TimePeriods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EDB23EB36DD00F98187 /* TimeInterval+TimePeriods.swift */; };
+		99335EDE23EB3EEB00F98187 /* Rescaler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EDD23EB3EEB00F98187 /* Rescaler.swift */; };
 		A380E098E5A3D78DED09B773 /* Pods_TaskProjectorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9AA95380ECC2CCD7B9F08C /* Pods_TaskProjectorTests.framework */; };
 		D9BA2C23278BEEFF5CF4976B /* Pods_TaskProjector_TaskProjectorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */; };
 /* End PBXBuildFile section */
@@ -131,6 +132,7 @@
 		99335ED623EA482700F98187 /* TaskDueDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDueDateViewController.swift; sourceTree = "<group>"; };
 		99335ED823EA495400F98187 /* TaskTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTagViewController.swift; sourceTree = "<group>"; };
 		99335EDB23EB36DD00F98187 /* TimeInterval+TimePeriods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+TimePeriods.swift"; sourceTree = "<group>"; };
+		99335EDD23EB3EEB00F98187 /* Rescaler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rescaler.swift; sourceTree = "<group>"; };
 		B724FC8131AC8DDBCA68F607 /* Pods_TaskProjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector_TaskProjectorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6F83FC6EEBE92D041878DA /* Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaskProjector-TaskProjectorUITests/Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				99335E9B23E67BF700F98187 /* UIAlert+Convenience.swift */,
 				99335EC523EA144F00F98187 /* String+Constants.swift */,
 				99335EDB23EB36DD00F98187 /* TimeInterval+TimePeriods.swift */,
+				99335EDD23EB3EEB00F98187 /* Rescaler.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99335E9E23E746A700F98187 /* TaskController.swift in Sources */,
+				99335EDE23EB3EEB00F98187 /* Rescaler.swift in Sources */,
 				992A4E3123E5005400DEA71F /* TaskGroupType.swift in Sources */,
 				99335EDA23EA5C8E00F98187 /* TaskEditAllViewController.swift in Sources */,
 				992A4E4723E64EEE00DEA71F /* TaskTableViewCell.swift in Sources */,
