@@ -43,7 +43,7 @@ class NextTasksViewController: UIViewController {
 
     @objc
     func createTask(_ sender: Any) {
-        delegate?.didRequestTaskCreation(self)
+        delegate?.requestTaskCreation(self)
     }
 
     func presentTaskStateSelector(
@@ -58,7 +58,9 @@ class NextTasksViewController: UIViewController {
                 title: state.rawValue,
                 style: .default,
                 handler: { _ in
-                    task.state = state
+                    self.delegate?.performUpdates(forTask: task, updates: {
+                        task.state = state
+                    })
                     DispatchQueue.main.async { taskView.updateViews() }
             }))
         }
@@ -71,7 +73,8 @@ class NextTasksViewController: UIViewController {
 
 extension NextTasksViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        guard let task = delegate?.nextTasks[indexPath.row] else { return }
+        delegate?.editTask(task)
     }
 }
 
@@ -89,9 +92,8 @@ extension NextTasksViewController: UITableViewDataSource {
     ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: TaskTableViewCell.reuseID,
-            for: indexPath
-            ) as? TaskTableViewCell
-            ?? TaskTableViewCell(
+            for: indexPath)
+            as? TaskTableViewCell ?? TaskTableViewCell(
                 style: .default,
                 reuseIdentifier: TaskTableViewCell.reuseID)
 

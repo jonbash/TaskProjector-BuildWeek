@@ -69,7 +69,7 @@ class RealmController {
         _ object: Object,
         inContext realm: Realm = RealmController.mainRealm
     ) throws {
-        try realm.write { realm.add(object) }
+        try realm.write { realm.add(object, update: .modified) }
     }
 
     func saveObjects(

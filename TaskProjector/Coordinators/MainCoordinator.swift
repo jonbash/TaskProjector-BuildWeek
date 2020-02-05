@@ -39,10 +39,16 @@ class MainCoordinator: Coordinator {
 // MARK: - Next Tasks Delegate
 
 extension MainCoordinator: NextTasksDelegate {
+
     var nextTasks: [Task] { taskController.nextTasks }
 
-    func didRequestTaskCreation(_ sender: Any?) {
+    func requestTaskCreation(_ sender: Any?) {
         addTaskCoordinator.start()
+    }
+
+    func editTask(_ task: Task) {
+        addTaskCoordinator.currentState = .all
+        addTaskCoordinator.start(withTask: task)
     }
 
     func performUpdates(forTask task: Task, updates: @escaping () throws -> Void) {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddTaskCoordinator: NSObject, Coordinator {
+class AddTaskCoordinator: Coordinator {
     var navigationController: UINavigationController
     var addTaskVCs = [NewTaskAttribute: AddTaskViewController]()
 
@@ -35,8 +35,12 @@ class AddTaskCoordinator: NSObject, Coordinator {
     }
 
     func start() {
-        task = Task()
-        addViewController(forState: .title)
+        start(withTask: Task())
+    }
+
+    func start(withTask task: Task) {
+        self.task = task
+        addViewController(forState: currentState)
     }
 
     // MARK: - Helper Methods
@@ -83,19 +87,21 @@ class AddTaskCoordinator: NSObject, Coordinator {
     @discardableResult
     private func pullAttributes(fromVC addTaskVC: AddTaskViewController?) -> NewTaskAttribute {
         if let titleVC = addTaskVC as? TaskTitleViewController {
-            task.name = titleVC.taskTitle
+            updateTask { self.task.name = titleVC.taskTitle }
             return .title
         } else if let categoryVC = addTaskVC as? TaskCategoryViewController {
-            task.parent = categoryVC.category
+            updateTask { self.task.parent = categoryVC.category }
             return .category
         } else if let timeEstVC = addTaskVC as? TaskTimeEstimateViewController {
-            task.timeEstimate = timeEstVC.timeEstimate
+            updateTask { self.task.timeEstimate = timeEstVC.timeEstimate }
             return .timeEstimate
         } else if let dueDateVC = addTaskVC as? TaskDueDateViewController {
-            task.dueDate = dueDateVC.dueDate
+            updateTask { self.task.dueDate = dueDateVC.dueDate }
             return .dueDate
         } else if let tagVC = addTaskVC as? TaskTagViewController {
-            if let tag = tagVC.tag { task.tagsAsArray = [tag] }
+            if let tag = tagVC.tag {
+                updateTask { self.task.tagsAsArray = [tag] }
+            }
             return .tag
         } else {
             return currentState

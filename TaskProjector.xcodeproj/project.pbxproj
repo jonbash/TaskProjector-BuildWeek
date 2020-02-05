@@ -354,13 +354,13 @@
 		99335ECD23EA3E0000F98187 /* Add Task VCs */ = {
 			isa = PBXGroup;
 			children = (
+				99335EB323E879C700F98187 /* AddTaskViewController.swift */,
 				99335ECE23EA3E1A00F98187 /* TaskTitleViewController.swift */,
 				99335ED223EA43CE00F98187 /* TaskCategoryViewController.swift */,
 				99335ED423EA45B800F98187 /* TaskTimeEstimateViewController.swift */,
 				99335ED623EA482700F98187 /* TaskDueDateViewController.swift */,
 				99335ED823EA495400F98187 /* TaskTagViewController.swift */,
 				99335ED023EA3EE000F98187 /* TaskEditAllViewController.swift */,
-				99335EB323E879C700F98187 /* AddTaskViewController.swift */,
 			);
 			path = "Add Task VCs";
 			sourceTree = "<group>";

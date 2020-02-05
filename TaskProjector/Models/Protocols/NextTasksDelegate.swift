@@ -11,6 +11,7 @@ import Foundation
 protocol NextTasksDelegate: AnyObject {
     var nextTasks: [Task] { get }
 
-    func didRequestTaskCreation(_ sender: Any?)
+    func requestTaskCreation(_ sender: Any?)
+    func editTask(_ task: Task)
     func performUpdates(forTask task: Task, updates: @escaping () throws -> Void)
 }
