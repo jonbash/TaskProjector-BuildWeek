@@ -39,12 +39,7 @@ class MainCoordinator: Coordinator {
 // MARK: - Next Tasks Delegate
 
 extension MainCoordinator: NextTasksDelegate {
-    var nextTasks: [Task] {
-        guard let nextTasks = taskController.nextTasks else { return [] }
-        var output = [Task]()
-        nextTasks.forEach { output.append($0) }
-        return output
-    }
+    var nextTasks: [Task] { taskController.nextTasks }
 
     func didRequestTaskCreation(_ sender: Any?) {
         addTaskCoordinator.start()

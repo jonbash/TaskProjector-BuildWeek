@@ -93,7 +93,9 @@ class Task: Object, Category {
     }
 
     var urgency: Double {
-        if state == .dropped || state == .done { return 0 }
+        if state == .dropped || state == .done {
+            return 0
+        }
         var value: Double = (dueDate == nil) ? 0 : 5
         value += (timeEstimate == nil) ? 0 : 1
         value -= (state == .onHold) ? 5 : 0

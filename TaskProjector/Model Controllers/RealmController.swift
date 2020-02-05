@@ -20,7 +20,18 @@ class RealmController {
 
     private static var mainRealm: Realm! = {
         do {
-            return try Realm()
+            /* `schemaVersion`s :
+             0: init
+             1: add Task.createdDate
+             */
+            let config = Realm.Configuration(
+                schemaVersion: 1,
+                migrationBlock: { _, oldSchemaVersion in
+                    if oldSchemaVersion < 1 {
+                        return
+                    }
+            })
+            return try Realm(configuration: config)
         } catch {
             NSLog("Error initializing Realm: \(error)")
             return nil

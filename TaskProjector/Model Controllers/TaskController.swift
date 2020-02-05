@@ -12,7 +12,7 @@ import RealmSwift
 class TaskController {
     private var realmController: RealmController
 
-    // MARK: - Fetch Results -
+    // MARK: - Fetch Results
 
     // ---
 
@@ -22,17 +22,14 @@ class TaskController {
     var nextTasks: [Task] {
         guard let results = fetch(
             Task.self,
-            predicate: NSPredicate(format: "isProject == NO"),
-            sorting: Sorting(key: "urgency",
-                             ascending: false))
+            predicate: NSPredicate(format: "isProject == NO"))
             else { return [] }
-        var nextTasks = [Task]()
-        for (i, task) in results.enumerated() {
-            nextTasks.append(task)
-            if i >= 6 { break }
+        var sortedTasks = results.sorted { $0.urgency > $1.urgency }
+        if sortedTasks.count > 6 {
+            sortedTasks.removeLast(sortedTasks.count - 6)
         }
-        return nextTasks
-    } // TODO: make algorithm for next tasks
+        return sortedTasks
+    }
     lazy var allProjects: Results<Task>? = {
         fetch(Task.self, predicate: NSPredicate(format: "isProject == YES"))
     }()
