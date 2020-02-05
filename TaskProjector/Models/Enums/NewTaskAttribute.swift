@@ -17,7 +17,7 @@ enum NewTaskAttribute: Int {
     case tag
     case all
 
-    func viewTitleForNewTaskState() -> String {
+    func viewTitle() -> String {
         let suffix: String
         switch self {
         case .title: suffix = "Title"
@@ -27,6 +27,14 @@ enum NewTaskAttribute: Int {
         case .tag: suffix = "Tag"
         case .all: suffix = "Save?"
         }
-        return "New task - \(suffix)"
+        return suffix
+    }
+
+    mutating func tryIncrement() {
+        let index = self.rawValue
+        let newIndex = index + 1
+        if let newSelf = NewTaskAttribute(rawValue: newIndex) {
+            self = newSelf
+        }
     }
 }

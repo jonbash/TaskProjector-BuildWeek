@@ -18,7 +18,18 @@ class TagPickerView: UIPickerView {
     }
 
     var selectedTag: Tag? {
-        tagDataSource?.tagPickerView(self, tagForSelectedRow: selectedRow(inComponent: 0))
+        get {
+            tagDataSource?.tagPickerView(
+                self,
+                tagForSelectedRow: selectedRow(inComponent: 0))
+        }
+        set {
+            guard
+                let newTag = newValue,
+                let newIndex = tagDataSource?.tagPickerView(self, indexForTag: newTag)
+                else { return }
+            self.selectRow(newIndex, inComponent: 0, animated: true)
+        }
     }
 
     // MARK: - Init / Setup

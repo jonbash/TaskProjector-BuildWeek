@@ -16,7 +16,11 @@ class TagPickerDataSource: NSObject {
     }
 
     func tagPickerView(_ tagPickerView: TagPickerView, tagForSelectedRow row: Int) -> Tag? {
-        taskController?.allTags?[row - 1]
+        taskController?.allTags?[row]
+    }
+
+    func tagPickerView(_ tagPickerView: TagPickerView, indexForTag tag: Tag) -> Int? {
+        taskController?.allTags?.index(of: tag)
     }
 }
 

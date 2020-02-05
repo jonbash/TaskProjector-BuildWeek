@@ -27,10 +27,21 @@ class CategoryPickerView: UIPickerView {
     }
 
     var selectedCategory: Category? {
-        categoryDataSource?.pickerView(
-            self,
-            categoryOfType: categoryType,
-            forSelectedRow: selectedRow(inComponent: 0))
+        get {
+            categoryDataSource?.pickerView(
+                self,
+                categoryOfType: categoryType,
+                forSelectedRow: selectedRow(inComponent: 0))
+        }
+        set {
+            guard
+                let newCategory = newValue,
+                let newIndex = categoryDataSource?.pickerView(
+                    self,
+                    rowForSelectedCategory: newCategory)
+                else { return }
+            self.selectRow(newIndex, inComponent: 0, animated: true)
+        }
     }
 
     // MARK: - Init / Setup

@@ -12,8 +12,10 @@ class AddTaskCoordinator: NSObject, Coordinator {
     var navigationController: UINavigationController
     var addTaskVCs = [NewTaskAttribute: AddTaskViewController]()
 
+    var currentState: NewTaskAttribute = .title
+
     var taskController: TaskController
-    var task = Task()
+    private(set) var task = Task()
 
     private(set) lazy var categoryPickerDataSource: CategoryPickerDataSource = {
         CategoryPickerDataSource(taskController: taskController)
@@ -39,9 +41,22 @@ class AddTaskCoordinator: NSObject, Coordinator {
     // MARK: - Helper Methods
 
     private func addViewController(forState state: NewTaskAttribute) {
-        let newVC = AddTaskViewController(state: state, client: self)
-        addTaskVCs[state] = newVC
-
+        let vcType: AddTaskViewController.Type = {
+            switch state {
+            case .title: return TaskTitleViewController.self
+            case .category: return TaskCategoryViewController.self
+            case .timeEstimate: return TaskTimeEstimateViewController.self
+            case .dueDate: return TaskDueDateViewController.self
+            case .tag: return TaskTagViewController.self
+            case .all: return TaskEditAllViewController.self
+            }
+        }()
+        guard let newVC = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(
+                withIdentifier: String(describing: vcType.self))
+            as? AddTaskViewController
+            else { return }
+        newVC.taskCreationClient = self
         navigationController.pushViewController(newVC, animated: true)
     }
 
@@ -61,18 +76,32 @@ extension AddTaskCoordinator: TaskCreationClient {
         // TODO: implement this method
     }
 
-    func taskCreatorDidRequestNextState(_ sender: Any) {
-        guard let addVC = sender as? AddTaskViewController,
-            let newState = NewTaskAttribute(rawValue: addVC.taskAttribute.rawValue + 1)
-            else { return }
-        addViewController(forState: newState)
+    func requestNextCreationStep(_ sender: Any) {
+        currentState = {
+            if let _ = sender as? TaskTitleViewController {
+                return .title
+            } else if let _ = sender as? TaskCategoryViewController {
+                return .category
+            } else if let _ = sender as? TaskTimeEstimateViewController {
+                return .timeEstimate
+            } else if let _ = sender as? TaskDueDateViewController {
+                return .dueDate
+            } else if let _ = sender as? TaskTagViewController {
+                return .tag
+            } else {
+                return currentState
+            }
+        }()
+        currentState.tryIncrement()
+
+        addViewController(forState: currentState)
     }
 
     @objc func taskCreatorDidRequestPrevState(_ sender: Any) {
         navigationController.popViewController(animated: true)
     }
 
-    func taskCreatorDidCancel(_ sender: Any) {
+    func cancelTaskCreation(_ sender: Any) {
         navigationController.popToRootViewController(animated: true)
     }
 
@@ -102,7 +131,7 @@ extension AddTaskCoordinator: TaskCreationClient {
         }
     }
 
-    func taskCreatorDidRequestTaskSave(_ sender: Any) {
+    func requestTaskSave(_ sender: Any) {
         do {
             try taskController.saveTask(task)
         } catch {

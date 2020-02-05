@@ -29,6 +29,17 @@ class CategoryPickerDataSource: NSObject {
             return nil
         }
     }
+
+    func pickerView(
+        _ pickerView: CategoryPickerView,
+        rowForSelectedCategory category: Category
+    ) -> Int? {
+        if let area = category as? Area {
+            return taskController?.allAreas?.index(of: area)
+        } else if let project = category as? Task {
+            return taskController?.allProjects?.index(of: project)
+        } else { return nil }
+    }
 }
 
 extension CategoryPickerDataSource: UIPickerViewDataSource, UIPickerViewDelegate {

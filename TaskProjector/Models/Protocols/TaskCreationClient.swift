@@ -11,14 +11,15 @@ import Foundation
 
 @objc
 protocol TaskCreationClient: AnyObject {
+    var task: Task { get }
     var categoryPickerDataSource: CategoryPickerDataSource { get }
     var tagPickerDataSource: TagPickerDataSource { get }
 
-    func taskCreatorDidRequestNextState(_ sender: Any)
+    func requestNextCreationStep(_ sender: Any)
     func taskCreatorDidRequestPrevState(_ sender: Any)
-    func taskCreatorDidRequestTaskSave(_ sender: Any)
+    func requestTaskSave(_ sender: Any)
     func taskCreator(_ sender: Any, didRequestNewCategory: CategoryType)
-    func taskCreatorDidCancel(_ sender: Any)
+    func cancelTaskCreation(_ sender: Any)
     func taskCreator(_ sender: Any,
                      didSetValue value: Any?,
                      forAttribute attribute: NewTaskAttribute)
