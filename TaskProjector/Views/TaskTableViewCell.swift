@@ -59,8 +59,11 @@ class TaskTableViewCell: UITableViewCell, TaskView {
         checkmarkButton.setBackgroundImage(image, for: .normal)
         checkmarkButton.tintColor = task.state.color
         taskNameLabel.text = task.name
-
-
+        if let dueStateColor = task.dueState.color {
+            backgroundColor = dueStateColor
+        } else {
+            backgroundColor = .systemBackground
+        }
     }
 
     @IBAction func completeButtonTapped(_ sender: UIButton) {

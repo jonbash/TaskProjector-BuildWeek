@@ -32,6 +32,10 @@ class NextTasksViewController: UIViewController {
             target: self,
             action: #selector(createTask(_:)))
         setToolbarItems([addButton], animated: false)
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self,
+                                            action: #selector(refreshTableView(_:)),
+                                            for: .valueChanged)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +48,12 @@ class NextTasksViewController: UIViewController {
     @objc
     func createTask(_ sender: Any) {
         delegate?.requestTaskCreation(self)
+    }
+
+    @objc
+    func refreshTableView(_ sender: Any) {
+        tableView.reloadData()
+        tableView.refreshControl?.endRefreshing()
     }
 
     func presentTaskStateSelector(

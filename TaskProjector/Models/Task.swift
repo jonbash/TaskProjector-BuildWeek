@@ -103,6 +103,22 @@ class Task: Object, Category {
             + timeIntervalUrgencyModifier
             + creationDateUrgencyModifier
     }
+    var dueState: DueState {
+        guard
+            let dueDate = dueDate,
+            state != .dropped && state != .done
+            else { return .notDueSoon }
+        let timeToStart = dueDate.timeIntervalSinceNow - (timeEstimate ?? 0)
+        if timeToStart < 0 {
+            return .overdue
+        } else if timeToStart < TimeInterval(weeks: 1) {
+            return .dueSoon
+        } else if timeToStart < TimeInterval(days: 1) {
+            return .dueVerySoon
+        } else {
+            return .notDueSoon
+        }
+    }
 
     // MARK: - Private Computed
     private var dueDateUrgencyModifier: Double {
