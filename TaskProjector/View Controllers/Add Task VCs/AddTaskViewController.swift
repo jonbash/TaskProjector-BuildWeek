@@ -62,5 +62,6 @@ class AddTaskViewController: ShiftableViewController {
             target: self,
             action: #selector(nextButtonTapped(_:)))
         toolbarItems?.append(nextButton!)
+        nextButton?.isEnabled = !(taskCreationClient?.amEditing ?? true)
     }
 }

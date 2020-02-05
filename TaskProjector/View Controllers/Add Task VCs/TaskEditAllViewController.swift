@@ -23,8 +23,12 @@ class TaskEditAllViewController: AddTaskViewController {
         return formatter
     }()
 
+    // MARK: - View Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        taskCreationClient?.finishEditing()
+
         nextButton?.isEnabled = false
     }
 
@@ -48,5 +52,32 @@ class TaskEditAllViewController: AddTaskViewController {
                 return dateFormatter.string(from: date)
             } else { return .kNone }
         }()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+    }
+
+    // MARK: - Actions
+
+    @IBAction private func titleLabelTapped(_ sender: Any) {
+        taskCreationClient?.editTask(attribute: .title)
+    }
+
+    @IBAction private func categoryLabelTapped(_ sender: Any) {
+        taskCreationClient?.editTask(attribute: .category)
+    }
+
+    @IBAction private func tagLabelTapped(_ sender: Any) {
+        taskCreationClient?.editTask(attribute: .tag)
+    }
+
+    @IBAction private func timeEstimateLabelTapped(_ sender: Any) {
+        taskCreationClient?.editTask(attribute: .timeEstimate)
+    }
+
+    @IBAction private func dueDateLabelTapped(_ sender: Any) {
+        taskCreationClient?.editTask(attribute: .dueDate)
     }
 }

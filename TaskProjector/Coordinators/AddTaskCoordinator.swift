@@ -13,6 +13,7 @@ class AddTaskCoordinator: NSObject, Coordinator {
     var addTaskVCs = [NewTaskAttribute: AddTaskViewController]()
 
     var currentState: NewTaskAttribute = .title
+    var amEditing: Bool = false
 
     var taskController: TaskController
     private(set) var task = Task()
@@ -112,15 +113,13 @@ extension AddTaskCoordinator: TaskCreationClient {
         addViewController(forState: currentState)
     }
 
-    @objc func taskCreatorDidRequestPrevState(_ sender: Any) {
+    func taskCreatorDidRequestPrevState(_ sender: Any) {
         navigationController.popViewController(animated: true)
     }
 
     func cancelTaskCreation(_ sender: Any) {
         navigationController.popToRootViewController(animated: true)
     }
-
-    // MARK: Task Building
 
     func requestTaskSave(_ sender: Any) {
         do {
@@ -129,5 +128,18 @@ extension AddTaskCoordinator: TaskCreationClient {
             NSLog("Error saving task \(task): \(error)")
         }
         navigationController.popToRootViewController(animated: true)
+    }
+
+    // MARK: - Editing
+
+    func editTask(attribute: NewTaskAttribute) {
+        amEditing = true
+        currentState = attribute
+        addViewController(forState: currentState)
+    }
+
+    func finishEditing() {
+        amEditing = false
+        currentState = .all
     }
 }

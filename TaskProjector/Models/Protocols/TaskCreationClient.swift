@@ -11,6 +11,7 @@ import Foundation
 
 protocol TaskCreationClient: AnyObject {
     var task: Task { get }
+    var amEditing: Bool { get }
     var categoryPickerDataSource: CategoryPickerDataSource { get }
     var tagPickerDataSource: TagPickerDataSource { get }
 
@@ -19,4 +20,7 @@ protocol TaskCreationClient: AnyObject {
     func requestTaskSave(_ sender: Any)
     func taskCreator(_ sender: Any, didRequestNewCategory: CategoryType)
     func cancelTaskCreation(_ sender: Any)
+
+    func editTask(attribute: NewTaskAttribute)
+    func finishEditing()
 }
