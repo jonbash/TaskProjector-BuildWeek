@@ -91,6 +91,60 @@ class Task: Object, Category {
         }
     }
 
+    // MARK: - Private Computed
+    private var dueDateUrgencyModifier: Double {
+        /*
+         1 year: 0
+         1 month: 5
+         1 week: 10
+         1 day: 15
+         now: 20
+         -year: 40
+         */
+        guard let dueDate = dueDate else { return 0 }
+        let timeDist = dueDate.timeIntervalSinceNow
+        if timeDist.years < 1 && timeDist.months >= 1 {
+            return Rescaler(
+                from: (lowerBound: TimeInterval(years: 1),
+                       upperBound: TimeInterval(months: 1)),
+                to: (lowerBound: 0,
+                     upperBound: 5))
+                .rescale(timeDist)
+        } else if timeDist.months < 1 && timeDist.weeks >= 1 {
+            return Rescaler(
+                from: (lowerBound: TimeInterval(months: 1),
+                       upperBound: TimeInterval(weeks: 1)),
+                to: (lowerBound: 5,
+                     upperBound: 10))
+                .rescale(timeDist)
+        } else if timeDist.weeks < 1 && timeDist.days >= 1 {
+            return Rescaler(
+                from: (lowerBound: TimeInterval(weeks: 1),
+                       upperBound: TimeInterval(days: 1)),
+                to: (lowerBound: 10,
+                     upperBound: 15))
+                .rescale(timeDist)
+        } else if timeDist.days < 1 && timeDist >= 0 {
+            return Rescaler(
+                from: (lowerBound: TimeInterval(days: 1),
+                       upperBound: 0),
+                to: (lowerBound: 15,
+                     upperBound: 20))
+                .rescale(timeDist)
+        } else if timeDist.days < 0 && timeDist.years >= -1 {
+            return Rescaler(
+                from: (lowerBound: 0,
+                       upperBound: TimeInterval(years: -1)),
+                to: (lowerBound: 20,
+                     upperBound: 40))
+                .rescale(timeDist)
+        } else if timeDist.years < -1 {
+            return 40
+        } else {
+            return 0
+        }
+    }
+
     // MARK: - Init
 
     convenience init(name: String, identifier: String = UUID().uuidString, isProject: Bool = false) {
