@@ -54,6 +54,7 @@ extension MainCoordinator: NextTasksDelegate {
     func performUpdates(forTask task: Task, updates: @escaping () throws -> Void) {
         do {
             try taskController.performUpdates(updates)
+            try taskController.saveTask(task)
         } catch {
             NSLog("Error performing object updates: \(error)")
         }

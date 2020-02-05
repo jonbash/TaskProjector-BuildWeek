@@ -20,9 +20,9 @@ class TaskController {
 
     lazy var allTasks: Results<Task>? = { fetch(Task.self) }()
     var nextTasks: [Task] {
-        guard let results = fetch(
-            Task.self,
-            predicate: NSPredicate(format: "isProject == NO"))
+        guard let results = fetch(Task.self, predicate:
+            NSPredicate(format: "isProject == NO AND _state != %@ AND _state != %@",
+            CompletableState.done.rawValue, CompletableState.dropped.rawValue))
             else { return [] }
         var sortedTasks = results.sorted { $0.urgency > $1.urgency }
         if sortedTasks.count > 6 {
@@ -31,7 +31,8 @@ class TaskController {
         return sortedTasks
     }
     lazy var allProjects: Results<Task>? = {
-        fetch(Task.self, predicate: NSPredicate(format: "isProject == YES"))
+        fetch(Task.self, predicate: NSPredicate(
+            format: "isProject == YES"))
     }()
     lazy var topLevelTasks: Results<Task>? = {
         fetch(Task.self,

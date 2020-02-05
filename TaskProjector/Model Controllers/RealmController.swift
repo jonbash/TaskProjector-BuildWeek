@@ -23,9 +23,10 @@ class RealmController {
             /* `schemaVersion`s :
              0: init
              1: add Task.createdDate
+             2: try some non-private Strings
              */
             let config = Realm.Configuration(
-                schemaVersion: 1,
+                schemaVersion: 2,
                 migrationBlock: { _, oldSchemaVersion in
                     if oldSchemaVersion < 1 {
                         return

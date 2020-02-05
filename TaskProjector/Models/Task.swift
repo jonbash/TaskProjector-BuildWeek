@@ -41,11 +41,11 @@ class Task: Object, Category {
 
     // MARK: Private
 
-    private dynamic var _state: String = CompletableState.active.rawValue
+    dynamic var _state: String = CompletableState.active.rawValue
     private(set) dynamic var parentProject: Task?
     private(set) dynamic var parentArea: Area?
     private var _timeEstimate = RealmOptional<Double>()
-    private dynamic var _taskGroupType: String?
+    dynamic var _taskGroupType: String?
 
     // MARK: - Public Computed
 
@@ -230,5 +230,6 @@ class Task: Object, Category {
 
     func toggleComplete() {
         state = (state == .active || state == .onHold) ? .done : .active
+        print(state)
     }
 }

@@ -79,7 +79,9 @@ class TaskTableViewCell: UITableViewCell, TaskView {
     }
 
     func toggleTaskComplete() {
-        task.toggleComplete()
+        delegate?.taskView(self, willPerformUpdatesforTask: task, updates: {
+            self.task.toggleComplete()
+        })
         updateViews()
     }
 }
