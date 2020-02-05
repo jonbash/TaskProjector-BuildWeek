@@ -41,21 +41,23 @@ class AddTaskCoordinator: NSObject, Coordinator {
     // MARK: - Helper Methods
 
     private func addViewController(forState state: NewTaskAttribute) {
-        let vcType: AddTaskViewController.Type = {
+        guard let newVC: AddTaskViewController = {
             switch state {
-            case .title: return TaskTitleViewController.self
-            case .category: return TaskCategoryViewController.self
-            case .timeEstimate: return TaskTimeEstimateViewController.self
-            case .dueDate: return TaskDueDateViewController.self
-            case .tag: return TaskTagViewController.self
-            case .all: return TaskEditAllViewController.self
+            case .title:
+                return viewController(ofType: TaskTitleViewController.self)
+            case .category:
+                return viewController(ofType: TaskCategoryViewController.self)
+            case .timeEstimate:
+                return viewController(ofType: TaskTimeEstimateViewController.self)
+            case .dueDate:
+                return viewController(ofType: TaskDueDateViewController.self)
+            case .tag:
+                return viewController(ofType: TaskTagViewController.self)
+            case .all:
+                return viewController(ofType: TaskEditAllViewController.self)
             }
-        }()
-        guard let newVC = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(
-                withIdentifier: String(describing: vcType.self))
-            as? AddTaskViewController
-            else { return }
+        }() else { return }
+
         newVC.taskCreationClient = self
         navigationController.pushViewController(newVC, animated: true)
     }
@@ -66,6 +68,14 @@ class AddTaskCoordinator: NSObject, Coordinator {
         } catch {
             NSLog("Error performing updates on task: \(error)")
         }
+    }
+
+    private func viewController<AddTaskVC>(
+        ofType type: AddTaskVC.Type
+    ) -> AddTaskVC? where AddTaskVC: AddTaskViewController {
+        UIStoryboard(name: "Main", bundle: nil).instantiateViewController(
+            withIdentifier: String(describing: AddTaskVC.self))
+            as? AddTaskVC
     }
 }
 
@@ -78,15 +88,20 @@ extension AddTaskCoordinator: TaskCreationClient {
 
     func requestNextCreationStep(_ sender: Any) {
         currentState = {
-            if sender as? TaskTitleViewController != nil {
+            if let titleVC = sender as? TaskTitleViewController {
+                task.name = titleVC.taskTitle
                 return .title
-            } else if sender as? TaskCategoryViewController != nil {
+            } else if let categoryVC = sender as? TaskCategoryViewController {
+                task.parent = categoryVC.category
                 return .category
-            } else if sender as? TaskTimeEstimateViewController != nil {
+            } else if let timeEstVC = sender as? TaskTimeEstimateViewController {
+                task.timeEstimate = timeEstVC.timeEstimate
                 return .timeEstimate
-            } else if sender as? TaskDueDateViewController != nil {
+            } else if let dueDateVC = sender as? TaskDueDateViewController {
+                task.dueDate = dueDateVC.dueDate
                 return .dueDate
-            } else if sender as? TaskTagViewController != nil {
+            } else if let tagVC = sender as? TaskTagViewController {
+                if let tag = tagVC.tag { task.tagsAsArray = [tag] }
                 return .tag
             } else {
                 return currentState
@@ -106,30 +121,6 @@ extension AddTaskCoordinator: TaskCreationClient {
     }
 
     // MARK: Task Building
-
-    func taskCreator(
-        _ sender: Any,
-        didSetValue value: Any?,
-        forAttribute attribute: NewTaskAttribute
-    ) {
-        updateTask { [weak self] in
-            switch attribute {
-            case .title:
-                self?.task.name = value as? String ?? ""
-            case .category:
-                self?.task.parent = value as? Category
-            case .timeEstimate:
-                self?.task.timeEstimate = value as? TimeInterval
-            case .dueDate:
-                self?.task.dueDate = value as? Date
-            case .tag:
-                if let tag = value as? Tag {
-                    self?.task.tagsAsArray = [tag]
-                } else { self?.task.tagsAsArray = [] }
-            case .all: break
-            }
-        }
-    }
 
     func requestTaskSave(_ sender: Any) {
         do {

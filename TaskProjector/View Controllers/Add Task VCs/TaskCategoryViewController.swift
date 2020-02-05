@@ -37,6 +37,8 @@ class TaskCategoryViewController: AddTaskViewController {
         super.viewDidLoad()
         categoryPicker.dataSource = taskCreationClient?.categoryPickerDataSource
         categoryPicker.delegate = taskCreationClient?.categoryPickerDataSource
+
+        category = taskCreationClient?.task.parent
     }
 
     @IBAction private func addCategoryButtonTapped(_ sender: UIButton) {

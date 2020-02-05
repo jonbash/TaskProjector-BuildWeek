@@ -12,19 +12,21 @@ class TaskTitleViewController: AddTaskViewController {
 
     @IBOutlet private weak var titleField: UITextField!
 
-    var taskTitle: String? {
-        get { titleField.text }
+    var taskTitle: String {
+        get { titleField.text ?? "" }
         set { titleField.text = newValue }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleField.delegate = self
+        
         if let taskTitle = taskCreationClient?.task.name, !taskTitle.isEmpty {
             title = taskTitle
+            titleField.text = taskTitle
         } else {
             title = "New Task"
         }
-        titleField.delegate = self
     }
 
     // MARK: - TextField Delegate

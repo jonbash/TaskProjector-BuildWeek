@@ -9,7 +9,6 @@
 import Foundation
 
 
-@objc
 protocol TaskCreationClient: AnyObject {
     var task: Task { get }
     var categoryPickerDataSource: CategoryPickerDataSource { get }
@@ -20,7 +19,4 @@ protocol TaskCreationClient: AnyObject {
     func requestTaskSave(_ sender: Any)
     func taskCreator(_ sender: Any, didRequestNewCategory: CategoryType)
     func cancelTaskCreation(_ sender: Any)
-    func taskCreator(_ sender: Any,
-                     didSetValue value: Any?,
-                     forAttribute attribute: NewTaskAttribute)
 }

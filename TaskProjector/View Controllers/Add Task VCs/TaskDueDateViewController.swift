@@ -16,9 +16,16 @@ class TaskDueDateViewController: AddTaskViewController {
     private(set) var dueDate: Date? {
         get { (dueDateSwitch.isOn) ? dueDatePicker.date : nil }
         set {
-            dueDateSwitch.setOn((newValue != nil), animated: true)
+            let hasDueDate = (newValue != nil)
+            dueDateSwitch.setOn(hasDueDate, animated: true)
+            dueDatePicker.isHidden = !hasDueDate
             dueDatePicker.setDate(newValue ?? Date(), animated: true)
         }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        dueDate = taskCreationClient?.task.dueDate
     }
 
     @IBAction private func dueDateChanged(_ sender: Any) {

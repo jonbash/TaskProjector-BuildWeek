@@ -40,7 +40,7 @@ class TaskEditAllViewController: AddTaskViewController {
                 var minutes = Int(time / 60)
                 let hours = minutes / 60
                 minutes -= hours * 60
-                return "\(hours):\(minutes)"
+                return "\(hours)h \(minutes)m"
             } else { return .kNone }
         }()
         dueDateLabel.text = {

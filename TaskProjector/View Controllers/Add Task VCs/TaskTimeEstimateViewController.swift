@@ -16,14 +16,19 @@ class TaskTimeEstimateViewController: AddTaskViewController {
     var timeEstimate: TimeInterval? {
         get { (timeEstimateSwitch.isOn) ? timeEstimatePicker.countDownDuration : nil }
         set {
-            guard let newEstimate = newValue else {
+            if let newEstimate = newValue {
+                timeEstimatePicker.countDownDuration = newEstimate
+                timeEstimateSwitch.isOn = true
+            } else {
                 timeEstimateSwitch.isOn = false
-                return
             }
-            timeEstimateSwitch.isOn = true
-            timeEstimatePicker.countDownDuration = newEstimate
             timeEstimatePicker.isHidden = !timeEstimateSwitch.isOn
         }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        timeEstimate = taskCreationClient?.task.timeEstimate
     }
 
     @IBAction private func timeEstimateChanged(_ sender: Any) {

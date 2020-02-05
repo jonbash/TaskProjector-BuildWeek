@@ -16,7 +16,9 @@ class TaskTagViewController: AddTaskViewController {
     var tag: Tag? {
         get { tagSwitch.isOn ? tagPicker.selectedTag : nil }
         set {
-            tagSwitch.isOn = (newValue != nil)
+            let hasTag = (newValue != nil)
+            tagSwitch.isOn = hasTag
+            tagPicker.isHidden = !hasTag
             tagPicker.selectedTag = newValue
         }
     }
@@ -25,6 +27,8 @@ class TaskTagViewController: AddTaskViewController {
         super.viewDidLoad()
         tagPicker.tagDataSource = taskCreationClient?.tagPickerDataSource
         tagPicker.delegate = taskCreationClient?.tagPickerDataSource
+
+        tag = taskCreationClient?.task.tags.first
     }
 
     @IBAction private func tagChanged(_ sender: Any) {
