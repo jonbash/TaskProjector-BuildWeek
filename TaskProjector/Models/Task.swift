@@ -92,6 +92,16 @@ class Task: Object, Category {
         }
     }
 
+    var urgency: Double {
+        if state == .dropped || state == .done { return 0 }
+        var value: Double = (dueDate == nil) ? 0 : 5
+        value += (timeEstimate == nil) ? 0 : 1
+        value -= (state == .onHold) ? 5 : 0
+        return value + dueDateUrgencyModifier
+            + timeIntervalUrgencyModifier
+            + creationDateUrgencyModifier
+    }
+
     // MARK: - Private Computed
     private var dueDateUrgencyModifier: Double {
         /*
@@ -144,6 +154,34 @@ class Task: Object, Category {
         } else {
             return 0
         }
+    }
+
+    private var timeIntervalUrgencyModifier: Double {
+        guard let timeEst = timeEstimate else { return 0 }
+        if timeEst > 0 && timeEst.hours <= 8 {
+            return Rescaler(
+                from: (lowerBound: 0,
+                       upperBound: TimeInterval(hours: 8)),
+                to: (lowerBound: 0,
+                     upperBound: 5))
+            .rescale(timeEst)
+        } else if timeEst.hours > 8 && timeEst.weeks <= 1 {
+            return Rescaler(
+                from: (lowerBound: TimeInterval(hours: 8),
+                       upperBound: TimeInterval(weeks: 1)),
+                to: (lowerBound: 5,
+                     upperBound: 14))
+            .rescale(timeEst)
+        } else if timeEst.weeks > 1 {
+            return 14
+        } else {
+            return 0
+        }
+    }
+
+    private var creationDateUrgencyModifier: Double {
+        let monthsSinceCreated = createdDate.timeIntervalSinceNow.absoluteValue.months
+        return (monthsSinceCreated >= 12) ? 12 : monthsSinceCreated
     }
 
     // MARK: - Init
