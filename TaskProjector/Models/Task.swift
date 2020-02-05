@@ -20,6 +20,7 @@ class Task: Object, Category {
     dynamic var notes: String = ""
     var tags = List<Tag>()
 
+    dynamic var createdDate: Date = Date()
     dynamic var dueDate: Date?
     dynamic var deferDate: Date?
     dynamic var scheduledDate: Date?
