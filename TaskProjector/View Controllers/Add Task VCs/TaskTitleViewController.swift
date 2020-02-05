@@ -39,7 +39,6 @@ class TaskTitleViewController: AddTaskViewController {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == titleField {
             if let title = textField.text, !title.isEmpty {
-                taskCreationClient?.requestNextCreationStep(self)
                 saveButton.isEnabled = true
                 nextButton?.isEnabled = true
             } else {

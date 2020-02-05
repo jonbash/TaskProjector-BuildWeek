@@ -22,8 +22,10 @@ class CategoryPickerDataSource: NSObject {
     ) -> Category? {
         switch type {
         case .area:
+            guard taskController?.allAreas?.count ?? 0 > row, row > 0 else { return nil }
             return taskController?.allAreas?[row]
         case .project:
+            guard taskController?.allProjects?.count ?? 0 > row, row > 0 else { return nil }
             return taskController?.allProjects?[row]
         default:
             return nil
@@ -68,8 +70,10 @@ extension CategoryPickerDataSource: UIPickerViewDataSource, UIPickerViewDelegate
         }
         switch pickerView.categoryType {
         case .area:
+            guard taskController?.allAreas?.count ?? 0 > 0 else { return nil }
             return taskController?.allAreas?[row].name ?? "?"
         case .project:
+            guard taskController?.allProjects?.count ?? 0 > 0 else { return nil }
             return taskController?.allProjects?[row].name ?? "?"
         default: return "?"
         }

@@ -53,6 +53,4 @@ class TaskCategoryViewController: AddTaskViewController {
         categoryPicker.categoryType = CategoryType(rawValue: typeIndex) ?? .none
         category = categoryPicker.selectedCategory
     }
-
-
 }
