@@ -53,6 +53,7 @@
 		99335ED723EA482700F98187 /* TaskDueDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335ED623EA482700F98187 /* TaskDueDateViewController.swift */; };
 		99335ED923EA495400F98187 /* TaskTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335ED823EA495400F98187 /* TaskTagViewController.swift */; };
 		99335EDA23EA5C8E00F98187 /* TaskEditAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335ED023EA3EE000F98187 /* TaskEditAllViewController.swift */; };
+		99335EDC23EB36DD00F98187 /* TimeInterval+TimePeriods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EDB23EB36DD00F98187 /* TimeInterval+TimePeriods.swift */; };
 		A380E098E5A3D78DED09B773 /* Pods_TaskProjectorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9AA95380ECC2CCD7B9F08C /* Pods_TaskProjectorTests.framework */; };
 		D9BA2C23278BEEFF5CF4976B /* Pods_TaskProjector_TaskProjectorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */; };
 /* End PBXBuildFile section */
@@ -129,6 +130,7 @@
 		99335ED423EA45B800F98187 /* TaskTimeEstimateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTimeEstimateViewController.swift; sourceTree = "<group>"; };
 		99335ED623EA482700F98187 /* TaskDueDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDueDateViewController.swift; sourceTree = "<group>"; };
 		99335ED823EA495400F98187 /* TaskTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTagViewController.swift; sourceTree = "<group>"; };
+		99335EDB23EB36DD00F98187 /* TimeInterval+TimePeriods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+TimePeriods.swift"; sourceTree = "<group>"; };
 		B724FC8131AC8DDBCA68F607 /* Pods_TaskProjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector_TaskProjectorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6F83FC6EEBE92D041878DA /* Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaskProjector-TaskProjectorUITests/Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 			children = (
 				99335E9B23E67BF700F98187 /* UIAlert+Convenience.swift */,
 				99335EC523EA144F00F98187 /* String+Constants.swift */,
+				99335EDB23EB36DD00F98187 /* TimeInterval+TimePeriods.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				992A4E2023E4EF6800DEA71F /* Coordinator.swift in Sources */,
 				99335EBE23E8C7A000F98187 /* NextTasksDelegate.swift in Sources */,
 				99335EB823E87A2D00F98187 /* ShiftableViewController.swift in Sources */,
+				99335EDC23EB36DD00F98187 /* TimeInterval+TimePeriods.swift in Sources */,
 				992A4E2C23E4FF2200DEA71F /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
