@@ -82,13 +82,12 @@ class Task: Object, Category {
     var tagsAsArray: [Tag] {
         get {
             var array = [Tag]()
-            tags.forEach { array.append($0) }
+            array.append(contentsOf: tags)
             return array
         }
         set {
-            let newTags = List<Tag>()
-            newValue.forEach { newTags.append($0) }
-            tags = newTags
+            tags.removeAll()
+            tags.append(objectsIn: newValue)
         }
     }
 

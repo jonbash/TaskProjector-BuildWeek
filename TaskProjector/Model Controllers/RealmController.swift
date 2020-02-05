@@ -70,7 +70,7 @@ class RealmController {
         _ object: Object,
         inContext realm: Realm = RealmController.mainRealm
     ) throws {
-        try realm.write { realm.add(object, update: .modified) }
+        try realm.write { realm.add(object, update: .all) }
     }
 
     func saveObjects(

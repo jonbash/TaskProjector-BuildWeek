@@ -99,8 +99,12 @@ class AddTaskCoordinator: Coordinator {
             updateTask { self.task.dueDate = dueDateVC.dueDate }
             return .dueDate
         } else if let tagVC = addTaskVC as? TaskTagViewController {
-            if let tag = tagVC.tag {
-                updateTask { self.task.tagsAsArray = [tag] }
+            updateTask {
+                if let tag = tagVC.tag {
+                    self.task.tagsAsArray = [tag]
+                } else {
+                    self.task.tagsAsArray = []
+                }
             }
             return .tag
         } else {

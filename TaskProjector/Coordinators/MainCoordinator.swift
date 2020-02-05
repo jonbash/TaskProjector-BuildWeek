@@ -43,7 +43,8 @@ extension MainCoordinator: NextTasksDelegate {
     var nextTasks: [Task] { taskController.nextTasks }
 
     func requestTaskCreation(_ sender: Any?) {
-        addTaskCoordinator.start()
+        addTaskCoordinator.currentState = .title
+        addTaskCoordinator.start(withTask: Task())
     }
 
     func editTask(_ task: Task) {
