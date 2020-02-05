@@ -78,15 +78,15 @@ extension AddTaskCoordinator: TaskCreationClient {
 
     func requestNextCreationStep(_ sender: Any) {
         currentState = {
-            if let _ = sender as? TaskTitleViewController {
+            if sender as? TaskTitleViewController != nil {
                 return .title
-            } else if let _ = sender as? TaskCategoryViewController {
+            } else if sender as? TaskCategoryViewController != nil {
                 return .category
-            } else if let _ = sender as? TaskTimeEstimateViewController {
+            } else if sender as? TaskTimeEstimateViewController != nil {
                 return .timeEstimate
-            } else if let _ = sender as? TaskDueDateViewController {
+            } else if sender as? TaskDueDateViewController != nil {
                 return .dueDate
-            } else if let _ = sender as? TaskTagViewController {
+            } else if sender as? TaskTagViewController != nil {
                 return .tag
             } else {
                 return currentState

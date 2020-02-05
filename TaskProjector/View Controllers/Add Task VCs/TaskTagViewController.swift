@@ -21,6 +21,12 @@ class TaskTagViewController: AddTaskViewController {
         }
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tagPicker.tagDataSource = taskCreationClient?.tagPickerDataSource
+        tagPicker.delegate = taskCreationClient?.tagPickerDataSource
+    }
+
     @IBAction private func tagChanged(_ sender: Any) {
         let hasTag = tagSwitch.isOn
         tagPicker.isHidden = !hasTag
