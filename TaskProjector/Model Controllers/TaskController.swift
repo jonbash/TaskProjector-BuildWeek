@@ -19,7 +19,20 @@ class TaskController {
     // MARK: Tasks
 
     lazy var allTasks: Results<Task>? = { fetch(Task.self) }()
-    var nextTasks: Results<Task>? { allTasks } // TODO: make algorithm for next tasks
+    var nextTasks: [Task] {
+        guard let results = fetch(
+            Task.self,
+            predicate: NSPredicate(format: "isProject == NO"),
+            sorting: Sorting(key: "urgency",
+                             ascending: false))
+            else { return [] }
+        var nextTasks = [Task]()
+        for (i, task) in results.enumerated() {
+            nextTasks.append(task)
+            if i >= 6 { break }
+        }
+        return nextTasks
+    } // TODO: make algorithm for next tasks
     lazy var allProjects: Results<Task>? = {
         fetch(Task.self, predicate: NSPredicate(format: "isProject == YES"))
     }()
