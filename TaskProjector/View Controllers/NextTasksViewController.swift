@@ -69,7 +69,11 @@ class NextTasksViewController: UIViewController {
 
 // MARK: - TableView
 
-extension NextTasksViewController: UITableViewDelegate {}
+extension NextTasksViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+}
 
 extension NextTasksViewController: UITableViewDataSource {
     func tableView(

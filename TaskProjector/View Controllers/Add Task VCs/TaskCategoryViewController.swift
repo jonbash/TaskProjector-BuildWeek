@@ -15,7 +15,9 @@ class TaskCategoryViewController: AddTaskViewController {
 
     var category: Category? {
         get {
-            categoryPicker.selectedCategory
+            guard categorySegmentedControl.selectedSegmentIndex != CategoryType.none.rawValue
+                else { return nil }
+            return categoryPicker.selectedCategory
         }
         set {
             let categoryType: CategoryType = {
@@ -27,30 +29,37 @@ class TaskCategoryViewController: AddTaskViewController {
                     return .none
                 }
             }()
-            categorySegmentedControl.selectedSegmentIndex = categoryType.rawValue
-
             categoryPicker.selectedCategory = newValue
+            categorySegmentedControl.selectedSegmentIndex = categoryType.rawValue
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        categoryPicker.dataSource = taskCreationClient?.categoryPickerDataSource
-        categoryPicker.delegate = taskCreationClient?.categoryPickerDataSource
+        categoryPicker.dataSource = creationClient?.categoryPickerDataSource
+        categoryPicker.delegate = creationClient?.categoryPickerDataSource
 
-        category = taskCreationClient?.task.parent
+        category = creationClient?.task.parent
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let editing = editingClient?.amEditing, editing {
+            editingClient?.finishEditing(self)
+        }
+    }
+
+    // MARK: - Actions
 
     @IBAction private func addCategoryButtonTapped(_ sender: UIButton) {
         if let type = CategoryType(
             rawValue: categorySegmentedControl.selectedSegmentIndex + 1) {
-            taskCreationClient?.taskCreator(self, didRequestNewCategory: type)
+            creationClient?.taskCreator(self, didRequestNewCategory: type)
         }
     }
 
     @IBAction private func categoryChanged(_ sender: Any) {
         let typeIndex = categorySegmentedControl.selectedSegmentIndex
         categoryPicker.categoryType = CategoryType(rawValue: typeIndex) ?? .none
-        category = categoryPicker.selectedCategory
     }
 }

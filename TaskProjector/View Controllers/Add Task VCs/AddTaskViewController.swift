@@ -10,7 +10,9 @@ import UIKit
 
 
 class AddTaskViewController: ShiftableViewController {
-    weak var taskCreationClient: TaskCreationClient?
+
+    weak var creationClient: TaskCreationClient?
+    weak var editingClient: TaskEditingClient?
 
     var nextButton: UIBarButtonItem?
     var saveButton: UIBarButtonItem!
@@ -20,23 +22,24 @@ class AddTaskViewController: ShiftableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpBarButtons()
+        title = creationClient?.task.name ?? "New task"
     }
 
     // MARK: - Actions
 
     /// Default method calls `taskCreationClient?.requestNextCreationStep(self)`
     @objc func nextButtonTapped(_ sender: Any) {
-        taskCreationClient?.requestNextCreationStep(self)
+        creationClient?.requestNextCreationStep(self)
     }
 
     /// Default method calls `taskCreationClient?.requestTaskSave(self)`
     @objc func saveButtonTapped(_ sender: Any) {
-        taskCreationClient?.requestTaskSave(self)
+        creationClient?.requestTaskSave(self)
     }
 
     /// Default method calls `taskCreationClient?.cancelTaskCreation(self)`
     @objc func cancelButtonTapped(_ sender: Any) {
-        taskCreationClient?.cancelTaskCreation(self)
+        creationClient?.cancelTaskCreation(self)
     }
 
     // MARK: Setup
@@ -56,12 +59,14 @@ class AddTaskViewController: ShiftableViewController {
             target: self,
             action: #selector(saveButtonTapped(_:)))
         toolbarItems = [cancelButton, spacer, saveButton, spacer]
-        nextButton = UIBarButtonItem(
-            title: "Next >",
-            style: .plain,
-            target: self,
-            action: #selector(nextButtonTapped(_:)))
-        toolbarItems?.append(nextButton!)
-        nextButton?.isEnabled = !(taskCreationClient?.amEditing ?? true)
+        if let editing = editingClient?.amEditing, !editing {
+            nextButton = UIBarButtonItem(
+                title: "Next >",
+                style: .plain,
+                target: self,
+                action: #selector(nextButtonTapped(_:)))
+            toolbarItems?.append(nextButton!)
+            nextButton?.isEnabled = true
+        }
     }
 }

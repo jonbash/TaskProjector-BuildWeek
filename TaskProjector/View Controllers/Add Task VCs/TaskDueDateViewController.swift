@@ -25,7 +25,14 @@ class TaskDueDateViewController: AddTaskViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        dueDate = taskCreationClient?.task.dueDate
+        dueDate = creationClient?.task.dueDate
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let editing = editingClient?.amEditing, editing {
+            editingClient?.finishEditing(self)
+        }
     }
 
     @IBAction private func dueDateChanged(_ sender: Any) {

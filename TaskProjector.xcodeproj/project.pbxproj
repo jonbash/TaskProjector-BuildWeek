@@ -262,9 +262,9 @@
 		992A4E1A23E4ED5800DEA71F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				99335ECD23EA3E0000F98187 /* Add Task VCs */,
 				992A4E2323E4F36600DEA71F /* NextTasksViewController.swift */,
 				992A4E2423E4F36600DEA71F /* NextTasksViewController.xib */,
+				99335ECD23EA3E0000F98187 /* Add Task VCs */,
 				99335EB723E87A2D00F98187 /* ShiftableViewController.swift */,
 			);
 			path = "View Controllers";

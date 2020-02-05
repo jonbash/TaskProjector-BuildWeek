@@ -25,10 +25,17 @@ class TaskTagViewController: AddTaskViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tagPicker.tagDataSource = taskCreationClient?.tagPickerDataSource
-        tagPicker.delegate = taskCreationClient?.tagPickerDataSource
+        tagPicker.tagDataSource = creationClient?.tagPickerDataSource
+        tagPicker.delegate = creationClient?.tagPickerDataSource
 
-        tag = taskCreationClient?.task.tags.first
+        tag = creationClient?.task.tags.first
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let editing = editingClient?.amEditing, editing {
+            editingClient?.finishEditing(self)
+        }
     }
 
     @IBAction private func tagChanged(_ sender: Any) {

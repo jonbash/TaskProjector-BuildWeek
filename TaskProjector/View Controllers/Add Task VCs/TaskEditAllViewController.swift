@@ -27,14 +27,13 @@ class TaskEditAllViewController: AddTaskViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        taskCreationClient?.finishEditing()
 
         nextButton?.isEnabled = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let task = taskCreationClient?.task else { return }
+        guard let task = creationClient?.task else { return }
 
         titleLabel.text = task.name
         categoryLabel.text = task.parent?.name ?? .kNone
@@ -54,30 +53,25 @@ class TaskEditAllViewController: AddTaskViewController {
         }()
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-
-    }
-
     // MARK: - Actions
 
     @IBAction private func titleLabelTapped(_ sender: Any) {
-        taskCreationClient?.editTask(attribute: .title)
+        editingClient?.editTask(attribute: .title)
     }
 
     @IBAction private func categoryLabelTapped(_ sender: Any) {
-        taskCreationClient?.editTask(attribute: .category)
+        editingClient?.editTask(attribute: .category)
     }
 
     @IBAction private func tagLabelTapped(_ sender: Any) {
-        taskCreationClient?.editTask(attribute: .tag)
+        editingClient?.editTask(attribute: .tag)
     }
 
     @IBAction private func timeEstimateLabelTapped(_ sender: Any) {
-        taskCreationClient?.editTask(attribute: .timeEstimate)
+        editingClient?.editTask(attribute: .timeEstimate)
     }
 
     @IBAction private func dueDateLabelTapped(_ sender: Any) {
-        taskCreationClient?.editTask(attribute: .dueDate)
+        editingClient?.editTask(attribute: .dueDate)
     }
 }

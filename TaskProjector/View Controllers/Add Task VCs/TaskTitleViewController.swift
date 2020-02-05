@@ -21,11 +21,18 @@ class TaskTitleViewController: AddTaskViewController {
         super.viewDidLoad()
         titleField.delegate = self
         
-        if let taskTitle = taskCreationClient?.task.name, !taskTitle.isEmpty {
+        if let taskTitle = creationClient?.task.name, !taskTitle.isEmpty {
             title = taskTitle
             titleField.text = taskTitle
         } else {
             title = "New Task"
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let editing = editingClient?.amEditing, editing {
+            editingClient?.finishEditing(self)
         }
     }
 

@@ -282,106 +282,101 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="LHd-dd-DRs">
-                                <rect key="frame" x="16" y="357" width="382" height="182.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LHd-dd-DRs">
+                                <rect key="frame" x="16" y="333" width="382" height="230"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="749" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QnT-5a-9Sy">
-                                        <rect key="frame" x="0.0" y="0.0" width="119" height="182.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QnT-5a-9Sy">
+                                        <rect key="frame" x="0.0" y="0.0" width="177" height="230"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9l-tN-ydr">
-                                                <rect key="frame" x="0.0" y="0.0" width="119" height="20.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Category: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8No-Sc-2AJ">
-                                                <rect key="frame" x="0.0" y="40.5" width="119" height="20.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Tag:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2l-jE-CVX">
-                                                <rect key="frame" x="0.0" y="81" width="119" height="20.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Time Estimate:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tb8-P2-cih">
-                                                <rect key="frame" x="0.0" y="121.5" width="119" height="20.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Due Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNQ-Ca-vA0">
-                                                <rect key="frame" x="0.0" y="162" width="119" height="20.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaK-LU-eaf">
+                                                <rect key="frame" x="0.0" y="0.0" width="35" height="30"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <state key="normal" title="Title:"/>
+                                                <connections>
+                                                    <action selector="titleLabelTapped:" destination="wH5-dr-QsZ" eventType="touchUpInside" id="po0-m5-eIJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWy-fo-nyl">
+                                                <rect key="frame" x="0.0" y="50" width="68" height="30"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <state key="normal" title="Category:"/>
+                                                <connections>
+                                                    <action selector="categoryLabelTapped:" destination="wH5-dr-QsZ" eventType="touchUpInside" id="gX4-7B-3Xg"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1RT-gL-YiP">
+                                                <rect key="frame" x="0.0" y="100" width="30" height="30"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <state key="normal" title="Tag:"/>
+                                                <connections>
+                                                    <action selector="tagLabelTapped:" destination="wH5-dr-QsZ" eventType="touchUpInside" id="xxf-NZ-MS2"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSj-CZ-rZ4">
+                                                <rect key="frame" x="0.0" y="150" width="102" height="30"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <state key="normal" title="Time Estimate:"/>
+                                                <connections>
+                                                    <action selector="timeEstimateLabelTapped:" destination="wH5-dr-QsZ" eventType="touchUpInside" id="pen-OG-OEg"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WF4-nE-BcV">
+                                                <rect key="frame" x="0.0" y="200" width="68" height="30"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <state key="normal" title="Due Date:"/>
+                                                <connections>
+                                                    <action selector="dueDateLabelTapped:" destination="wH5-dr-QsZ" eventType="touchUpInside" id="0GD-qN-Dk2"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pur-p8-5aX">
-                                        <rect key="frame" x="139" y="0.0" width="243" height="182.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pur-p8-5aX">
+                                        <rect key="frame" x="185" y="0.0" width="197" height="230"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Task Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNR-l3-OVr">
-                                                <rect key="frame" x="0.0" y="0.0" width="243" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="Task Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNR-l3-OVr">
+                                                <rect key="frame" x="0.0" y="0.0" width="73" height="30"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="kee-VE-Xb4" appends="YES" id="wid-b3-cFz"/>
-                                                </connections>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Task Category" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3Z-zF-lhe">
-                                                <rect key="frame" x="0.0" y="40.5" width="243" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="Task Category" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3Z-zF-lhe">
+                                                <rect key="frame" x="0.0" y="50" width="110" height="30"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="Ye1-le-Qa2" appends="YES" id="0LX-fg-99s"/>
-                                                </connections>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Tag" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8y-ew-ZVM">
-                                                <rect key="frame" x="0.0" y="81" width="243" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="Tag" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8y-ew-ZVM">
+                                                <rect key="frame" x="0.0" y="100" width="28" height="30"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="O6j-vb-21T" appends="YES" id="Lpy-Py-0z3"/>
-                                                </connections>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Time Estimate" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fo7-hO-fzU">
-                                                <rect key="frame" x="0.0" y="121.5" width="243" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="Time Estimate" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fo7-hO-fzU">
+                                                <rect key="frame" x="0.0" y="150" width="108.5" height="30"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="7Wf-us-dpN" appends="YES" id="7Im-YX-aGh"/>
-                                                </connections>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7iL-G9-m0a">
-                                                <rect key="frame" x="0.0" y="162" width="243" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7iL-G9-m0a">
+                                                <rect key="frame" x="0.0" y="200" width="71.5" height="30"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="YXu-tg-0pc" appends="YES" id="DrV-2P-beD"/>
-                                                </connections>
                                             </label>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Fo7-hO-fzU" firstAttribute="top" secondItem="Tb8-P2-cih" secondAttribute="top" id="5MG-81-dcV"/>
-                                    <constraint firstItem="DNR-l3-OVr" firstAttribute="top" secondItem="K9l-tN-ydr" secondAttribute="top" id="W5n-7h-e5k"/>
-                                    <constraint firstItem="U8y-ew-ZVM" firstAttribute="top" secondItem="J2l-jE-CVX" secondAttribute="top" id="g1y-W0-jZC"/>
-                                    <constraint firstItem="7iL-G9-m0a" firstAttribute="top" secondItem="bNQ-Ca-vA0" secondAttribute="top" id="pHR-ak-d7c"/>
-                                    <constraint firstItem="u3Z-zF-lhe" firstAttribute="top" secondItem="8No-Sc-2AJ" secondAttribute="top" id="xwK-jR-afT"/>
+                                    <constraint firstItem="U8y-ew-ZVM" firstAttribute="top" secondItem="1RT-gL-YiP" secondAttribute="top" id="4Q4-x4-ZNT"/>
+                                    <constraint firstItem="Fo7-hO-fzU" firstAttribute="top" secondItem="gSj-CZ-rZ4" secondAttribute="top" id="HvZ-98-7MD"/>
+                                    <constraint firstItem="7iL-G9-m0a" firstAttribute="top" secondItem="WF4-nE-BcV" secondAttribute="top" id="esA-TL-m5b"/>
+                                    <constraint firstItem="DNR-l3-OVr" firstAttribute="top" secondItem="aaK-LU-eaf" secondAttribute="top" id="np4-Qb-VOJ"/>
+                                    <constraint firstItem="u3Z-zF-lhe" firstAttribute="top" secondItem="uWy-fo-nyl" secondAttribute="top" id="qGd-Rv-wcn"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -402,31 +397,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXc-dd-6ka" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="kee-VE-Xb4">
-                    <connections>
-                        <action selector="titleLabelTapped:" destination="wH5-dr-QsZ" id="HFN-dn-iF1"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="Ye1-le-Qa2">
-                    <connections>
-                        <action selector="categoryLabelTapped:" destination="wH5-dr-QsZ" id="4QO-4N-gPy"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="O6j-vb-21T">
-                    <connections>
-                        <action selector="tagLabelTapped:" destination="wH5-dr-QsZ" id="t1N-HC-f42"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="7Wf-us-dpN">
-                    <connections>
-                        <action selector="timeEstimateLabelTapped:" destination="wH5-dr-QsZ" id="BLn-9C-LUh"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="YXu-tg-0pc">
-                    <connections>
-                        <action selector="dueDateLabelTapped:" destination="wH5-dr-QsZ" id="GjM-7i-ORL"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3018.840579710145" y="-66.294642857142861"/>
         </scene>

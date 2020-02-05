@@ -28,7 +28,14 @@ class TaskTimeEstimateViewController: AddTaskViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        timeEstimate = taskCreationClient?.task.timeEstimate
+        timeEstimate = creationClient?.task.timeEstimate
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let editing = editingClient?.amEditing, editing {
+            editingClient?.finishEditing(self)
+        }
     }
 
     @IBAction private func timeEstimateChanged(_ sender: Any) {

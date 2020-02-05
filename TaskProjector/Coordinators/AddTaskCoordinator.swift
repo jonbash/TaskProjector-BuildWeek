@@ -59,7 +59,8 @@ class AddTaskCoordinator: NSObject, Coordinator {
             }
         }() else { return }
 
-        newVC.taskCreationClient = self
+        newVC.creationClient = self
+        newVC.editingClient = self
         navigationController.pushViewController(newVC, animated: true)
     }
 
@@ -78,6 +79,28 @@ class AddTaskCoordinator: NSObject, Coordinator {
             withIdentifier: String(describing: AddTaskVC.self))
             as? AddTaskVC
     }
+
+    @discardableResult
+    private func pullAttributes(fromVC addTaskVC: AddTaskViewController?) -> NewTaskAttribute {
+        if let titleVC = addTaskVC as? TaskTitleViewController {
+            task.name = titleVC.taskTitle
+            return .title
+        } else if let categoryVC = addTaskVC as? TaskCategoryViewController {
+            task.parent = categoryVC.category
+            return .category
+        } else if let timeEstVC = addTaskVC as? TaskTimeEstimateViewController {
+            task.timeEstimate = timeEstVC.timeEstimate
+            return .timeEstimate
+        } else if let dueDateVC = addTaskVC as? TaskDueDateViewController {
+            task.dueDate = dueDateVC.dueDate
+            return .dueDate
+        } else if let tagVC = addTaskVC as? TaskTagViewController {
+            if let tag = tagVC.tag { task.tagsAsArray = [tag] }
+            return .tag
+        } else {
+            return currentState
+        }
+    }
 }
 
 // MARK: - Task Creation Client
@@ -88,26 +111,7 @@ extension AddTaskCoordinator: TaskCreationClient {
     }
 
     func requestNextCreationStep(_ sender: Any) {
-        currentState = {
-            if let titleVC = sender as? TaskTitleViewController {
-                task.name = titleVC.taskTitle
-                return .title
-            } else if let categoryVC = sender as? TaskCategoryViewController {
-                task.parent = categoryVC.category
-                return .category
-            } else if let timeEstVC = sender as? TaskTimeEstimateViewController {
-                task.timeEstimate = timeEstVC.timeEstimate
-                return .timeEstimate
-            } else if let dueDateVC = sender as? TaskDueDateViewController {
-                task.dueDate = dueDateVC.dueDate
-                return .dueDate
-            } else if let tagVC = sender as? TaskTagViewController {
-                if let tag = tagVC.tag { task.tagsAsArray = [tag] }
-                return .tag
-            } else {
-                return currentState
-            }
-        }()
+        currentState = pullAttributes(fromVC: sender as? AddTaskViewController)
         currentState.tryIncrement()
 
         addViewController(forState: currentState)
@@ -129,17 +133,22 @@ extension AddTaskCoordinator: TaskCreationClient {
         }
         navigationController.popToRootViewController(animated: true)
     }
+}
 
-    // MARK: - Editing
+// MARK: - Task Editing Client
 
+extension AddTaskCoordinator: TaskEditingClient {
     func editTask(attribute: NewTaskAttribute) {
         amEditing = true
         currentState = attribute
         addViewController(forState: currentState)
     }
 
-    func finishEditing() {
+    func finishEditing(_ sender: Any) {
         amEditing = false
         currentState = .all
+        if let addVC = sender as? AddTaskViewController {
+            pullAttributes(fromVC: addVC)
+        }
     }
 }
