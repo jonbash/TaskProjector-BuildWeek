@@ -13,10 +13,10 @@ class TagDetailViewController: UIViewController {
     weak var tagsCoordinator: TagsCoordinator!
     weak var tag: Tag!
 
-    @IBOutlet weak var titleField: UITextField!
-    @IBOutlet weak var tasksTableView: UITableView!
-    @IBOutlet weak var locationSwitch: UISwitch!
-    @IBOutlet weak var editLocationButton: UIButton!
+    @IBOutlet private weak var titleField: UITextField!
+    @IBOutlet private weak var tasksTableView: UITableView!
+    @IBOutlet private weak var locationSwitch: UISwitch!
+    @IBOutlet private weak var editLocationButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,9 @@ class TagDetailViewController: UIViewController {
 }
 
 extension TagDetailViewController: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 extension TagDetailViewController: UITableViewDataSource {
@@ -52,7 +54,7 @@ extension TagDetailViewController: UITableViewDataSource {
             as? TaskTableViewCell ?? TaskTableViewCell(
                 style: .default,
                 reuseIdentifier: TaskTableViewCell.reuseID)
-        
+
         cell.setUp(self, forTask: tag.tasks[indexPath.row])
         return cell
     }

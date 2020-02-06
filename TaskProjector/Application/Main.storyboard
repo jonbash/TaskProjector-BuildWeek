@@ -51,7 +51,7 @@
         <!--Tags Table View Controller-->
         <scene sceneID="Xfd-6B-bxa">
             <objects>
-                <tableViewController id="u7Q-i8-VGk" customClass="TagsTableViewController" customModule="TaskProjector" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TagsTableViewController" id="u7Q-i8-VGk" customClass="TagsTableViewController" customModule="TaskProjector" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OlU-ez-TwT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,7 +88,7 @@
         <!--Tag Detail View Controller-->
         <scene sceneID="Uee-MJ-Mx2">
             <objects>
-                <viewController id="dI4-dF-4FD" customClass="TagDetailViewController" customModule="TaskProjector" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TagDetailViewController" id="dI4-dF-4FD" customClass="TagDetailViewController" customModule="TaskProjector" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BrY-jN-SJm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -159,18 +159,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NjG-aE-2nd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="386.95652173913044" y="634.82142857142856"/>
+            <point key="canvasLocation" x="313" y="635"/>
         </scene>
-        <!--View Controller-->
+        <!--Tag Map View Controller-->
         <scene sceneID="K9X-na-Dxm">
             <objects>
-                <viewController id="hCz-g1-bOY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TagMapViewController" id="hCz-g1-bOY" customClass="TagMapViewController" customModule="TaskProjector" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="obF-wU-Hgx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="S7A-p7-bxv">
                                 <rect key="frame" x="0.0" y="20" width="414" height="856"/>
+                                <connections>
+                                    <outlet property="delegate" destination="hCz-g1-bOY" id="BjK-uy-Vqv"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -182,10 +185,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CzT-wY-kP1"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="S7A-p7-bxv" id="vEn-vb-HTs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3h-yd-cK4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146.376811594203" y="634.82142857142856"/>
+            <point key="canvasLocation" x="974" y="635"/>
         </scene>
         <!--Task Category View Controller-->
         <scene sceneID="bPr-Nb-pXh">
@@ -411,7 +417,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QGq-H8-fV2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2339" y="-66"/>
+            <point key="canvasLocation" x="2291" y="-66"/>
         </scene>
         <!--Task Edit All View Controller-->
         <scene sceneID="ckL-f8-aTa">
@@ -537,7 +543,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXc-dd-6ka" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3018.840579710145" y="-66.294642857142861"/>
+            <point key="canvasLocation" x="2943" y="-66"/>
         </scene>
     </scenes>
     <resources>
