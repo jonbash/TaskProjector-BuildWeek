@@ -23,12 +23,25 @@ class TagDetailViewController: UIViewController {
         tasksTableView.register(
             UINib(nibName: "TaskTableViewCell", bundle: nil),
             forCellReuseIdentifier: TaskTableViewCell.reuseID)
+        titleField.text = tag.name
+        locationSwitch.isOn = tag.location != nil
+        setLocationButtonHidden()
     }
 
     @IBAction func editLocationTapped(_ sender: UIButton) {
         tagsCoordinator?.editLocation(forTag: tag)
     }
+
+    @IBAction func locationSwitchToggled(_ sender: UISwitch) {
+        setLocationButtonHidden()
+    }
+
+    private func setLocationButtonHidden() {
+        editLocationButton.isHidden = !locationSwitch.isOn
+    }
 }
+
+// MARK: - TableView Delegate/DataSource
 
 extension TagDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -59,6 +72,8 @@ extension TagDetailViewController: UITableViewDataSource {
         return cell
     }
 }
+
+// MARK: - Task View Delegate
 
 extension TagDetailViewController: TaskViewDelegate {
     func taskView(_ taskView: TaskView, didRequestStateSelectorForTask task: Task) {

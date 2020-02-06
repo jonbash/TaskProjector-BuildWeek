@@ -116,6 +116,9 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="znj-0j-4hP">
                                 <rect key="frame" x="102" y="811" width="51" height="31"/>
+                                <connections>
+                                    <action selector="locationSwitchToggled:" destination="dI4-dF-4FD" eventType="valueChanged" id="vJ8-E2-fr5"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tasks:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1W-qO-bnm">
                                 <rect key="frame" x="20" y="119" width="48" height="21"/>
