@@ -16,6 +16,7 @@ class TagMapViewController: UIViewController {
 
     weak var tagsCoordinator: TagsCoordinator?
     var locationHelper = LocationHelper()
+    var editingTag: Tag?
 
     // MARK: - View Lifecycle
 
@@ -41,7 +42,7 @@ class TagMapViewController: UIViewController {
         let touchPoint = sender.location(in: mapView)
         let location = mapView.convert(touchPoint, toCoordinateFrom: mapView)
         do {
-            try tagsCoordinator?.setLocation(location)
+            try tagsCoordinator?.setTagLocation(location)
         } catch {
             NSLog("Error setting tag location: \(error)")
         }

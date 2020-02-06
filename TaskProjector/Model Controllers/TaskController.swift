@@ -55,7 +55,7 @@ class TaskController {
     }()
     lazy var tagsWithLocations: Results<Tag>? = {
         fetch(Tag.self,
-              predicate: NSPredicate(format:"latitude != nil AND longitude != nil"))
+              predicate: NSPredicate(format: "latitude != nil AND longitude != nil"))
     }()
     var tagLocationAnnotations: [Tag.MapAnnotation] {
         tagsWithLocations?.compactMap { $0.mapAnnotation } ?? []
