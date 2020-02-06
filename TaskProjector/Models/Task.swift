@@ -223,7 +223,7 @@ class Task: Object, Category {
     // MARK: - Realm Overrides
 
     override var description: String {
-        "\"\(name)\" - \(state) task (\(identifier))"
+        "Task \"\(name)\" - \(state) (\(identifier))"
     }
 
     override static func primaryKey() -> String? { "identifier" }

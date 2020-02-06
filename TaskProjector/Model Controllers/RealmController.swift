@@ -24,9 +24,10 @@ class RealmController {
              0: init
              1: add Task.createdDate
              2: try some non-private Strings
+             3: primary keys added to Area, Tag
              */
             let config = Realm.Configuration(
-                schemaVersion: 2,
+                schemaVersion: 3,
                 migrationBlock: { _, oldSchemaVersion in
                     if oldSchemaVersion < 1 {
                         return
