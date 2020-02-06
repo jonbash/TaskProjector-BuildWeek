@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class MainCoordinator: Coordinator {
     let window: UIWindow
@@ -39,6 +40,7 @@ class MainCoordinator: Coordinator {
     }
 }
 
+
 // MARK: - Next Tasks Delegate
 
 extension MainCoordinator: NextTasksDelegate {
@@ -66,5 +68,14 @@ extension MainCoordinator: NextTasksDelegate {
         } catch {
             NSLog("Error performing object updates: \(error)")
         }
+    }
+}
+
+
+// MARK: - Nearby Tasks Delegate
+
+extension MainCoordinator: NearbyTasksDelegate {
+    func tasksNear(region: CLCircularRegion) -> [Task] {
+        taskController.tasksNearby(region)
     }
 }

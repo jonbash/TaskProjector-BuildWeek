@@ -6,7 +6,7 @@
 //  Copyright © 2020 Jon Bash. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol TaskViewDelegate: AnyObject {
     func taskView(_ taskView: TaskView, didRequestStateSelectorForTask task: Task)

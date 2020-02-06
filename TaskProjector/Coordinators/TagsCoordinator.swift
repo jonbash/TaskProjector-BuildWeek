@@ -96,7 +96,6 @@ class TagsCoordinator: Coordinator {
         }
         try taskController.saveTag(tag)
     }
-
     // MARK: - Private Helpers
 
     private func push(_ viewController: UIViewController) {

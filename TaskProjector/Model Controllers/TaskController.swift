@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import CoreLocation
 
 class TaskController {
     private var realmController: RealmController
@@ -19,12 +20,14 @@ class TaskController {
     // MARK: Tasks
 
     lazy var allTasks: Results<Task>? = { fetch(Task.self) }()
-    var nextTasks: [Task] {
-        guard let results = fetch(Task.self, predicate:
+    lazy var availableTasks: Results<Task>? = {
+        fetch(Task.self, predicate:
             NSPredicate(format: "isProject == NO AND _state != %@ AND _state != %@",
                         CompletableState.done.rawValue,
                         CompletableState.dropped.rawValue))
-            else { return [] }
+    }()
+    var nextTasks: [Task] {
+        guard let results = availableTasks else { return [] }
         var sortedTasks = results.sorted { $0.urgency > $1.urgency }
         if sortedTasks.count > 6 {
             sortedTasks.removeLast(sortedTasks.count - 6)
@@ -106,6 +109,22 @@ class TaskController {
 
     func saveTask(_ task: Task) throws {
         try realmController.save(task)
+    }
+
+    func tasksNearby(_ region: CLCircularRegion) -> [Task] {
+        guard let tags = tagsWithLocations else { return [] }
+        var nearbyTasks = [Task]()
+        for tag in tags {
+            guard let location = tag.location else { continue }
+            if region.contains(location) {
+                for task in tag.tasks {
+                    if !nearbyTasks.contains(task) {
+                        nearbyTasks.append(task)
+                    }
+                }
+            }
+        }
+        return nearbyTasks
     }
 
     // MARK: - Tag Methods
