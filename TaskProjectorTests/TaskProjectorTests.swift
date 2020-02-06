@@ -8,7 +8,61 @@
 
 import XCTest
 @testable import TaskProjector
+@testable import RealmSwift
 
 class TaskProjectorTests: XCTestCase {
+    var testRealm: Realm!
+    var realmController: RealmController!
+    var taskController: TaskController!
 
+    override func setUp() {
+        super.setUp()
+        testRealm = try? Realm(configuration: Realm.Configuration(
+            inMemoryIdentifier: "TaskProjectorTestRealm \(UUID().uuidString)"))
+        realmController = RealmController(testRealm)
+        taskController = TaskController(realmController)
+    }
+
+    // MARK: - Realm Controller Tests
+
+    func testCreateTask() {
+        XCTAssertNoThrow(try createAndSaveTask())
+    }
+
+    func testModifyTask() throws {
+        let dueDate = Date()
+        let name = "Task name"
+
+        let task = try createAndSaveTask()
+
+        try realmController.performUpdates(inContext: testRealm) {
+            task.name = name
+            task.dueDate = dueDate
+        }
+
+        XCTAssertEqual(task.name, name)
+        XCTAssertEqual(task.dueDate, dueDate)
+    }
+
+    func testFetchTasks() throws {
+        for i in 0..<100 {
+            try createAndSaveTask(withName: "task \(i)")
+        }
+        let tasks = try realmController.fetch(Task.self, fromContext: testRealm)
+        XCTAssertEqual(tasks.count, 100)
+    }
+
+    // MARK: - Task Controller Tests
+
+    // MARK: - Misc Tests
+
+
+    // MARK: - Helper methods
+
+    @discardableResult
+    func createAndSaveTask(withName name: String = "Test") throws -> Task {
+        let task = Task(name: name)
+        try realmController.save(task, inContext: testRealm)
+        return task
+    }
 }
