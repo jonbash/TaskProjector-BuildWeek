@@ -14,5 +14,6 @@ protocol NextTasksDelegate: AnyObject {
     func requestTaskCreation(_ sender: Any?)
     func editTask(_ task: Task)
     func viewTags()
+    func viewNearbyTasks()
     func performUpdates(forTask task: Task, updates: @escaping () throws -> Void)
 }

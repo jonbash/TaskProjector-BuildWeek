@@ -61,6 +61,14 @@ extension MainCoordinator: NextTasksDelegate {
         tagsCoordinator.start()
     }
 
+    func viewNearbyTasks() {
+        guard let nearbyTasksVC = NearbyTasksViewController
+            .initFromStoryboard(withName: "Main")
+            else { return }
+        nearbyTasksVC.delegate = self
+        navigationController.pushViewController(nearbyTasksVC, animated: true)
+    }
+
     func performUpdates(forTask task: Task, updates: @escaping () throws -> Void) {
         do {
             try taskController.performUpdates(updates)

@@ -39,11 +39,19 @@ class NextTasksViewController: UIViewController {
         let addButton = UIBarButtonItem(barButtonSystemItem: .add,
                                         target: self,
                                         action: #selector(createTask(_:)))
+        let nearbyButton = UIBarButtonItem(title: "Nearby",
+                                           style: .plain,
+                                           target: self,
+                                           action: #selector(viewNearbyTasks(_:)))
         let tagsButton = UIBarButtonItem(title: "Tags",
                                          style: .plain,
                                          target: self,
                                          action: #selector(viewTags(_:)))
-        setToolbarItems([addButton, tagsButton], animated: false)
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                     target: nil,
+                                     action: nil)
+        setToolbarItems([addButton, spacer, nearbyButton, spacer, tagsButton],
+                        animated: false)
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self,
                                             action: #selector(refreshTableView(_:)),
@@ -60,6 +68,11 @@ class NextTasksViewController: UIViewController {
     @objc
     func viewTags(_ sender: Any) {
         delegate?.viewTags()
+    }
+
+    @objc
+    func viewNearbyTasks(_ sender: Any) {
+        delegate?.viewNearbyTasks()
     }
 
     @objc

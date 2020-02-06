@@ -27,6 +27,7 @@ class NearbyTasksViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Tasks Nearby"
         tableView.register(
             UINib(nibName: "TaskTableViewCell", bundle: nil),
             forCellReuseIdentifier: TaskTableViewCell.reuseID)
@@ -44,7 +45,7 @@ class NearbyTasksViewController: UITableViewController {
         }
     }
 
-    // MARK: - Table view data source
+    // MARK: - Tableview data source / Delegate
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tasks.count
@@ -61,6 +62,13 @@ class NearbyTasksViewController: UITableViewController {
         cell.setUp(self, forTask: task)
 
         return cell
+    }
+
+    override func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

@@ -12,6 +12,15 @@ class TaskTableViewCell: UITableViewCell, TaskView {
 
     static let reuseID: String = "TaskCell"
 
+    var task: Task!
+    weak var delegate: TaskViewDelegate?
+
+    lazy var checkboxLongPress = UILongPressGestureRecognizer(
+        target: self,
+        action: #selector(completeButtonLongPressed(_:)))
+
+    // MARK: - SubViews
+
     @IBOutlet private weak var taskNameLabel: UILabel!
     @IBOutlet private weak var checkmarkButton: UIButton! {
         didSet {
@@ -20,12 +29,7 @@ class TaskTableViewCell: UITableViewCell, TaskView {
     }
     @IBOutlet private weak var tagsStackView: UIStackView!
 
-    var task: Task!
-    weak var delegate: TaskViewDelegate?
-
-    lazy var checkboxLongPress = UILongPressGestureRecognizer(
-        target: self,
-        action: #selector(completeButtonLongPressed(_:)))
+    // MARK: - Overrides
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +39,29 @@ class TaskTableViewCell: UITableViewCell, TaskView {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+
+    func toggleTaskComplete() {
+        delegate?.taskView(self, willPerformUpdatesforTask: task, updates: {
+            self.task.toggleComplete()
+        })
+        updateViews()
+    }
+
+    // MARK: - Actions
+
+    @IBAction func completeButtonTapped(_ sender: UIButton) {
+        toggleTaskComplete()
+    }
+
+    @objc func completeButtonLongPressed(
+        _ sender: UILongPressGestureRecognizer
+    ) {
+        if sender.state == .began {
+            delegate?.taskView(self, didRequestStateSelectorForTask: task)
+        }
+    }
+
+    // MARK: - Setup/Update
 
     func setUp(_ delegate: TaskViewDelegate, forTask task: Task) {
         self.task = task
@@ -64,24 +91,5 @@ class TaskTableViewCell: UITableViewCell, TaskView {
         } else {
             backgroundColor = .systemBackground
         }
-    }
-
-    @IBAction func completeButtonTapped(_ sender: UIButton) {
-        toggleTaskComplete()
-    }
-
-    @objc func completeButtonLongPressed(
-        _ sender: UILongPressGestureRecognizer
-    ) {
-        if sender.state == .began {
-            delegate?.taskView(self, didRequestStateSelectorForTask: task)
-        }
-    }
-
-    func toggleTaskComplete() {
-        delegate?.taskView(self, willPerformUpdatesforTask: task, updates: {
-            self.task.toggleComplete()
-        })
-        updateViews()
     }
 }
