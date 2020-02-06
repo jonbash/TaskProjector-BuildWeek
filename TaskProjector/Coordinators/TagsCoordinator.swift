@@ -13,10 +13,13 @@ class TagsCoordinator: Coordinator {
     var navigationController: UINavigationController
 
     var taskController: TaskController
-    lazy var locationHelper = LocationHelper()
 
     var tagCount: Int {
         taskController.allTags?.count ?? 0
+    }
+    var currentTag: Tag?
+    var tagMapAnnotations: [Tag.MapAnnotation] {
+        taskController.tagLocationAnnotations
     }
 
     // MARK: - Init / Start
@@ -48,7 +51,11 @@ class TagsCoordinator: Coordinator {
 
     }
 
-    func setLocation(_ location: CLLocationCoordinate2D, forTag tag: Tag) {
-
+    func setLocation(_ location: CLLocationCoordinate2D?, forTag tag: Tag? = nil) throws {
+        guard let tag = tag ?? currentTag else { return }
+        try taskController.performUpdates {
+            tag.location = location
+        }
+        try taskController.saveTag(tag)
     }
 }

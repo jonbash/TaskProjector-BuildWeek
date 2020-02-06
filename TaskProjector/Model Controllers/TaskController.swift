@@ -53,6 +53,13 @@ class TaskController {
     lazy var topLevelTags: Results<Tag>? = {
         fetch(Tag.self, predicate: NSPredicate(format: "parent == nil"))
     }()
+    lazy var tagsWithLocations: Results<Tag>? = {
+        fetch(Tag.self,
+              predicate: NSPredicate(format:"latitude != nil AND longitude != nil"))
+    }()
+    var tagLocationAnnotations: [Tag.MapAnnotation] {
+        tagsWithLocations?.compactMap { $0.mapAnnotation } ?? []
+    }
 
     // MARK: - Init
 
