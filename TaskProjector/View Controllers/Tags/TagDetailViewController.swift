@@ -41,6 +41,28 @@ class TagDetailViewController: UIViewController {
     }
 }
 
+extension TagDetailViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == titleField {
+            guard let title = textField.text, !title.isEmpty else {
+                return false
+            }
+        }
+        return true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == titleField {
+            do {
+                try tagsCoordinator.setTagTitle(titleField.text ?? tag.name,
+                                                tag: tag)
+            } catch {
+                NSLog("Error setting tag title: \(error)")
+            }
+        }
+    }
+}
+
 // MARK: - TableView Delegate/DataSource
 
 extension TagDetailViewController: UITableViewDelegate {
