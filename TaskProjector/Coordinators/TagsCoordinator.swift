@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class TagsCoordinator: Coordinator {
     var navigationController: UINavigationController
@@ -15,6 +16,8 @@ class TagsCoordinator: Coordinator {
     var tagCount: Int {
         taskController.allTags?.count ?? 0
     }
+
+    // MARK: - Init / Start
 
     init(navController: UINavigationController, taskController: TaskController) {
         self.navigationController = navController
@@ -25,11 +28,25 @@ class TagsCoordinator: Coordinator {
 
     }
 
+    // MARK: - Public Methods
+
     func tag(forIndexPath indexPath: IndexPath) -> Tag? {
         taskController.allTags?[indexPath.row]
     }
 
     func viewTagDetails(forIndex indexPath: IndexPath) {
+
+    }
+
+    func setTitle(_ title: String, forTag tag: Tag) {
+        
+    }
+
+    func editLocation(forTag tag: Tag) {
+
+    }
+
+    func setLocation(_ location: CLLocationCoordinate2D, forTag tag: Tag) {
 
     }
 }
