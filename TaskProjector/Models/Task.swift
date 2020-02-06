@@ -203,7 +203,10 @@ class Task: Object, Category {
 
     // MARK: - Init
 
-    convenience init(name: String, identifier: String = UUID().uuidString, isProject: Bool = false) {
+    convenience init(name: String,
+                     identifier: String = UUID().uuidString,
+                     isProject: Bool = false
+    ) {
         self.init()
         self.name = name
         self.identifier = identifier
@@ -217,7 +220,7 @@ class Task: Object, Category {
         super.init()
     }
 
-    // MARK: - Overrides
+    // MARK: - Realm Overrides
 
     override var description: String {
         "\"\(name)\" - \(state) task (\(identifier))"

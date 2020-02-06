@@ -60,6 +60,7 @@
 		99335EE423EB8FAD00F98187 /* TagsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EE323EB8FAD00F98187 /* TagsCoordinator.swift */; };
 		99335EE623EB965700F98187 /* TagDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EE523EB965700F98187 /* TagDetailViewController.swift */; };
 		99335EE923EBA0C400F98187 /* TagMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EE823EBA0C400F98187 /* TagMapViewController.swift */; };
+		99335EED23EC63A000F98187 /* Tag+MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EEC23EC63A000F98187 /* Tag+MapAnnotation.swift */; };
 		A380E098E5A3D78DED09B773 /* Pods_TaskProjectorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9AA95380ECC2CCD7B9F08C /* Pods_TaskProjectorTests.framework */; };
 		D9BA2C23278BEEFF5CF4976B /* Pods_TaskProjector_TaskProjectorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */; };
 /* End PBXBuildFile section */
@@ -143,6 +144,7 @@
 		99335EE323EB8FAD00F98187 /* TagsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCoordinator.swift; sourceTree = "<group>"; };
 		99335EE523EB965700F98187 /* TagDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDetailViewController.swift; sourceTree = "<group>"; };
 		99335EE823EBA0C400F98187 /* TagMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagMapViewController.swift; sourceTree = "<group>"; };
+		99335EEC23EC63A000F98187 /* Tag+MapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+MapAnnotation.swift"; sourceTree = "<group>"; };
 		B724FC8131AC8DDBCA68F607 /* Pods_TaskProjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector_TaskProjectorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6F83FC6EEBE92D041878DA /* Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaskProjector-TaskProjectorUITests/Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				992A4E3623E500E500DEA71F /* Task.swift */,
 				992A4E3A23E500F000DEA71F /* Area.swift */,
 				992A4E3C23E500FC00DEA71F /* Tag.swift */,
+				99335EEC23EC63A000F98187 /* Tag+MapAnnotation.swift */,
 				992A4E2F23E5003A00DEA71F /* Enums */,
 				992A4E2A23E4FE3F00DEA71F /* Protocols */,
 			);
@@ -671,6 +674,7 @@
 				99335EB223E7B86400F98187 /* TaskCreationClient.swift in Sources */,
 				992A4E3323E5005A00DEA71F /* CompletableState.swift in Sources */,
 				99335ED323EA43CE00F98187 /* TaskCategoryViewController.swift in Sources */,
+				99335EED23EC63A000F98187 /* Tag+MapAnnotation.swift in Sources */,
 				99335ED923EA495400F98187 /* TaskTagViewController.swift in Sources */,
 				99335EC823EA224B00F98187 /* CategoryPickerDataSource.swift in Sources */,
 				99335EE023EB718500F98187 /* DueState.swift in Sources */,
