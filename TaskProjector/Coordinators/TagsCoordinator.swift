@@ -58,7 +58,7 @@ class TagsCoordinator: Coordinator {
         currentTag = tag
         detailVC.tag = tag
         detailVC.tagsCoordinator = self
-        
+        push(detailVC)
     }
 
     func editLocation(forTag tag: Tag? = nil) {
@@ -72,6 +72,7 @@ class TagsCoordinator: Coordinator {
             else { return }
         mapVC.tagsCoordinator = self
         mapVC.editingTag = tag
+        push(mapVC)
     }
 
     // MARK: - Child API

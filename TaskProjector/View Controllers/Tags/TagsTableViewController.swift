@@ -14,6 +14,7 @@ class TagsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Tags"
         self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
