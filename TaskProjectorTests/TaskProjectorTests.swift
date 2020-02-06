@@ -56,6 +56,19 @@ class TaskProjectorTests: XCTestCase {
 
     // MARK: - Misc Tests
 
+    func testRescaler() {
+        let rescaler = Rescaler(from: (lowerBound: 0, upperBound: 10),
+                                to: (lowerBound: 100, upperBound: 200))
+        XCTAssertEqual(rescaler.rescale(5), 150)
+        XCTAssertEqual(rescaler.rescale(0.25), 102.5)
+    }
+
+    func testRescalerReverse() {
+        let reverseRescaler = Rescaler(from: (lowerBound: 0, upperBound: 1),
+                                       to: (lowerBound: 100, upperBound: 0))
+        XCTAssertEqual(reverseRescaler.rescale(0.1), 90)
+        XCTAssertEqual(reverseRescaler.rescale(1), 0)
+    }
 
     // MARK: - Helper methods
 
