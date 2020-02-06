@@ -75,8 +75,8 @@ class TagMapViewController: UIViewController {
             MKCoordinateRegion(
                 center: location,
                 span: MKCoordinateSpan(
-                    latitudeDelta: 0.25,
-                    longitudeDelta: 0.25)),
+                    latitudeDelta: 0.05,
+                    longitudeDelta: 0.05)),
             animated: true)
     }
 

@@ -95,9 +95,13 @@ class Task: Object, Category {
         if state == .dropped || state == .done {
             return 0
         }
-        var value: Double = (dueDate == nil) ? 0 : 5
-        value += (timeEstimate == nil) ? 0 : 1
-        value -= (state == .onHold) ? 5 : 0
+        var value: Double = 0
+        if dueDate != nil {
+            value += 5
+        }
+        if state == .onHold {
+            value -= 5
+        }
         return value + dueDateUrgencyModifier
             + timeIntervalUrgencyModifier
             + creationDateUrgencyModifier

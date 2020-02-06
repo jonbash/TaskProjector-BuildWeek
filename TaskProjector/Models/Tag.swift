@@ -31,7 +31,7 @@ class Tag: Object {
         }
         set {
             latitude.value = newValue?.latitude
-            longitude.value = newValue?.latitude
+            longitude.value = newValue?.longitude
         }
     }
 
