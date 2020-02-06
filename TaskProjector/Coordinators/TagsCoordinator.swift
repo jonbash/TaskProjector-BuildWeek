@@ -11,7 +11,9 @@ import CoreLocation
 
 class TagsCoordinator: Coordinator {
     var navigationController: UINavigationController
+
     var taskController: TaskController
+    lazy var locationHelper = LocationHelper()
 
     var tagCount: Int {
         taskController.allTags?.count ?? 0
