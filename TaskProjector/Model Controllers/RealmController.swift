@@ -34,19 +34,22 @@ class RealmController {
         }
     }()
 
-    init() {
-        guard let realmURL = RealmController.mainRealm.configuration.fileURL else {
-            NSLog("Realm file URL not found")
-            return
-        }
-        NSLog("Realm file: \(realmURL)")
+    private static var usingRealm: Realm?
+
+    private var _realm: Realm?
+    private var realm: Realm {
+        _realm ?? RealmController.mainRealm
+    }
+
+    init(_ realm: Realm? = nil) {
+        RealmController.usingRealm = realm
     }
 
     // MARK: - Public Methods
 
     func fetch<T: Object>(
         _ model: T.Type,
-        fromContext realm: Realm = RealmController.mainRealm,
+        fromContext realm: Realm = usingRealm ?? mainRealm,
         predicate: NSPredicate? = nil,
         sorting: Sorting? = nil
     ) throws -> Results<T> {
@@ -63,20 +66,20 @@ class RealmController {
 
     func save(
         _ object: Object,
-        inContext realm: Realm = RealmController.mainRealm
+        inContext realm: Realm = usingRealm ?? mainRealm
     ) throws {
         try realm.write { realm.add(object, update: .all) }
     }
 
     func saveObjects(
         _ objects: [Object],
-        inContext realm: Realm = RealmController.mainRealm
+        inContext realm: Realm = usingRealm ?? mainRealm
     ) throws {
         try realm.write { realm.add(objects) }
     }
 
     func performUpdates(
-        inContext realm: Realm = RealmController.mainRealm,
+        inContext realm: Realm = usingRealm ?? mainRealm,
         _ updates: () throws -> Void
     ) throws {
         try realm.write(updates)
@@ -84,14 +87,14 @@ class RealmController {
 
     func delete(
         _ object: Object,
-        inContext realm: Realm = RealmController.mainRealm
+        inContext realm: Realm = usingRealm ?? mainRealm
     ) throws {
         try realm.write { realm.delete(object) }
     }
 
     func deleteAll<T: Object>(
         _ model: T.Type,
-        inContext realm: Realm = RealmController.mainRealm
+        inContext realm: Realm = usingRealm ?? mainRealm
     ) throws {
         try realm.write {
             let objects = realm.objects(model.self)
