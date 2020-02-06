@@ -10,20 +10,23 @@ import Foundation
 import MapKit
 
 extension Tag {
-    var mapAnnotation: MapAnnotation? {
+    var mapAnnotation: TagMapAnnotation? {
         guard location != nil else { return nil }
-        return MapAnnotation(tag: self)
+        return TagMapAnnotation(tag: self)
     }
+}
 
-    class MapAnnotation: NSObject, MKAnnotation {
-        unowned var tag: Tag
+class TagMapAnnotation: NSObject, MKAnnotation {
+    let title: String?
+    let coordinate: CLLocationCoordinate2D
 
-        var title: String? { tag.name }
-        var coordinate: CLLocationCoordinate2D { tag.location! }
+    let tagIdentifier: String
 
-        init?(tag: Tag) {
-            guard tag.location != nil else { return nil }
-            self.tag = tag
-        }
+    init?(tag: Tag) {
+        guard tag.location != nil else { return nil }
+        
+        self.tagIdentifier = tag.identifier
+        self.title = tag.name
+        self.coordinate = tag.location!
     }
 }

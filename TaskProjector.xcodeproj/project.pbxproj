@@ -64,6 +64,7 @@
 		99335EEF23EC652F00F98187 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EEE23EC652F00F98187 /* LocationHelper.swift */; };
 		99335EF123EC77B500F98187 /* UIViewController+InitFromSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EF023EC77B500F98187 /* UIViewController+InitFromSB.swift */; };
 		99335EF323EC789300F98187 /* StoryboardInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EF223EC789300F98187 /* StoryboardInitializable.swift */; };
+		99335EF523ECA82200F98187 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EF423ECA82200F98187 /* Sorting.swift */; };
 		A380E098E5A3D78DED09B773 /* Pods_TaskProjectorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9AA95380ECC2CCD7B9F08C /* Pods_TaskProjectorTests.framework */; };
 		D9BA2C23278BEEFF5CF4976B /* Pods_TaskProjector_TaskProjectorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */; };
 /* End PBXBuildFile section */
@@ -151,6 +152,7 @@
 		99335EEE23EC652F00F98187 /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		99335EF023EC77B500F98187 /* UIViewController+InitFromSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+InitFromSB.swift"; sourceTree = "<group>"; };
 		99335EF223EC789300F98187 /* StoryboardInitializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInitializable.swift; sourceTree = "<group>"; };
+		99335EF423ECA82200F98187 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 		B724FC8131AC8DDBCA68F607 /* Pods_TaskProjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector_TaskProjectorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6F83FC6EEBE92D041878DA /* Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaskProjector-TaskProjectorUITests/Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				99335EDB23EB36DD00F98187 /* TimeInterval+TimePeriods.swift */,
 				99335EDD23EB3EEB00F98187 /* Rescaler.swift */,
 				99335EF023EC77B500F98187 /* UIViewController+InitFromSB.swift */,
+				99335EF423ECA82200F98187 /* Sorting.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 				99335ECA23EA246F00F98187 /* TagPickerDataSource.swift in Sources */,
 				99335EA823E7774600F98187 /* TagSubview.swift in Sources */,
 				99335EEF23EC652F00F98187 /* LocationHelper.swift in Sources */,
+				99335EF523ECA82200F98187 /* Sorting.swift in Sources */,
 				992A4DEC23E4EB1B00DEA71F /* SceneDelegate.swift in Sources */,
 				99335EE423EB8FAD00F98187 /* TagsCoordinator.swift in Sources */,
 				99335ED523EA45B800F98187 /* TaskTimeEstimateViewController.swift in Sources */,

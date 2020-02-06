@@ -22,7 +22,7 @@ class TagsCoordinator: Coordinator {
     var tagCount: Int {
         taskController.allTags?.count ?? 0
     }
-    var tagMapAnnotations: [Tag.MapAnnotation] {
+    var tagMapAnnotations: [TagMapAnnotation] {
         taskController.tagLocationAnnotations
     }
 

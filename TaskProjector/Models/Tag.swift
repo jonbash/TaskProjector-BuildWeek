@@ -42,5 +42,6 @@ class Tag: Object {
     }
 
     override var description: String { "Tag \"\(name)\" (\(identifier))" }
+    
     override static func primaryKey() -> String? { "identifier" }
 }

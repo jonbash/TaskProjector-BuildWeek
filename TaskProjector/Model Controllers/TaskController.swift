@@ -57,7 +57,7 @@ class TaskController {
         fetch(Tag.self,
               predicate: NSPredicate(format: "latitude != nil AND longitude != nil"))
     }()
-    var tagLocationAnnotations: [Tag.MapAnnotation] {
+    var tagLocationAnnotations: [TagMapAnnotation] {
         tagsWithLocations?.compactMap { $0.mapAnnotation } ?? []
     }
 

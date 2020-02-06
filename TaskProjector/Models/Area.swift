@@ -27,5 +27,6 @@ class Area: Object, Category {
     }
 
     override var description: String { "Area \"\(name)\" (\(identifier))" }
+    
     override static func primaryKey() -> String? { "identifier" }
 }

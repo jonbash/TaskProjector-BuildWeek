@@ -10,6 +10,8 @@ import CoreLocation
 
 class LocationHelper: NSObject {
 
+    weak var delegate: LocationHelperDelegate?
+
     private(set) var currentLocation: CLLocationCoordinate2D?
 
     /// Returns nil if permission has not been requseted yet.
@@ -51,7 +53,11 @@ class LocationHelper: NSObject {
     }
 
     func beginUpdatingLocation() {
-        if let hasPermission = hasLocationPermission, hasPermission {
+        if let hasPermission = hasLocationPermission {
+            guard hasPermission else {
+                NSLog("Location permission denied")
+                return
+            }
             locationManager.requestLocation()
             locationManager.startMonitoringSignificantLocationChanges()
         } else if hasLocationPermission == nil {
@@ -74,6 +80,7 @@ extension LocationHelper: CLLocationManagerDelegate {
     ) {
         if let mostRecentLocation = locations.last?.coordinate {
             currentLocation = mostRecentLocation
+            delegate?.currentLocationDidChange(to: mostRecentLocation)
         }
     }
 
@@ -83,4 +90,10 @@ extension LocationHelper: CLLocationManagerDelegate {
     ) {
         NSLog("Error with location: \(error)")
     }
+}
+
+// MARK: Location Helper Delegate
+
+protocol LocationHelperDelegate: AnyObject {
+    func currentLocationDidChange(to newLocation: CLLocationCoordinate2D)
 }
