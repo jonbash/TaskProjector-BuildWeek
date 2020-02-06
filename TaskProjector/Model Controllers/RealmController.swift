@@ -10,12 +10,6 @@ import Foundation
 import RealmSwift
 
 
-struct Sorting {
-    var key: String
-    var ascending: Bool = true
-}
-
-
 class RealmController {
 
     private static var mainRealm: Realm! = {
