@@ -47,19 +47,20 @@ class AddTaskCoordinator: Coordinator {
 
     private func addViewController(forState state: NewTaskAttribute) {
         guard let newVC: AddTaskViewController = {
+            let mainSB = "Main"
             switch state {
             case .title:
-                return viewController(ofType: TaskTitleViewController.self)
+                return TaskTitleViewController.initFromStoryboard(withName: mainSB)
             case .category:
-                return viewController(ofType: TaskCategoryViewController.self)
+                return TaskCategoryViewController.initFromStoryboard(withName: mainSB)
             case .timeEstimate:
-                return viewController(ofType: TaskTimeEstimateViewController.self)
+                return TaskTimeEstimateViewController.initFromStoryboard(withName: mainSB)
             case .dueDate:
-                return viewController(ofType: TaskDueDateViewController.self)
+                return TaskDueDateViewController.initFromStoryboard(withName: mainSB)
             case .tag:
-                return viewController(ofType: TaskTagViewController.self)
+                return TaskTagViewController.initFromStoryboard(withName: mainSB)
             case .all:
-                return viewController(ofType: TaskEditAllViewController.self)
+                return TaskEditAllViewController.initFromStoryboard(withName: mainSB)
             }
         }() else { return }
 
@@ -74,14 +75,6 @@ class AddTaskCoordinator: Coordinator {
         } catch {
             NSLog("Error performing updates on task: \(error)")
         }
-    }
-
-    private func viewController<AddTaskVC>(
-        ofType type: AddTaskVC.Type
-    ) -> AddTaskVC? where AddTaskVC: AddTaskViewController {
-        UIStoryboard(name: "Main", bundle: nil).instantiateViewController(
-            withIdentifier: String(describing: AddTaskVC.self))
-            as? AddTaskVC
     }
 
     @discardableResult
