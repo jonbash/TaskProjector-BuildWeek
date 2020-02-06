@@ -44,22 +44,40 @@ class TagsCoordinator: Coordinator {
         push(tagsVC)
     }
 
-    // MARK: - Public Methods
-
-    func tag(forIndexPath indexPath: IndexPath) -> Tag? {
-        taskController.allTags?[indexPath.row]
-    }
+    // MARK: - Transition Methods
 
     func viewTagDetails(forIndex indexPath: IndexPath) {
+        if tagDetailVC == nil {
+            tagDetailVC = TagDetailViewController
+                .initFromStoryboard(withName: "Main")
+        }
         guard
             let tag = tag(forIndexPath: indexPath),
-            let detailVC = tagDetailVC ?? TagDetailViewController
-                .initFromStoryboard(withName: "Main")
+            let detailVC = tagDetailVC
             else { return }
         currentTag = tag
         detailVC.tag = tag
         detailVC.tagsCoordinator = self
         
+    }
+
+    func editLocation(forTag tag: Tag? = nil) {
+        if tagMapVC == nil {
+            tagMapVC = TagMapViewController
+                .initFromStoryboard(withName: "Main")
+        }
+        guard
+            let tag = tag ?? currentTag,
+            let mapVC = tagMapVC
+            else { return }
+        mapVC.tagsCoordinator = self
+        mapVC.editingTag = tag
+    }
+
+    // MARK: - Child API
+
+    func tag(forIndexPath indexPath: IndexPath) -> Tag? {
+        taskController.allTags?[indexPath.row]
     }
 
     func setTagTitle(_ title: String, tag: Tag? = nil) throws {
@@ -68,16 +86,6 @@ class TagsCoordinator: Coordinator {
             tag.name = title
         }
         try taskController.saveTag(tag)
-    }
-
-    func editLocation(forTag tag: Tag? = nil) {
-        guard
-            let tag = tag ?? currentTag,
-            let mapVC = tagMapVC ?? TagMapViewController
-                .initFromStoryboard(withName: "Main")
-            else { return }
-        mapVC.tagsCoordinator = self
-        mapVC.editingTag = tag
     }
 
     func setTagLocation(_ location: CLLocationCoordinate2D?, tag: Tag? = nil) throws {

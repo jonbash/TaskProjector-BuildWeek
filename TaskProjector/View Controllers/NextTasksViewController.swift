@@ -26,16 +26,7 @@ class NextTasksViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Next Tasks"
-        let addButton = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(createTask(_:)))
-        setToolbarItems([addButton], animated: false)
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self,
-                                            action: #selector(refreshTableView(_:)),
-                                            for: .valueChanged)
+        setUpViews()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -43,11 +34,32 @@ class NextTasksViewController: UIViewController {
         tableView.reloadData()
     }
 
+    private func setUpViews() {
+        title = "Next Tasks"
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add,
+                                        target: self,
+                                        action: #selector(createTask(_:)))
+        let tagsButton = UIBarButtonItem(title: "Tags",
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(viewTags(_:)))
+        setToolbarItems([addButton, tagsButton], animated: false)
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self,
+                                            action: #selector(refreshTableView(_:)),
+                                            for: .valueChanged)
+    }
+
     // MARK: - Methods
 
     @objc
     func createTask(_ sender: Any) {
         delegate?.requestTaskCreation(self)
+    }
+
+    @objc
+    func viewTags(_ sender: Any) {
+        delegate?.viewTags()
     }
 
     @objc

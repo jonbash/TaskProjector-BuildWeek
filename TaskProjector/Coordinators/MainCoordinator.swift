@@ -15,6 +15,9 @@ class MainCoordinator: Coordinator {
     lazy var addTaskCoordinator = AddTaskCoordinator(
         navigationController: navigationController,
         taskController: taskController)
+    lazy var tagsCoordinator = TagsCoordinator(
+        navController: navigationController,
+        taskController: taskController)
 
     lazy var taskController = TaskController()
 
@@ -50,6 +53,10 @@ extension MainCoordinator: NextTasksDelegate {
     func editTask(_ task: Task) {
         addTaskCoordinator.currentState = .all
         addTaskCoordinator.start(withTask: task)
+    }
+
+    func viewTags() {
+        tagsCoordinator.start()
     }
 
     func performUpdates(forTask task: Task, updates: @escaping () throws -> Void) {
