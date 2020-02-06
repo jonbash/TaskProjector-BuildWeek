@@ -18,15 +18,25 @@ class TagDetailViewController: UIViewController {
     @IBOutlet private weak var locationSwitch: UISwitch!
     @IBOutlet private weak var editLocationButton: UIButton!
 
+    // MARK: - View Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Tag Details"
         tasksTableView.register(
             UINib(nibName: "TaskTableViewCell", bundle: nil),
             forCellReuseIdentifier: TaskTableViewCell.reuseID)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         titleField.text = tag.name
         locationSwitch.isOn = tag.location != nil
         setLocationButtonHidden()
+        tasksTableView.reloadData()
     }
+
+    // MARK: - Actions
 
     @IBAction func editLocationTapped(_ sender: UIButton) {
         tagsCoordinator?.editLocation(forTag: tag)
@@ -40,6 +50,8 @@ class TagDetailViewController: UIViewController {
         editLocationButton.isHidden = !locationSwitch.isOn
     }
 }
+
+// MARK: - Text Field Delegate
 
 extension TagDetailViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
