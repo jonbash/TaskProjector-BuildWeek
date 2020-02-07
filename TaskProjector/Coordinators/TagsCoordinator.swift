@@ -86,7 +86,7 @@ class TagsCoordinator: Coordinator {
         try taskController.performUpdates {
             tag.name = title
         }
-        try taskController.saveTag(tag)
+        try taskController.save(tag)
     }
 
     func setTagLocation(_ location: CLLocationCoordinate2D?, tag: Tag? = nil) throws {
@@ -94,7 +94,7 @@ class TagsCoordinator: Coordinator {
         try taskController.performUpdates {
             tag.location = location
         }
-        try taskController.saveTag(tag)
+        try taskController.save(tag)
     }
     // MARK: - Private Helpers
 

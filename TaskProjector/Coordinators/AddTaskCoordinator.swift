@@ -130,7 +130,7 @@ extension AddTaskCoordinator: TaskCreationClient {
 
     func requestTaskSave(_ sender: Any) {
         do {
-            try taskController.saveTask(task)
+            try taskController.save(task)
         } catch {
             NSLog("Error saving task \(task): \(error)")
         }
