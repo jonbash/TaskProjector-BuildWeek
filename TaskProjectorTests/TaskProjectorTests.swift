@@ -54,6 +54,70 @@ class TaskProjectorTests: XCTestCase {
 
     // MARK: - Task Controller Tests
 
+    func testSaveObjects() throws {
+        let homeTag = Tag(name: "Home")
+        let workTag = Tag(name: "Work")
+        let personalArea = Area(name: "Personal")
+        let professionalArea = Area(name: "Professional")
+        let save = {
+            try self.taskController.saveObjects(
+                [homeTag, workTag, personalArea, professionalArea])
+        }
+        XCTAssertNoThrow(try save())
+    }
+
+    func testAllTasksList() throws {
+        var tasks = [Task]()
+        var task42: Task?
+        for i in 0..<100 {
+            let task = Task(name: "task \(i)")
+            if i == 42 { task42 = task }
+            tasks.append(task)
+        }
+        try taskController.saveObjects(tasks)
+        XCTAssertNotNil(taskController.allTasks)
+        XCTAssertEqual(taskController.allTasks!.count, 100)
+        XCTAssertTrue(taskController.allTasks!.contains(task42!))
+    }
+
+    func testAllAreasList() throws {
+        let personalArea = Area(name: "School Stuff")
+        let professionalArea = Area(name: "Health")
+        try taskController.saveObjects(
+            [personalArea, professionalArea])
+        XCTAssertNotNil(taskController.allAreas)
+        XCTAssertEqual(taskController.allAreas!.count, 4) // including defaults
+        XCTAssertTrue(taskController.allAreas!.contains(personalArea))
+    }
+
+    func testAllTagsList() throws {
+        let homeTag = Tag(name: "Home")
+        let workTag = Tag(name: "Work")
+        let schoolTag = Tag(name: "School") // let die, don't save
+        try taskController.saveObjects(
+            [homeTag, workTag])
+        XCTAssertNotNil(taskController.allTags)
+        XCTAssertEqual(taskController.allTags!.count, 4) // including defaults
+        XCTAssertTrue(taskController.allTags!.contains(workTag))
+        XCTAssertFalse(taskController.allTags!.contains(schoolTag))
+    }
+
+    func testDeleteTask() throws {
+        var tasks = [Task]()
+        var task42: Task?
+        for i in 0..<100 {
+            let task = Task(name: "task \(i)")
+            if i == 42 { task42 = task }
+            tasks.append(task)
+        }
+        try taskController.saveObjects(tasks)
+        XCTAssertEqual(taskController.allTasks!.count, 100)
+        XCTAssertTrue(taskController.allTasks!.contains(task42!))
+        XCTAssertNoThrow(try taskController.delete(task42!))
+        XCTAssertEqual(taskController.allTasks!.count, 99)
+        XCTAssertFalse(taskController.allTasks!.contains(task42!))
+    }
+
     // MARK: - Misc Tests
 
     func testRescaler() {
