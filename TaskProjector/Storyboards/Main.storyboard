@@ -273,6 +273,7 @@
                         <viewLayoutGuide key="safeArea" id="SHL-DD-gfJ"/>
                     </view>
                     <connections>
+                        <outlet property="addCategoryButton" destination="3PX-Vx-gUo" id="d9a-Lx-PYm"/>
                         <outlet property="categoryPicker" destination="aFy-y2-Mvx" id="ple-ss-g10"/>
                         <outlet property="categorySegmentedControl" destination="Y70-Zb-f2k" id="N1a-sx-sf9"/>
                     </connections>
