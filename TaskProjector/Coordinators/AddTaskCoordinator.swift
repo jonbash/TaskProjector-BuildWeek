@@ -18,12 +18,10 @@ class AddTaskCoordinator: Coordinator {
     var taskController: TaskController
     private(set) var task = Task()
 
-    private(set) lazy var categoryPickerDataSource: CategoryPickerDataSource = {
+    private(set) lazy var categoryPickerDataSource =
         CategoryPickerDataSource(taskController: taskController)
-    }()
-    private(set) lazy var tagPickerDataSource: TagPickerDataSource = {
+    private(set) lazy var tagPickerDataSource =
         TagPickerDataSource(taskController: taskController)
-    }()
 
     // MARK: - Init / Start
 
@@ -78,7 +76,8 @@ class AddTaskCoordinator: Coordinator {
     }
 
     @discardableResult
-    private func pullAttributes(fromVC addTaskVC: AddTaskViewController?) -> NewTaskAttribute {
+    private func pullAttributes(fromVC addTaskVC: AddTaskViewController?
+    ) -> NewTaskAttribute {
         if let titleVC = addTaskVC as? TaskTitleViewController {
             updateTask { self.task.name = titleVC.taskTitle }
             return .title

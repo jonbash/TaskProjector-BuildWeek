@@ -35,6 +35,8 @@ class TaskCategoryViewController: AddTaskViewController {
         }
     }
 
+    // MARK: - View Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         categoryPicker.dataSource = creationClient?.categoryPickerDataSource
