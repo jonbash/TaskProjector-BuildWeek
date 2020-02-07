@@ -9,7 +9,8 @@
 import UIKit
 import CoreLocation
 
-class TagsCoordinator: Coordinator {
+@objc
+class TagsCoordinator: NSObject, Coordinator {
     var navigationController: UINavigationController
 
     var tagsTableVC: TagsTableViewController?
@@ -19,7 +20,7 @@ class TagsCoordinator: Coordinator {
     var taskController: TaskController
 
     var currentTag: Tag?
-    var tagCount: Int {
+    @objc var tagCount: Int {
         taskController.allTags?.count ?? 0
     }
     var tagMapAnnotations: [TagMapAnnotation] {
@@ -46,6 +47,7 @@ class TagsCoordinator: Coordinator {
 
     // MARK: - Transition Methods
 
+    @objc
     func viewTagDetails(forIndex indexPath: IndexPath) {
         if tagDetailVC == nil {
             tagDetailVC = TagDetailViewController
@@ -77,6 +79,7 @@ class TagsCoordinator: Coordinator {
 
     // MARK: - Child API
 
+    @objc
     func tag(forIndexPath indexPath: IndexPath) -> Tag? {
         taskController.allTags?[indexPath.row]
     }

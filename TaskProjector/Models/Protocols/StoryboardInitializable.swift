@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 protocol StoryboardInitializable {
-    static func initFromStoryboard(withName storyboardName: String) -> Self?
+    @objc static func initFromStoryboard(withName storyboardName: String) -> Self?
 }
