@@ -12,6 +12,7 @@ class TaskCategoryViewController: AddTaskViewController {
 
     @IBOutlet private weak var categorySegmentedControl: UISegmentedControl!
     @IBOutlet private weak var categoryPicker: CategoryPickerView!
+    @IBOutlet private weak var addCategoryButton: UIButton!
 
     var category: Category? {
         get {
@@ -33,6 +34,8 @@ class TaskCategoryViewController: AddTaskViewController {
             categorySegmentedControl.selectedSegmentIndex = categoryType.rawValue
         }
     }
+
+    // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,10 +59,15 @@ class TaskCategoryViewController: AddTaskViewController {
             rawValue: categorySegmentedControl.selectedSegmentIndex + 1) {
             creationClient?.taskCreator(self, didRequestNewCategory: type)
         }
+        presentInformationalAlert(
+            withTitle: "Uh oh!",
+            text: "This functionality isn't implemented yet. ;)")
     }
 
     @IBAction private func categoryChanged(_ sender: Any) {
         let typeIndex = categorySegmentedControl.selectedSegmentIndex
-        categoryPicker.categoryType = CategoryType(rawValue: typeIndex) ?? .none
+        let categoryType = CategoryType(rawValue: typeIndex) ?? .none
+        categoryPicker.categoryType = categoryType
+        addCategoryButton.isEnabled = (categoryType != .none)
     }
 }

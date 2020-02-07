@@ -33,7 +33,6 @@
 		99335E9E23E746A700F98187 /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335E9D23E746A700F98187 /* TaskController.swift */; };
 		99335EA023E75B2800F98187 /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335E9F23E75B2800F98187 /* RealmController.swift */; };
 		99335EA823E7774600F98187 /* TagSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EA723E7774600F98187 /* TagSubview.swift */; };
-		99335EAE23E7AC3500F98187 /* RealmControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EAD23E7AC3400F98187 /* RealmControllerTests.swift */; };
 		99335EB223E7B86400F98187 /* TaskCreationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EB123E7B86400F98187 /* TaskCreationClient.swift */; };
 		99335EB523E879C700F98187 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EB323E879C700F98187 /* AddTaskViewController.swift */; };
 		99335EB823E87A2D00F98187 /* ShiftableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EB723E87A2D00F98187 /* ShiftableViewController.swift */; };
@@ -56,7 +55,6 @@
 		99335EDC23EB36DD00F98187 /* TimeInterval+TimePeriods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EDB23EB36DD00F98187 /* TimeInterval+TimePeriods.swift */; };
 		99335EDE23EB3EEB00F98187 /* Rescaler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EDD23EB3EEB00F98187 /* Rescaler.swift */; };
 		99335EE023EB718500F98187 /* DueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EDF23EB718400F98187 /* DueState.swift */; };
-		99335EE223EB8F6400F98187 /* TagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EE123EB8F6400F98187 /* TagsTableViewController.swift */; };
 		99335EE423EB8FAD00F98187 /* TagsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EE323EB8FAD00F98187 /* TagsCoordinator.swift */; };
 		99335EE623EB965700F98187 /* TagDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EE523EB965700F98187 /* TagDetailViewController.swift */; };
 		99335EE923EBA0C400F98187 /* TagMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EE823EBA0C400F98187 /* TagMapViewController.swift */; };
@@ -66,6 +64,7 @@
 		99335EF323EC789300F98187 /* StoryboardInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EF223EC789300F98187 /* StoryboardInitializable.swift */; };
 		99335EF523ECA82200F98187 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EF423ECA82200F98187 /* Sorting.swift */; };
 		994ECC5623ECB5DE004CD42B /* NearbyTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994ECC5523ECB5DE004CD42B /* NearbyTasksViewController.swift */; };
+		99E9DD9623EDB042004557E3 /* JBTagsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99E9DD9523EDB042004557E3 /* JBTagsTableViewController.m */; };
 		A380E098E5A3D78DED09B773 /* Pods_TaskProjectorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9AA95380ECC2CCD7B9F08C /* Pods_TaskProjectorTests.framework */; };
 		D9BA2C23278BEEFF5CF4976B /* Pods_TaskProjector_TaskProjectorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */; };
 /* End PBXBuildFile section */
@@ -122,7 +121,6 @@
 		99335E9D23E746A700F98187 /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
 		99335E9F23E75B2800F98187 /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
 		99335EA723E7774600F98187 /* TagSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSubview.swift; sourceTree = "<group>"; };
-		99335EAD23E7AC3400F98187 /* RealmControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmControllerTests.swift; sourceTree = "<group>"; };
 		99335EB123E7B86400F98187 /* TaskCreationClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCreationClient.swift; sourceTree = "<group>"; };
 		99335EB323E879C700F98187 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		99335EB723E87A2D00F98187 /* ShiftableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftableViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +153,9 @@
 		99335EF223EC789300F98187 /* StoryboardInitializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInitializable.swift; sourceTree = "<group>"; };
 		99335EF423ECA82200F98187 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 		994ECC5523ECB5DE004CD42B /* NearbyTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyTasksViewController.swift; sourceTree = "<group>"; };
+		99E9DD9323EDB041004557E3 /* TaskProjector-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TaskProjector-Bridging-Header.h"; sourceTree = "<group>"; };
+		99E9DD9423EDB042004557E3 /* JBTagsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JBTagsTableViewController.h; sourceTree = "<group>"; };
+		99E9DD9523EDB042004557E3 /* JBTagsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JBTagsTableViewController.m; sourceTree = "<group>"; };
 		B724FC8131AC8DDBCA68F607 /* Pods_TaskProjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector_TaskProjectorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6F83FC6EEBE92D041878DA /* Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaskProjector-TaskProjectorUITests/Pods-TaskProjector-TaskProjectorUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -242,6 +243,7 @@
 				992A4E1B23E4ED5F00DEA71F /* Coordinators */,
 				992A4E1923E4ED3500DEA71F /* Views */,
 				992A4E1A23E4ED5800DEA71F /* View Controllers */,
+				99E9DD9723EDB4FF004557E3 /* Storyboards */,
 				992A4E1C23E4ED6800DEA71F /* Model Controllers */,
 				992A4E1D23E4ED6D00DEA71F /* Models */,
 				992A4E2723E4F7B400DEA71F /* Helpers */,
@@ -254,7 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				992A4E0023E4EB1E00DEA71F /* TaskProjectorTests.swift */,
-				99335EAD23E7AC3400F98187 /* RealmControllerTests.swift */,
 				992A4E0223E4EB1E00DEA71F /* Info.plist */,
 			);
 			path = TaskProjectorTests;
@@ -332,11 +333,9 @@
 		992A4E1E23E4ED7200DEA71F /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				99335ECB23EA3DA600F98187 /* Main.storyboard */,
 				992A4DE923E4EB1B00DEA71F /* AppDelegate.swift */,
 				992A4DEB23E4EB1B00DEA71F /* SceneDelegate.swift */,
 				992A4DF223E4EB1E00DEA71F /* Assets.xcassets */,
-				992A4DF423E4EB1E00DEA71F /* LaunchScreen.storyboard */,
 				992A4DF723E4EB1E00DEA71F /* Info.plist */,
 			);
 			path = Application;
@@ -399,11 +398,23 @@
 		99335EE723EB967100F98187 /* Tags */ = {
 			isa = PBXGroup;
 			children = (
+				99E9DD9423EDB042004557E3 /* JBTagsTableViewController.h */,
+				99E9DD9523EDB042004557E3 /* JBTagsTableViewController.m */,
 				99335EE123EB8F6400F98187 /* TagsTableViewController.swift */,
 				99335EE523EB965700F98187 /* TagDetailViewController.swift */,
 				99335EE823EBA0C400F98187 /* TagMapViewController.swift */,
+				99E9DD9323EDB041004557E3 /* TaskProjector-Bridging-Header.h */,
 			);
 			path = Tags;
+			sourceTree = "<group>";
+		};
+		99E9DD9723EDB4FF004557E3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				99335ECB23EA3DA600F98187 /* Main.storyboard */,
+				992A4DF423E4EB1E00DEA71F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -480,6 +491,7 @@
 				TargetAttributes = {
 					992A4DE523E4EB1B00DEA71F = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 					992A4DFB23E4EB1E00DEA71F = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -680,7 +692,6 @@
 				99335E9A23E67A4C00F98187 /* TaskView.swift in Sources */,
 				992A4E2223E4F07E00DEA71F /* MainCoordinator.swift in Sources */,
 				99335EC023E8CB5A00F98187 /* CategoryType.swift in Sources */,
-				99335EE223EB8F6400F98187 /* TagsTableViewController.swift in Sources */,
 				992A4E3523E5006400DEA71F /* NonCompletableState.swift in Sources */,
 				99335EE623EB965700F98187 /* TagDetailViewController.swift in Sources */,
 				99335ECF23EA3E1A00F98187 /* TaskTitleViewController.swift in Sources */,
@@ -708,6 +719,7 @@
 				99335ED723EA482700F98187 /* TaskDueDateViewController.swift in Sources */,
 				99335EB523E879C700F98187 /* AddTaskViewController.swift in Sources */,
 				99335EA023E75B2800F98187 /* RealmController.swift in Sources */,
+				99E9DD9623EDB042004557E3 /* JBTagsTableViewController.m in Sources */,
 				99335EC223EA0B5E00F98187 /* CategoryPickerView.swift in Sources */,
 				992A4E2023E4EF6800DEA71F /* Coordinator.swift in Sources */,
 				99335EBE23E8C7A000F98187 /* NextTasksDelegate.swift in Sources */,
@@ -723,7 +735,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				992A4E0123E4EB1E00DEA71F /* TaskProjectorTests.swift in Sources */,
-				99335EAE23E7AC3500F98187 /* RealmControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -881,8 +892,9 @@
 			baseConfigurationReference = E72094232E015FC31EC1B7D7 /* Pods-TaskProjector.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 22X3GA956P;
 				INFOPLIST_FILE = TaskProjector/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -893,6 +905,8 @@
 				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonbash.taskprojector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TaskProjector/View Controllers/Tags/TaskProjector-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -903,8 +917,9 @@
 			baseConfigurationReference = D4FFE3A45CD84EEB5FC94D96 /* Pods-TaskProjector.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 22X3GA956P;
 				INFOPLIST_FILE = TaskProjector/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -915,6 +930,7 @@
 				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonbash.taskprojector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TaskProjector/View Controllers/Tags/TaskProjector-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

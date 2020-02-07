@@ -72,7 +72,7 @@ extension MainCoordinator: NextTasksDelegate {
     func performUpdates(forTask task: Task, updates: @escaping () throws -> Void) {
         do {
             try taskController.performUpdates(updates)
-            try taskController.saveTask(task)
+            try taskController.save(task)
         } catch {
             NSLog("Error performing object updates: \(error)")
         }
@@ -84,6 +84,6 @@ extension MainCoordinator: NextTasksDelegate {
 
 extension MainCoordinator: NearbyTasksDelegate {
     func tasksNear(region: CLCircularRegion) -> [Task] {
-        taskController.tasksNearby(region)
+        taskController.fetchTasksNearby(region)
     }
 }

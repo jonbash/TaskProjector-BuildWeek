@@ -128,7 +128,11 @@ extension TagDetailViewController: TaskViewDelegate {
         present(alert, animated: true)
     }
 
-    func taskView(_ taskView: TaskView, willPerformUpdatesforTask task: Task, updates: @escaping () throws -> Void) {
+    func taskView(
+        _ taskView: TaskView,
+        willPerformUpdatesforTask task: Task,
+        updates: @escaping () throws -> Void
+    ) {
         do {
             try self.tagsCoordinator.taskController.performUpdates(updates)
         } catch {

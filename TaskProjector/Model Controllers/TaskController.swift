@@ -73,10 +73,19 @@ class TaskController {
             do {
                 let homeTag = Tag(name: "Home")
                 let workTag = Tag(name: "Work")
-                try saveTag(homeTag)
-                try saveTag(workTag)
+                try saveObjects([homeTag, workTag])
             } catch {
-
+                NSLog("Error initalizing default tags: \(error)")
+            }
+        }
+        if let noAreas = topLevelAreas?.isEmpty, noAreas {
+            NSLog("Initializing default areas")
+            do {
+                let personalArea = Area(name: "Personal")
+                let professionalArea = Area(name: "Professional")
+                try saveObjects([personalArea, professionalArea])
+            } catch {
+                NSLog("Error initalizing default areas: \(error)")
             }
         }
     }
@@ -85,6 +94,10 @@ class TaskController {
 
     func performUpdates(_ updates: @escaping () throws -> Void) throws {
         try realmController.performUpdates(updates)
+    }
+
+    func save(_ object: Object) throws {
+        try realmController.save(object)
     }
 
     func saveObjects(_ objects: [Object]) throws {
@@ -105,13 +118,13 @@ class TaskController {
         }
     }
 
-    // MARK: - Task Methods
-
-    func saveTask(_ task: Task) throws {
-        try realmController.save(task)
+    func delete(_ object: Object) throws {
+        try realmController.delete(object)
     }
 
-    func tasksNearby(_ region: CLCircularRegion) -> [Task] {
+    // MARK: - Task Methods
+
+    func fetchTasksNearby(_ region: CLCircularRegion) -> [Task] {
         guard let tags = tagsWithLocations else { return [] }
         var nearbyTasks = [Task]()
         for tag in tags {
@@ -125,11 +138,5 @@ class TaskController {
             }
         }
         return nearbyTasks
-    }
-
-    // MARK: - Tag Methods
-
-    func saveTag(_ tag: Tag) throws {
-        try realmController.save(tag)
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 import CoreLocation
 
+@objc
 @objcMembers
 class Tag: Object {
     dynamic var name: String = ""

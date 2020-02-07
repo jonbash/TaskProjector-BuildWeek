@@ -51,7 +51,7 @@
         <!--Tags Table View Controller-->
         <scene sceneID="Xfd-6B-bxa">
             <objects>
-                <tableViewController storyboardIdentifier="TagsTableViewController" id="u7Q-i8-VGk" customClass="TagsTableViewController" customModule="TaskProjector" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="JBTagsTableViewController" id="u7Q-i8-VGk" customClass="JBTagsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OlU-ez-TwT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -273,6 +273,7 @@
                         <viewLayoutGuide key="safeArea" id="SHL-DD-gfJ"/>
                     </view>
                     <connections>
+                        <outlet property="addCategoryButton" destination="3PX-Vx-gUo" id="d9a-Lx-PYm"/>
                         <outlet property="categoryPicker" destination="aFy-y2-Mvx" id="ple-ss-g10"/>
                         <outlet property="categorySegmentedControl" destination="Y70-Zb-f2k" id="N1a-sx-sf9"/>
                     </connections>

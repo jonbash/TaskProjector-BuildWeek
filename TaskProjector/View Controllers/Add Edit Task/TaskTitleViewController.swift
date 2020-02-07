@@ -26,6 +26,8 @@ class TaskTitleViewController: AddTaskViewController {
             titleField.text = taskTitle
         } else {
             title = "New Task"
+            saveButton.isEnabled = false
+            nextButton?.isEnabled = false
         }
     }
 
