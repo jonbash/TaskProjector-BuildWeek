@@ -240,6 +240,7 @@
 				992A4E1B23E4ED5F00DEA71F /* Coordinators */,
 				992A4E1923E4ED3500DEA71F /* Views */,
 				992A4E1A23E4ED5800DEA71F /* View Controllers */,
+				99E9DD9723EDB4FF004557E3 /* Storyboards */,
 				992A4E1C23E4ED6800DEA71F /* Model Controllers */,
 				992A4E1D23E4ED6D00DEA71F /* Models */,
 				992A4E2723E4F7B400DEA71F /* Helpers */,
@@ -329,11 +330,9 @@
 		992A4E1E23E4ED7200DEA71F /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				99335ECB23EA3DA600F98187 /* Main.storyboard */,
 				992A4DE923E4EB1B00DEA71F /* AppDelegate.swift */,
 				992A4DEB23E4EB1B00DEA71F /* SceneDelegate.swift */,
 				992A4DF223E4EB1E00DEA71F /* Assets.xcassets */,
-				992A4DF423E4EB1E00DEA71F /* LaunchScreen.storyboard */,
 				992A4DF723E4EB1E00DEA71F /* Info.plist */,
 			);
 			path = Application;
@@ -401,6 +400,15 @@
 				99335EE823EBA0C400F98187 /* TagMapViewController.swift */,
 			);
 			path = Tags;
+			sourceTree = "<group>";
+		};
+		99E9DD9723EDB4FF004557E3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				99335ECB23EA3DA600F98187 /* Main.storyboard */,
+				992A4DF423E4EB1E00DEA71F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
