@@ -9,8 +9,6 @@
 import UIKit
 
 
-// MARK: - FILE CURRENTLY NOT IN TARGET
-
 class TagsTableViewController: UITableViewController {
 
     weak var tagsCoordinator: TagsCoordinator?
