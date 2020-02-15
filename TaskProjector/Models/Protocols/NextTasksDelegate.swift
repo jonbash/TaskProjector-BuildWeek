@@ -8,11 +8,9 @@
 
 import Foundation
 
-protocol NextTasksDelegate: AnyObject {
+protocol NextTasksDelegate: AnyObject, AddEditTaskOrigin {
     var nextTasks: [Task] { get }
 
-    func requestTaskCreation(_ sender: Any?)
-    func editTask(_ task: Task)
     func viewTags()
     func viewNearbyTasks()
     func performUpdates(forTask task: Task, updates: @escaping () throws -> Void)

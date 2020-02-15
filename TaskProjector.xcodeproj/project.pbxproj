@@ -65,6 +65,7 @@
 		99335EF323EC789300F98187 /* StoryboardInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EF223EC789300F98187 /* StoryboardInitializable.swift */; };
 		99335EF523ECA82200F98187 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99335EF423ECA82200F98187 /* Sorting.swift */; };
 		994ECC5623ECB5DE004CD42B /* NearbyTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994ECC5523ECB5DE004CD42B /* NearbyTasksViewController.swift */; };
+		997BB1F823F8891E00BEA3AA /* AddEditTaskOrigin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997BB1F723F8891E00BEA3AA /* AddEditTaskOrigin.swift */; };
 		A380E098E5A3D78DED09B773 /* Pods_TaskProjectorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9AA95380ECC2CCD7B9F08C /* Pods_TaskProjectorTests.framework */; };
 		D9BA2C23278BEEFF5CF4976B /* Pods_TaskProjector_TaskProjectorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */; };
 /* End PBXBuildFile section */
@@ -153,6 +154,7 @@
 		99335EF223EC789300F98187 /* StoryboardInitializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInitializable.swift; sourceTree = "<group>"; };
 		99335EF423ECA82200F98187 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 		994ECC5523ECB5DE004CD42B /* NearbyTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyTasksViewController.swift; sourceTree = "<group>"; };
+		997BB1F723F8891E00BEA3AA /* AddEditTaskOrigin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTaskOrigin.swift; sourceTree = "<group>"; };
 		99E9DD9323EDB041004557E3 /* TaskProjector-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TaskProjector-Bridging-Header.h"; sourceTree = "<group>"; };
 		B724FC8131AC8DDBCA68F607 /* Pods_TaskProjector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E6B48F29C1C1B2D6529E20 /* Pods_TaskProjector_TaskProjectorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskProjector_TaskProjectorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -361,6 +363,7 @@
 				99335E9923E67A4C00F98187 /* TaskView.swift */,
 				99335E9723E6759800F98187 /* TaskViewDelegate.swift */,
 				99335EBD23E8C7A000F98187 /* NextTasksDelegate.swift */,
+				997BB1F723F8891E00BEA3AA /* AddEditTaskOrigin.swift */,
 				99335EB123E7B86400F98187 /* TaskCreationClient.swift */,
 				99335EF223EC789300F98187 /* StoryboardInitializable.swift */,
 			);
@@ -683,6 +686,7 @@
 				99335EC423EA11BC00F98187 /* TagPickerView.swift in Sources */,
 				99335EBA23E8C03100F98187 /* AddTaskCoordinator.swift in Sources */,
 				99335EC623EA144F00F98187 /* String+Constants.swift in Sources */,
+				997BB1F823F8891E00BEA3AA /* AddEditTaskOrigin.swift in Sources */,
 				99335E9C23E67BF700F98187 /* UIAlert+Convenience.swift in Sources */,
 				992A4DEA23E4EB1B00DEA71F /* AppDelegate.swift in Sources */,
 				99335E9A23E67A4C00F98187 /* TaskView.swift in Sources */,
